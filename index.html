@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BNI Referral Engine · Dedy Dahlan</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="theme-color" content="#CF142B">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -1326,8 +1327,10 @@ function vKpi(){
    +'<ul class="bl"><li><b>iPhone (Safari):</b> tombol Share di bawah, pilih <b>Add to Home Screen</b>.</li>'
    +'<li><b>Android (Chrome):</b> menu tiga titik, pilih <b>Install app</b> atau <b>Add to Home screen</b>.</li></ul>'
    +'<div class="ctxt" style="font-size:12px;margin-top:8px">Ikon BNI muncul sendiri, dan app terbuka penuh tanpa address bar. Progres yang sudah tersimpan tetap terbaca.</div>'
-   +'<div class="say" style="margin-top:10px">Penting: kalau file ini di-host (misalnya GitHub Pages), pasang dari alamat itu, jangan dari file lokal. Kalau dipasang dari file lokal lalu nanti pindah ke alamat online, datanya tidak ikut, karena browser menganggapnya dua tempat berbeda.</div>'
+   +'<div class="say" style="margin-top:10px">Penting: kalau file ini di-host (misalnya GitHub Pages), pakai dan pasang dari alamat itu, jangan dari file lokal. Browser menyimpan data terpisah per alamat, jadi progres di file lokal tidak ikut pindah sendiri.</div>'
+   +'<div class="ctxt" style="font-size:12px;margin-top:9px">Kalau Anda sudah terlanjur mengisi data di file lokal: tekan <b>Ekspor</b> di sini, buka app dari alamat GitHub, lalu tekan <b>Impor</b> dan pilih file tadi. Semua progres pindah utuh.</div>'
    +'<button class="btn ghost" style="margin-top:10px" onclick="exportJSON()">Ekspor data</button>'
+   +'<button class="btn ghost" style="margin-top:7px" onclick="importJSON()">Impor data dari file ekspor</button>'
    +'<button class="btn ghost" style="margin-top:7px" onclick="resetAll()">Reset semua</button></div>';
   return h;
 }
@@ -1338,6 +1341,29 @@ function kpi(k,d){S.kpi[k]=Math.max(0,(S.kpi[k]||0)+d);saveS();render()}
 function addDeal(){var n=document.getElementById('dn').value.trim(),v=document.getElementById('dv').value,s=document.getElementById('ds').value;
  if(!n){toast('Isi nama dulu');return}S.deals.unshift({n:n,v:v||0,s:s});saveS();render();toast('Deal ditambahkan')}
 function delDeal(i){S.deals.splice(i,1);saveS();render()}
+function importJSON(){
+  var i=document.createElement('input'); i.type='file'; i.accept='.json,application/json';
+  i.onchange=function(){
+    var f=i.files&&i.files[0]; if(!f)return;
+    var r=new FileReader();
+    r.onload=function(){
+      try{
+        var o=JSON.parse(r.result);
+        if(typeof o!=='object'||!o) throw 0;
+        if(!confirm('Ganti semua data di perangkat ini dengan isi file tersebut? Data yang sekarang akan hilang.'))return;
+        S={met:{},notes:{},vcp:{},lvl:{},task:{},sub:{},skip:{},extra:[],targets:[],log:[],xslots:{},
+           kpi:{given:0,recv:0,cohost:0,oam:0,lakon:0},deals:[],week:1};
+        for(var k in o)S[k]=o[k];
+        if(!S.log)S.log=[]; if(!S.xslots)S.xslots={}; if(!S.sub)S.sub={}; if(!S.skip)S.skip={};
+        if(!S.extra)S.extra=[]; if(!S.targets)S.targets=[]; if(!S.deals)S.deals=[];
+        saveS(); loadExtras(); render(); updateTop();
+        toast('Data dipulihkan: '+(S.log||[]).length+' sesi');
+      }catch(e){ toast('File tidak terbaca. Pastikan itu file ekspor dari app ini.') }
+    };
+    r.readAsText(f);
+  };
+  i.click();
+}
 function exportJSON(){
  var b=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
  var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='bni-engine-'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('Data diekspor')}
