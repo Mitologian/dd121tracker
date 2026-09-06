@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>BNI Referral Engine · Dedy Dahlan</title>
+<meta name="theme-color" content="#CF142B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Referral Engine">
+<meta name="application-name" content="Referral Engine">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,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">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%23CF142B%22%2F%3E%3Ctext%20x%3D%2216%22%20y%3D%2222%22%20font-family%3D%22Arial%22%20font-size%3D%2215%22%20font-weight%3D%22bold%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%3E121%3C%2Ftext%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#CF142B;--red-deep:#A50E22;--gold:#C9A227;--ink:#191919;--marble:#F4F4F5;--paper:#fff;
+  --line:#E9E9EA;--muted:#6E6E6E;--soft:#FAFAF9;
+  --orange:#F28A1F;--teal:#1D9E75;--bread:#A0703C;--cheese:#C9A227;--meat:#CF142B;
+  --t1a:#CF142B;--t1b:#E07A1F;--tp:#1D9E75;--t2:#5A6E8C;--t3:#9A9A9A;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:'Montserrat',system-ui,sans-serif;color:var(--ink);background:var(--marble);-webkit-font-smoothing:antialiased;font-size:14px}
+.phone{width:100%;max-width:480px;margin:0 auto;background:var(--marble);position:relative;display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
+@media(min-width:540px){body{background:#e6e6e7;display:flex;align-items:center;justify-content:center}
+.phone{max-width:440px;height:100dvh;box-shadow:0 20px 60px rgba(0,0,0,.18)}}
+
+/* COVER */
+.cover{position:absolute;inset:0;z-index:100;background:linear-gradient(155deg,#D8162E 0%,#A00E20 60%,#7A0A18 100%);color:#fff;display:flex;flex-direction:column;justify-content:flex-start;padding:11vh 28px 34px;transition:opacity .45s ease,visibility .45s ease}
+.cov-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--red);border-radius:9px;padding:7px 11px;align-self:flex-start;margin-bottom:24px}
+.cov-badge b{font-weight:900;font-size:16px;letter-spacing:-.045em;line-height:1}
+.cov-badge span{font-size:8px;font-weight:800;letter-spacing:.15em;color:#8a8a8a;line-height:1}
+.cover.hidden{opacity:0;visibility:hidden}
+.cov-eyebrow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;opacity:.85}
+.cov-title{font-family:'Bebas Neue',sans-serif;font-size:60px;line-height:.88;letter-spacing:.01em;margin-top:8px}
+.cov-sub{font-size:13px;font-weight:600;line-height:1.55;opacity:.9;margin-top:14px;max-width:300px}
+.cov-stats{display:flex;gap:18px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.25)}
+.cov-stat b{display:block;font-family:'Bebas Neue',sans-serif;font-size:28px;line-height:1}
+.cov-stat span{font-size:9px;letter-spacing:.12em;text-transform:uppercase;opacity:.8;font-weight:700}
+.cov-btn{margin-top:auto;background:#fff;color:var(--red);border:none;font-family:inherit;font-weight:800;font-size:15px;padding:16px;border-radius:14px;cursor:pointer;box-shadow:0 12px 30px rgba(0,0,0,.28);display:flex;align-items:center;justify-content:center;gap:8px}
+.cov-btn:active{transform:scale(.97)}
+
+/* TOPBAR */
+.topbar{flex-shrink:0;background:var(--paper);border-bottom:1px solid var(--line);padding:10px 16px 9px}
+.tb-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.tb-l{display:flex;align-items:center;gap:11px;min-width:0}
+.bnilogo{display:flex;flex-direction:column;line-height:1;padding-right:11px;border-right:1px solid #e4e4e4;flex-shrink:0}
+.bnilogo .bni{color:var(--red);font-weight:900;font-size:19px;letter-spacing:-.04em}
+.bnilogo .grow{font-size:7.5px;font-weight:800;letter-spacing:.22em;color:#8a8a8a;margin-top:2px}
+.tb-name .t{font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:.02em}
+.tb-name .e{font-size:8px;letter-spacing:.11em;font-weight:700;color:var(--muted);text-transform:uppercase;margin-top:2px}
+.wkchip{background:var(--ink);color:#fff;font-size:9.5px;font-weight:800;letter-spacing:.06em;padding:6px 10px;border-radius:999px;text-transform:uppercase;white-space:nowrap;border:none;font-family:inherit;cursor:pointer}
+.progwrap{margin-top:9px}
+.progtop{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px}
+.progtop .pl{font-size:8.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.progtop .pp{font-size:11px;font-weight:900;color:var(--red)}
+.track{height:5px;background:#EDEDEE;border-radius:99px;overflow:hidden}
+.track .fill{height:100%;background:linear-gradient(90deg,var(--red),#E8431A);border-radius:99px;transition:width .5s ease}
+
+/* SCROLL */
+.scroll{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding:14px 14px 26px}
+.sechead{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.02em;line-height:1;margin:4px 0 3px}
+.secsub{font-size:11.5px;color:var(--muted);line-height:1.55;margin-bottom:14px;font-weight:500}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:11px}
+.card.flat{padding:0;overflow:hidden}
+.ctitle{font-size:13px;font-weight:800;line-height:1.35;margin-bottom:6px}
+.ctxt{font-size:12.5px;line-height:1.65;color:#3a3a3a;font-weight:500}
+.ctxt b{font-weight:800;color:var(--ink)}
+.kicker{font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:7px}
+.kicker.t{color:var(--teal)}.kicker.o{color:var(--orange)}.kicker.g{color:var(--gold)}.kicker.d{color:var(--muted)}
+.hr{height:1px;background:var(--line);margin:13px 0}
+ul.bl{margin:8px 0 0 0;padding:0;list-style:none}
+ul.bl li{font-size:12.5px;line-height:1.6;color:#3a3a3a;padding-left:16px;position:relative;margin-bottom:7px;font-weight:500}
+ul.bl li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--red);opacity:.55}
+ul.bl.num{counter-reset:n}
+ul.bl.num li{padding-left:24px}
+ul.bl.num li::before{counter-increment:n;content:counter(n);width:auto;height:auto;top:0;font-size:10px;font-weight:900;color:var(--red);background:none;opacity:1;border-radius:0}
+
+/* QUOTE / SCRIPT */
+.say{background:#FFF6F7;border-left:3px solid var(--red);border-radius:0 10px 10px 0;padding:11px 13px;margin:9px 0;font-size:12.5px;line-height:1.6;font-weight:600;color:#5a1018;font-style:italic}
+.say.ok{background:#F1FAF6;border-color:var(--teal);color:#0d5540}
+.say.no{background:#F6F6F6;border-color:#B9B9B9;color:#5a5a5a;text-decoration:line-through;text-decoration-color:rgba(0,0,0,.2)}
+
+/* BADGES */
+.bdg{display:inline-block;font-size:8.5px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;border-radius:5px;color:#fff;white-space:nowrap}
+.b1a{background:var(--t1a)}.b1b{background:var(--t1b)}.bp{background:var(--tp)}.b2{background:var(--t2)}.b3{background:var(--t3)}
+.bdg.gh{background:none;border:1px solid var(--line);color:var(--muted)}
+.bdg.rd{background:#EEF2F7;color:#5A6E8C}
+.bdg.sb{background:#FFF2E2;color:#C77415}
+.bdg.ex{background:#EEF2F7;color:#41566F}
+.bdg.ad{background:#F1FAF6;color:#137A57}
+.addrow{display:flex;align-items:center;gap:9px;padding:10px 0 2px;cursor:pointer;color:var(--red);font-size:12px;font-weight:800}
+.addrow .p{width:21px;height:21px;border-radius:6px;border:1.5px dashed #E6BCC3;display:flex;align-items:center;justify-content:center;font-size:14px;line-height:1;flex-shrink:0}
+.logrow{border-left:2px solid #EDEDED;padding:0 0 13px 13px;position:relative;margin-left:4px}
+.logrow::before{content:'';position:absolute;left:-5px;top:3px;width:8px;height:8px;border-radius:50%;background:var(--teal);border:2px solid #fff}
+.logrow:last-child{padding-bottom:0;border-left-color:transparent}
+.logd{font-size:9.5px;font-weight:800;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.logn{font-size:12px;line-height:1.55;font-weight:500;color:#3a3a3a;margin-top:5px;white-space:pre-wrap}
+
+/* WEEK */
+.wk{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.wk.now{border-color:var(--red);box-shadow:0 4px 18px rgba(207,20,43,.12)}
+.wk.done .wkh .wkn{background:var(--teal)}
+.wkh{display:flex;align-items:center;gap:11px;padding:13px 14px;cursor:pointer}
+.wkn{width:38px;height:38px;border-radius:10px;background:var(--ink);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;line-height:1}
+.wkn i{font-style:normal;font-size:7px;font-weight:800;letter-spacing:.1em;opacity:.7}
+.wkn b{font-family:'Bebas Neue',sans-serif;font-size:19px;font-weight:400}
+.wk.now .wkn{background:var(--red)}
+.wkt{flex:1;min-width:0}
+.wkt .a{font-size:12.5px;font-weight:800;line-height:1.3}
+.wkt .b{font-size:10px;color:var(--muted);font-weight:600;margin-top:3px}
+.wkc{font-size:15px;color:#c4c4c4;transition:transform .2s}
+.wk.open .wkc{transform:rotate(90deg)}
+.wkbody{display:none;padding:0 14px 14px;border-top:1px solid var(--line)}
+.wk.open .wkbody{display:block}
+.blk{margin-top:13px}
+.blk .bt{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+
+/* TASK ROW */
+.tr{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px dashed #EDEDED}
+.tr:last-child{border-bottom:none}
+.cb{width:21px;height:21px;border-radius:6px;border:1.8px solid #D3D3D3;flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:#fff;margin-top:1px;transition:.15s}
+.cb.on{background:var(--teal);border-color:var(--teal)}
+.cb svg{width:12px;height:12px;stroke:#fff;stroke-width:3.4;fill:none;opacity:0;transition:.15s}
+.cb.on svg{opacity:1}
+.trm{flex:1;min-width:0;cursor:pointer}
+.trm .n{font-size:12.5px;font-weight:700;line-height:1.3}
+.trm .p{font-size:10.5px;color:var(--muted);font-weight:600;margin-top:2px}
+.tr.done .trm .n{color:#A8A8A8;text-decoration:line-through}
+.trr{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
+.mini{font-size:9px;font-weight:800;color:var(--red);border:1px solid #F0D2D6;background:#FFF7F8;padding:3px 7px;border-radius:6px;cursor:pointer}
+
+/* MEMBER LIST */
+.searchbar{display:flex;gap:7px;margin-bottom:10px}
+.searchbar input{flex:1;border:1px solid var(--line);border-radius:11px;padding:11px 13px;font-family:inherit;font-size:12.5px;font-weight:600;background:#fff;outline:none}
+.searchbar input:focus{border-color:var(--red)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding-bottom:4px;margin-bottom:10px}
+.chip{flex:0 0 auto;font-size:10px;font-weight:800;padding:8px 11px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;white-space:nowrap;font-family:inherit;line-height:1.1}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.mrow{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 12px;margin-bottom:7px;cursor:pointer}
+.mrow.met{background:#FBFDFC;border-color:#DCEFE7}
+.mav{width:34px;height:34px;border-radius:9px;background:#F0F0F1;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#8a8a8a;flex-shrink:0}
+.mrow.met .mav{background:var(--teal);color:#fff}
+.mi{flex:1;min-width:0}
+.mi .n{font-size:12.5px;font-weight:700;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mi .p{font-size:10px;color:var(--muted);font-weight:600;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mlv{font-size:8.5px;font-weight:900;letter-spacing:.06em;padding:3px 6px;border-radius:5px;background:#F0F0F1;color:#8a8a8a;flex-shrink:0}
+.mlv.R{background:#EEF2F7;color:#5A6E8C}
+.mlv.P{background:#FFF2E2;color:#C77415}
+.mlv.C{background:#E9F7F1;color:#137A57}
+
+/* SHEET */
+.sheet{position:fixed;inset:0;z-index:200;display:none}
+.sheet.on{display:block}
+.sheet .bg{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.sheet .pan{position:absolute;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:480px;background:var(--marble);border-radius:20px 20px 0 0;max-height:92dvh;display:flex;flex-direction:column;animation:up .28s cubic-bezier(.2,.8,.3,1)}
+@media(min-width:540px){.sheet .pan{max-width:440px}}
+@keyframes up{from{transform:translateX(-50%) translateY(100%)}to{transform:translateX(-50%) translateY(0)}}
+.shh{padding:15px 16px 12px;background:#fff;border-radius:20px 20px 0 0;border-bottom:1px solid var(--line);position:relative;flex-shrink:0}
+.shh .grab{width:36px;height:4px;background:#DCDCDC;border-radius:99px;margin:0 auto 12px}
+.shh .t{font-size:15px;font-weight:900;line-height:1.25;padding-right:34px}
+.shh .s{font-size:10.5px;color:var(--muted);font-weight:700;margin-top:3px}
+.shx{position:absolute;right:13px;top:26px;width:28px;height:28px;border-radius:50%;background:#F0F0F1;border:none;font-size:16px;color:#666;cursor:pointer;line-height:1}
+.shb{overflow-y:auto;padding:14px 14px 30px}
+
+/* FORM */
+.fld{margin-bottom:11px}
+.fld label{display:block;font-size:9px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.fld select,.fld input,.fld textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 12px;font-family:inherit;font-size:12.5px;font-weight:600;background:#fff;outline:none;color:var(--ink)}
+.fld textarea{min-height:88px;resize:vertical;line-height:1.6}
+.fld select:focus,.fld input:focus,.fld textarea:focus{border-color:var(--red)}
+.seg{display:flex;gap:6px}
+.seg button{flex:1;border:1px solid var(--line);background:#fff;border-radius:9px;padding:10px 4px;font-family:inherit;font-size:10.5px;font-weight:800;color:var(--muted);cursor:pointer}
+.seg button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn{width:100%;border:none;background:var(--red);color:#fff;font-family:inherit;font-weight:800;font-size:13px;padding:14px;border-radius:12px;cursor:pointer;margin-top:4px}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn:active{transform:scale(.99)}
+
+/* KPI */
+.kgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:11px}
+.kbox{background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px}
+.kbox .kl{font-size:8.5px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);line-height:1.3;min-height:22px}
+.kbox .kv{font-family:'Bebas Neue',sans-serif;font-size:32px;line-height:1;margin-top:6px}
+.kbox .kt{font-size:9.5px;color:#9a9a9a;font-weight:700;margin-top:2px}
+.kctl{display:flex;gap:6px;margin-top:9px}
+.kctl button{flex:1;border:1px solid var(--line);background:#FAFAFA;border-radius:8px;padding:7px;font-size:14px;font-weight:800;color:var(--ink);cursor:pointer;font-family:inherit;line-height:1}
+.tbl{width:100%;border-collapse:collapse;font-size:11.5px}
+.tbl th{text-align:left;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:8px 7px;border-bottom:1px solid var(--line);font-weight:800}
+.tbl td{padding:9px 7px;border-bottom:1px solid #F2F2F2;vertical-align:top;line-height:1.5;font-weight:600}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td b{font-weight:800}
+
+/* NAV */
+.nav{flex-shrink:0;display:flex;background:#fff;border-top:1px solid var(--line);padding:7px 4px calc(7px + env(safe-area-inset-bottom))}
+.nav button{flex:1;border:none;background:none;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 2px;cursor:pointer;color:#A9A9A9}
+.nav button.on{color:var(--red)}
+.nav button svg{width:20px;height:20px;stroke-width:1.8;fill:none;stroke:currentColor}
+.nav button span{font-size:8.5px;font-weight:800;letter-spacing:.03em}
+.toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%) translateY(10px);background:#1a1a1a;color:#fff;font-size:12px;font-weight:700;padding:11px 17px;border-radius:999px;opacity:0;pointer-events:none;transition:.22s;z-index:300;max-width:82%;text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.acc{border:1px solid var(--line);background:#fff;border-radius:13px;margin-bottom:9px;overflow:hidden}
+.acch{display:flex;align-items:center;gap:10px;padding:14px;cursor:pointer}
+.acch .ai{width:30px;height:30px;border-radius:8px;background:#FFF1F3;color:var(--red);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex-shrink:0}
+.acch .at{flex:1;font-size:12.5px;font-weight:800;line-height:1.35}
+.acch .ac{color:#c4c4c4;font-size:15px;transition:transform .2s}
+.acc.open .acch .ac{transform:rotate(90deg)}
+.accb{display:none;padding:0 14px 15px;border-top:1px solid var(--line)}
+.acc.open .accb{display:block}
+.accb>*:first-child{margin-top:13px}
+</style>
+</head>
+<body>
+<div class="phone">
+
+  <div class="cover" id="cover">
+    <div class="cov-badge"><b>BNI</b><span>GROW · JAKARTA BARAT</span></div>
+    <div class="cov-eyebrow">Playbook &amp; Tracker 121</div>
+    <div class="cov-title">Referral<br>Engine</div>
+    <div class="cov-sub">Dua belas bulan. Siapa ditemui kapan, bicara apa, dan bagaimana mengubah mereka jadi Creator.</div>
+    <div class="cov-stats">
+      <div class="cov-stat"><b>208</b><span>Sesi 121</span></div>
+      <div class="cov-stat"><b>99</b><span>Member</span></div>
+      <div class="cov-stat"><b>1,5M</b><span>Target</span></div>
+    </div>
+    <button class="cov-btn" onclick="enterApp()">Mulai <span>→</span></button>
+  </div>
+
+  <div class="topbar">
+    <div class="tb-row">
+      <div class="tb-l">
+        <div class="bnilogo"><span class="bni">BNI</span><span class="grow">GROW</span></div>
+        <div class="tb-name"><div class="t">Referral Engine</div><div class="e" id="tbsub">Dedy Dahlan · BNI GROW Jakarta Barat</div></div>
+      </div>
+      <button class="wkchip" id="wkchip" onclick="openWeekPick()">Minggu 1</button>
+    </div>
+    <div class="progwrap">
+      <div class="progtop"><div class="pl" id="plabel">Progres 121</div><div class="pp"><span id="ppct">0</span>%</div></div>
+      <div class="track"><div class="fill" id="fill" style="width:0%"></div></div>
+    </div>
+  </div>
+
+  <div class="scroll" id="scroll"></div>
+
+  <div class="nav" id="nav"></div>
+</div>
+
+<div class="sheet" id="sheet"><div class="bg" onclick="closeSheet()"></div>
+  <div class="pan"><div class="shh"><div class="grab"></div><div class="t" id="sht"></div><div class="s" id="shs"></div><button class="shx" onclick="closeSheet()">×</button></div>
+  <div class="shb" id="shb"></div></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================ STORAGE ============================ */
+var KEY='dd_bni_engine_v1';
+var S={met:{},notes:{},vcp:{},lvl:{},task:{},sub:{},skip:{},extra:[],targets:[],log:[],xslots:{},log:[],xslots:{},targets:[],kpi:{given:0,recv:0,cohost:0,oam:0,lakon:0},deals:[],week:1};
+function saveS(){
+  var j=JSON.stringify(S);
+  try{localStorage.setItem(KEY,j)}catch(e){}
+  try{if(window.storage&&window.storage.set)window.storage.set(KEY,j,false).catch(function(){})}catch(e){}
+}
+function loadS(cb){
+  var done=false;
+  function apply(j){if(done)return;done=true;if(j){try{var o=JSON.parse(j);for(var k in o)S[k]=o[k];}catch(e){}}cb();}
+  try{
+    if(window.storage&&window.storage.get){
+      window.storage.get(KEY,false).then(function(r){apply(r&&r.value)}).catch(function(){apply(localStorage.getItem(KEY))});
+      setTimeout(function(){apply(localStorage.getItem(KEY))},1200);return;
+    }
+  }catch(e){}
+  apply(localStorage.getItem(KEY));
+}
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._x);t._x=setTimeout(function(){t.classList.remove('show')},1700)}
+
+/* ============================ ROSTER ============================ */
+/* tier: 1A calon Creator | 1B Promoter kuat | 2 supplier korporat | 3 low-overlap ; p:true = calon klien langsung */
+var R=[
+{n:"Bagus Putu Fabio",j:"Human Capital Consultant",k:"HR & Business Process",t:"1A",w:"Sudah bicara KPI, OD, dan job analysis ke HR. Overlap tertinggi tanpa bersaing langsung."},
+{n:"Ken Ratri Iswari",j:"Headhunter",k:"HR & Business Process",t:"1A",w:"Dengar keluhan 'orangnya bagus tapi timnya nggak jalan' tiap minggu."},
+{n:"Mark P. Eliasaputra",j:"Business Process Outsourcing",k:"HR & Business Process",t:"1A",p:1,w:"Klien BPO = perusahaan berkepala banyak. Perusahaannya sendiri juga calon klien."},
+{n:"Erly Salie",j:"Accounting & Tax Consultant",k:"Legal & Accounting",t:"1A",w:"Akses langsung ke owner, dan tahu siapa yang sedang tumbuh."},
+{n:"Wahyu Wibowo",j:"Kantor Akuntan Publik (KAP)",k:"Legal & Accounting",t:"1A",w:"Mengaudit perusahaan menengah-besar. Akses paling atas di chapter."},
+{n:"Maria Al Ghibtiyah",j:"ERP System",k:"Technology & Engineering",t:"1A",w:"Implementasi ERP selalu gagal di adopsi manusia. Pemicu paling tajam."},
+{n:"Mas Agung Sachli",j:"Business Process Management Software",k:"Technology & Engineering",t:"1A",w:"Proses berubah, orangnya tidak. Persis pintu masuk OAM."},
+{n:"Herwin Muchtar",j:"Corporate Uniforms",k:"Manufacturing & Trading",t:"1A",w:"Jumlah seragam = jumlah karyawan. Proxy headcount paling akurat di chapter."},
+{n:"Maria Soerjanti",j:"Life & Health Insurance",k:"Finance & Investment",t:"1A",w:"Employee benefit masuk lewat pintu HR."},
+{n:"Marchella Purwanaika",j:"Hotel Chain",k:"Events & Travel",t:"1A",p:1,w:"Melihat siapa yang booking meeting room untuk training. Hotelnya sendiri calon klien."},
+{n:"Jonathan Kho",j:"Coach Marketplace",k:"Training & Consulting",t:"1A",w:"Bukan referral source, ini channel distribusi. Perlakukan beda."},
+{n:"Hastomo Wijoyo",j:"Adventure, Outbound & Outdoor",k:"Events & Travel",t:"1A",w:"Klien identik. Dia yang fun, kamu yang konten. Power team paling natural."},
+
+{n:"Jennyke Setiono",j:"Corporate Lawyer",k:"Legal & Accounting",t:"1B",w:"Akte pendirian, perjanjian kerja, restrukturisasi. Selalu dekat owner."},
+{n:"Natalia Chintya Odang",j:"Notary Public",k:"Legal & Accounting",t:"1B",w:"Pendirian dan perubahan perusahaan = momen ekspansi."},
+{n:"Selviya Debora",j:"General Insurance Broker",k:"Finance & Investment",t:"1B",w:"Klien korporat, akses ke GA/HR."},
+{n:"Kiyoko Tri Safitri",j:"Loan Consulting Service",k:"Finance & Investment",t:"1B",w:"Owner yang cari modal = owner yang sedang tumbuh."},
+{n:"Achmad Faizal",j:"IT Advisory",k:"Technology & Engineering",t:"1B",w:"Transformasi digital selalu punya sisi manusia yang tertinggal."},
+{n:"E. Kurniawan Padma",j:"Environment Consultant",k:"Training & Consulting",t:"1B",w:"ISO dan compliance membuka akses ke plant manager pabrik."},
+{n:"Febri Lovitasari",j:"Corporate & Individual Event Catering",k:"Food & Beverage",t:"1B",w:"Tahu perusahaan mana yang sedang bikin acara internal."},
+{n:"Paul Iskandar",j:"Exhibition Contractor",k:"Events & Travel",t:"1B",w:"Budget marketing korporat, akses ke level manajerial."},
+{n:"Diany Pranata",j:"Event & Wedding Organizer",k:"Events & Travel",t:"1B",w:"Corporate gathering adalah tetangga langsung team development."},
+{n:"Jaksen Tamin",j:"Corporate Gifts & Merchandise",k:"Advertising & Marketing",t:"1B",w:"Volume kontak korporat tinggi, masuk lewat HR dan marketing."},
+{n:"Novi Liliana",j:"Office Furniture",k:"Retail",t:"1B",w:"Kantor baru atau perluasan = pemicu pertumbuhan tim."},
+{n:"Ryan Kristo Muljono",j:"Web Developer & SEO",k:"Advertising & Marketing",t:"1B",w:"Klien B2B. Bonus: bisa bantu AEO mitologiinspira.com."},
+{n:"Davy Satria",j:"Social Media Strategist",k:"Advertising & Marketing",t:"1B",w:"Bicara ke business owner dan marketer soal pertumbuhan."},
+{n:"Prijono Nugroho",j:"Business Coach",k:"Training & Consulting",t:"1B",a:1,w:"ADJACENT. Agenda: pembagian wilayah. Dia C-level coaching, kamu team development."},
+{n:"Anna Meilanny",j:"Sales Training / Coach",k:"Training & Consulting",t:"1B",a:1,w:"ADJACENT. Potensi subkontrak dua arah untuk klien yang butuh sales + team."},
+{n:"Fredy Subrata",j:"Education Services",k:"Training & Consulting",t:"1B",a:1,w:"ADJACENT. Klarifikasi wilayah sebelum saling menahan referral."},
+
+{n:"Owen Fernando",j:"Commercial Property Development",k:"Construction",t:"2",p:1,w:"Developer komersial, organisasi berlapis. Calon klien OAM."},
+{n:"Rifqi Fuad",j:"Landed Residential Development",k:"Construction",t:"2",p:1,w:"Developer, tim proyek dan sales. Calon klien."},
+{n:"Verdy Santoso",j:"Building General Contractor",k:"Construction",t:"2",p:1,w:"Kontraktor umum, tim lapangan besar. Calon klien Communication dan Leadership."},
+{n:"Hendy T. Gunawan",j:"Mechanical & Electrical Contractor",k:"Construction",t:"2",p:1,w:"Tim teknis besar, koordinasi lintas proyek."},
+{n:"Dihqon Naadamist",j:"Cleaning Service",k:"Real Estate & Home Services",t:"2",p:1,w:"Frontline team besar. Kandidat kuat Personal Effectiveness."},
+{n:"Adil Falah Rahmawan",j:"Pest Management",k:"Real Estate & Home Services",t:"2",p:1,w:"Klien hotel, pabrik, F&B. Timnya sendiri juga banyak."},
+{n:"Jimmy",j:"Internet Service Provider",k:"Technology & Engineering",t:"2",p:1,w:"Klien korporat, tim support dan sales."},
+{n:"Andre Chouw",j:"E-Commerce Enabler",k:"Technology & Engineering",t:"2",p:1,w:"Klien brand besar. Timnya sendiri calon klien."},
+{n:"Albert Rumawas",j:"Paint Manufacture",k:"Manufacturing & Trading",t:"2",p:1,w:"Pabrik. Klasik untuk Mental Resilience dan Team Alignment."},
+{n:"Sharon Francine",j:"Sierra Mineral Water",k:"Manufacturing & Trading",t:"2",p:1,w:"Manufaktur + distribusi. Calon klien."},
+{n:"Lurus Ledyati",j:"Coconut Charcoal Briquettes Manufacture",k:"Manufacturing & Trading",t:"2",p:1,w:"Pabrik ekspor. Calon klien."},
+{n:"Eva Shahra",j:"Industrial LPG Distributor",k:"Manufacturing & Trading",t:"2",p:1,w:"Klien pabrik dan hotel. Akses operasional."},
+{n:"Harfil Husni",j:"Chemical & Tools Distributor",k:"Manufacturing & Trading",t:"2",p:1,w:"Distribusi ke pabrik. Peta industri di kepalanya."},
+{n:"Surianto Iskandar",j:"Packaging Manufacturer",k:"Manufacturing & Trading",t:"2",p:1,w:"Klien manufaktur dan FMCG."},
+{n:"Andi Asri",j:"Domestic Cargo",k:"Manufacturing & Trading",t:"2",p:1,w:"Klien logistik korporat, tim operasional besar."},
+{n:"Felix Dharmaputra",j:"Herbal Supplement Manufacturer",k:"Health & Wellness",t:"2",p:1,w:"Pabrik + tim distribusi."},
+{n:"Herlambang Prayatno",j:"Coin Laundry Franchisor",k:"Finance & Investment",t:"2",p:1,w:"Franchisor = butuh standarisasi orang di banyak titik. Cocok LDaaS."},
+{n:"Samuel Setiawan",j:"Scale Supplier",k:"Manufacturing & Trading",t:"2",w:"Masuk ke pabrik dan gudang."},
+{n:"Iman Adhika Widjaya",j:"Fire Extinguishers",k:"Retail",t:"2",w:"Compliance korporat, akses GA dan HSE."},
+{n:"Satrio Ang",j:"Property Consultant",k:"Real Estate & Home Services",t:"2",w:"Perusahaan yang cari kantor = perusahaan yang tumbuh."},
+{n:"Alvin Lie",j:"Architect & Interior Design",k:"Construction",t:"2",w:"Proyek kantor korporat."},
+{n:"Yudhistira Harahap",j:"High-Rise Interior Design",k:"Construction",t:"2",w:"Klien gedung dan korporat besar."},
+{n:"M. Ilham Kurniawan",j:"Software Development",k:"Technology & Engineering",t:"2",w:"Proyek software = perubahan proses kerja."},
+{n:"Grace Debby",j:"Medical Concierge",k:"Health & Wellness",t:"2",w:"Layanan kesehatan korporat, pintu HR."},
+{n:"Meilita Aritonang",j:"Eye Care",k:"Health & Wellness",t:"2",w:"Medical check-up korporat."},
+{n:"Adrian Winata",j:"OEM Powder Drink",k:"Food & Beverage",t:"2",w:"Klien brand dan manufaktur."},
+{n:"Setia Budi",j:"Digital Printing & Publishing",k:"Advertising & Marketing",t:"2",w:"Volume klien korporat tinggi."},
+{n:"Viktor Iwan",j:"Digital Advertising",k:"Advertising & Marketing",t:"2",w:"Klien brand dengan tim marketing."},
+{n:"Erdy Suryadarma",j:"Social Media Video Production",k:"Advertising & Marketing",t:"2",w:"Klien korporat, bisa jadi partner produksi konten kamu."},
+{n:"Bonaventura Adi Winarso",j:"Broadcast Video Production",k:"Advertising & Marketing",t:"2",w:"Produksi korporat. Potensi partner dokumentasi program."},
+{n:"Yohanes M. Mangi Sa'pang",j:"Litigation Lawyer",k:"Legal & Accounting",t:"2",w:"Sengketa ketenagakerjaan sering berakar di masalah tim."},
+{n:"dr. Irma Novita Andriani",j:"IP Consultant",k:"Legal & Accounting",t:"2",w:"Klien brand dan perusahaan berkembang."},
+
+{n:"Micky Hartono",j:"Waterproofing Specialist",k:"Construction",t:"3"},
+{n:"Stefan Joseph",j:"Glass & Aluminum Contractor",k:"Construction",t:"3"},
+{n:"Andika Satrio Prabowo",j:"Smart Window Film",k:"Construction",t:"3"},
+{n:"Hans Samuel Atmadjaja",j:"Plastic Roofing",k:"Construction",t:"3"},
+{n:"Yunus Suwanto",j:"Building Materials",k:"Construction",t:"3"},
+{n:"Hari Njotowidjojo",j:"LED Lighting",k:"Construction",t:"3"},
+{n:"John Alan",j:"Custom Furniture Builder",k:"Real Estate & Home Services",t:"3"},
+{n:"Nicholas Hira",j:"Interior Decorator",k:"Real Estate & Home Services",t:"3"},
+{n:"Sissy Prima Laila",j:"Custom Artworks",k:"Real Estate & Home Services",t:"3"},
+{n:"Yogi Danugraha",j:"Smart Home & CCTV",k:"Real Estate & Home Services",t:"3"},
+{n:"Arifin Wibowo",j:"Videotron Solution",k:"Technology & Engineering",t:"3"},
+{n:"Handy Johan Handoko",j:"Product Sourcing from China",k:"Manufacturing & Trading",t:"3"},
+{n:"Jacky Ma",j:"Vending Machines",k:"Manufacturing & Trading",t:"3"},
+{n:"Agnes Kristianty",j:"Gold Product Manufacturing",k:"Manufacturing & Trading",t:"3"},
+{n:"Soultan Nur Muhammad",j:"Farming & Gardening",k:"Manufacturing & Trading",t:"3"},
+{n:"Ben Wirawan",j:"Traveling / Outdoor Apparels",k:"Retail",t:"3"},
+{n:"Benediktus Elvinto",j:"Fashion Accessories",k:"Retail",t:"3"},
+{n:"Lucky Priyatama",j:"Sportwear Apparels",k:"Retail",t:"3"},
+{n:"Arvind Lalwani",j:"Golf Equipment & Accessories",k:"Retail",t:"3"},
+{n:"Jelly Leng",j:"Home Furniture",k:"Retail",t:"3"},
+{n:"Nida Issabela",j:"Bedding Goods",k:"Retail",t:"3"},
+{n:"Riene Mahardiani",j:"Sustainable Textile",k:"Retail",t:"3"},
+{n:"Tubagus M. Arry H.",j:"Camera & Audio-Video Equipment",k:"Retail",t:"3"},
+{n:"Handy Hakim Widjaja",j:"Automobile Services",k:"Retail",t:"3"},
+{n:"Yuli Prassetiowati",j:"Dates & Middle East Products",k:"Food & Beverage",t:"3"},
+{n:"Azinul J. Adrian",j:"Noodles",k:"Food & Beverage",t:"3"},
+{n:"Sri Wahyuni",j:"Indonesian Gourmet Tea",k:"Food & Beverage",t:"3"},
+{n:"Mardjony",j:"Coffee Retail",k:"Food & Beverage",t:"3"},
+{n:"Widjanarka Budhihardjo",j:"Bakery & Cake",k:"Food & Beverage",t:"3"},
+{n:"Charles Antono",j:"Cellular Nutrition",k:"Health & Wellness",t:"3"},
+{n:"Arif Setiawan",j:"Medical Circumcision Clinic",k:"Health & Wellness",t:"3"},
+{n:"Mayawati Nurhalim",j:"Inbound Travel",k:"Events & Travel",t:"3"},
+{n:"Victor Oscar",j:"North Sulawesi Tour & Travel",k:"Events & Travel",t:"3"},
+{n:"Kezia Nisa",j:"Car Rental",k:"Events & Travel",t:"3"},
+{n:"Michael Koeswara",j:"Photo Album Maker",k:"Events & Travel",t:"3"},
+{n:"Suntoro Suciatmaja",j:"Metaphysicist",k:"Training & Consulting",t:"3"},
+{n:"Antony Jarto",j:"Money Changer",k:"Finance & Investment",t:"3"},
+{n:"Eka Sudjana",j:"MCN & Affiliator Management",k:"Advertising & Marketing",t:"3"},
+{n:"Melati Gunawan",j:"Advertising & Marketing",k:"Advertising & Marketing",t:"3"}
+];
+R.forEach(function(m,i){m.id='m'+i});
+function byT(t){return R.filter(function(m){return m.t===t})}
+function pros(){return R.filter(function(m){return m.p&&m.t!=='1A'})}
+function isSkip(id){return !!(S.skip&&S.skip[id])}
+function D(m){if(!m)return null;var x=S.sub&&S.sub[m.id];if(!x)return m;
+ return {id:m.id,n:x.n,j:x.j||m.j,k:m.k,t:m.t,p:m.p,a:m.a,w:m.w,sub:1,snote:x.note||''}}
+function activeR(){return R.filter(function(m){return !isSkip(m.id)})}
+function loadExtras(){(S.extra||[]).forEach(function(e,i){var id='x'+i;
+ if(!R.some(function(m){return m.id===id}))R.push({id:id,n:e.n,j:e.j,k:e.k||'Luar chapter',t:e.t||'1B',x:1,ext:(e.src==='luar'),
+   w:e.w||(e.src==='luar'?'Kontak di luar chapter GROW. Dia tidak hadir di sesi mingguan, jadi tindak lanjut sepenuhnya di tangan Anda. Aturan Givers Gain tetap berlaku.':'Member GROW yang ditambahkan manual.')})})}
+function passDone(id){return (S.log||[]).filter(function(l){return l.id===id}).length}
+function passPlan(id){var c=0;WEEKS.forEach(function(W){W.slots.forEach(function(sl){if(sl.id===id)c++})});
+  for(var w in (S.xslots||{}))(S.xslots[w]||[]).forEach(function(x){if(x.id===id)c++});return c}
+function xslots(w){return (S.xslots&&S.xslots[String(w)])||[]}
+function today(){return new Date().toISOString().slice(0,10)}
+function fmtD(d){if(!d)return '';var b=String(d).split('-');var M=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+  return parseInt(b[2],10)+' '+M[parseInt(b[1],10)-1]+' '+b[0]}
+function MODEN(m){return {'1A1':'Tier 1A · GAINS','1A2':'Tier 1A · Edukasi','P':'Calon Klien','1B':'Tier 1B','ADJ':'Adjacent','23':'Tier 2 & 3'}[m]||'121'}
+function logAdd(id,key,r,mode){
+  if(!id)return;
+  if(key&&(S.log||[]).some(function(l){return l.k===key}))return;
+  S.log.push({id:id,k:key||null,d:today(),r:r||1,m:mode||'23',n:'',o:''});
+  S.log.sort(function(a,b){return a.d<b.d?1:(a.d>b.d?-1:0)});
+}
+function logDel(key){S.log=(S.log||[]).filter(function(l){return l.k!==key})}
+function isExt(m){return !!(m&&m.ext)}
+function totalPlanned(){var c=0;
+  WEEKS.forEach(function(W){W.slots.forEach(function(sl){if(sl.id&&!isSkip(sl.id))c++})});
+  for(var w in (S.xslots||{}))(S.xslots[w]||[]).forEach(function(x){if(!isSkip(x.id))c++});
+  return c}
+function totalDone(){return (S.log||[]).filter(function(l){return !isSkip(l.id)}).length}
+function metCount(){var seen={},c=0;(S.log||[]).forEach(function(l){if(!seen[l.id]&&!isSkip(l.id)){seen[l.id]=1;c++}});return c}
+function dots(done,plan){var n=Math.max(plan,done,1),o='';
+  for(var i=0;i<n;i++)o+='<span style="display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;background:'+(i<done?'var(--teal)':'#E0E0E0')+'"></span>';
+  return o}
+
+/* ============================ SCRIPTS ============================ */
+var SC={
+ '1A1':{ttl:"121 Tier 1A · Sesi 1",sub:"60 menit · GAINS murni, nol jualan",
+  goal:"Tujuan tunggal: memetakan jaringan dia dan menemukan satu cara nyata kamu bisa membantunya. Kamu tidak menjual apa pun di sesi ini.",
+  open:"Saya minta waktunya bukan buat nawarin apa-apa. Saya mau paham bisnis Anda dulu, supaya kalau saya ketemu orang yang cocok, saya tahu persis harus ngomong apa.",
+  q:["Goals: target 12 bulan ke depan apa, dan apa yang bikin Anda kepikiran terus?",
+     "Accomplishments: pencapaian yang paling Anda banggakan?",
+     "Interests: di luar kerja, waktu Anda habis buat apa?",
+     "<b>Networks (paling penting):</b> dari 10 klien terbesar, berapa yang karyawannya di atas 50 orang?",
+     "Siapa nama pengambil keputusannya, dan posisinya apa?",
+     "Anda ngobrol sama mereka soal apa selain transaksi?",
+     "Kapan terakhir klien Anda cerita soal orang atau timnya ke Anda?",
+     "Skills: kekuatan Anda yang orang lain sering nggak sadar?"],
+  close:"Dari yang Anda ceritakan tadi, saya kepikiran satu nama. Boleh saya kenalkan minggu depan?",
+  never:["Jangan bawa company profile.","Jangan sebut harga.","Jangan menjelaskan 5 Fase kecuali ditanya.","Jangan tutup tanpa memberi satu nama konkret dari kamu."],
+  after:"Isi catatan GAINS di profil member malam itu juga, jangan besok. Kirim WhatsApp terima kasih plus satu nama yang kamu janjikan."},
+
+ '1A2':{ttl:"121 Tier 1A · Sesi 2",sub:"60 menit · 3–4 minggu setelah sesi 1",
+  goal:"Melatih dia jadi Promoter. Ini sesi latihan verbal, bukan presentasi. Kalau dia tidak mengucapkan kalimatnya sendiri di sesi ini, dia tidak akan mengucapkannya di depan klien.",
+  open:"Saya sudah kepikiran cara kita bisa saling bantu. Saya mau titip satu kalimat ke Anda, dan boleh nggak Anda coba ucapin sekali di depan saya? Kedengarannya aneh, tapi justru ini yang bikin bedanya.",
+  q:["Serahkan <b>Kartu Pemicu</b>, bacakan 5 kalimat gejala bersama.",
+     "Serahkan <b>Bukti Pinjam</b> satu halaman. Jelaskan ini untuk melindungi reputasi dia, bukan untuk jualan.",
+     "Ajarkan <b>3 Pertanyaan Pancing</b> yang bisa dia pakai di akhir meeting dengan kliennya.",
+     "Minta dia mengucapkan kalimat rujukan tentang kamu. Perbaiki sampai natural.",
+     "Serahkan <b>5 voucher Lakon</b> untuk dibagikan ke klien atau anak klien.",
+     "Tawarkan <b>Co-Hosted Session</b>. Ini agenda utama sesi ini."],
+  close:"Anda undang 10 klien terbaik Anda, saya yang isi 90 menit, gratis. Anda yang jadi tuan rumah. Nama Anda yang harum, saya cuma numpang panggung.",
+  never:["Jangan lewati latihan verbal, ini bagian yang paling sering dilewat dan paling menentukan.","Jangan kasih voucher Lakon tanpa menjelaskan cara memakainya.","Jangan pergi tanpa tanggal Co-Hosted atau minimal 'saya pikirkan sampai tanggal X'."],
+  after:"Update level dia jadi Promoter di profil. Kalau setuju Co-Hosted, kirim draft undangan dalam 48 jam selagi panas."},
+
+ 'P':{ttl:"121 Calon Klien Langsung",sub:"60 menit · soft discovery, bukan sales call",
+  goal:"Perusahaannya sendiri kemungkinan besar cocok untuk OAM. Ini jalur revenue tercepat karena tanpa perantara. Tapi kalau terasa seperti jualan, kamu kehilangan dua hal sekaligus: klien dan referral partner.",
+  open:"Saya penasaran sama bisnis Anda. Timnya sekarang berapa orang?",
+  q:["GAINS singkat, 20 menit. Jangan diskip.",
+     "Timnya berapa orang, dan berapa lapis dari Anda ke yang paling bawah?",
+     "Apa satu hal yang paling bikin capek sebagai owner?",
+     "Kalau besok pagi Anda bisa mengubah satu hal dari tim Anda, apa itu?",
+     "Turnover setahun terakhir gimana?",
+     "Pernah training? Hasilnya gimana?"],
+  close:"Saya lagi nguji instrumen diagnostik namanya Ansaka. Boleh saya titip ke 10 orang di tim Anda? Gratis, saya memang butuh datanya. Nanti hasilnya saya kasih ke Anda.",
+  never:["Jangan sebut harga di sesi ini.","Jangan pakai kata 'training' sebagai penawaran.","Framing OAM sebagai minta tolong, bukan memberi diskon. Ini bedanya besar."],
+  after:"Kirim link OAM dalam 24 jam. Jadwalkan sesi baca hasil 2 minggu kemudian. Sesi baca hasil itulah sales meeting yang sebenarnya."},
+
+ '1B':{ttl:"121 Tier 1B",sub:"60 menit · GAINS + satu kalimat pemicu",
+  goal:"Menjadikan dia Reactor terlatih, dan membuka kemungkinan naik jadi Promoter.",
+  open:"Saya mau paham dulu klien Anda seperti apa, biar kalau saya ketemu yang cocok, saya bisa langsung arahkan.",
+  q:["GAINS lengkap, fokus di Networks.","Klien Anda yang karyawannya paling banyak, kira-kira berapa orang?",
+     "Serahkan Kartu Pemicu, bacakan 5 kalimatnya.","Minta dia sebutkan satu klien yang cocok dengan salah satu kalimat itu.",
+     "Kasih satu voucher Lakon untuk dia pribadi."],
+  close:"Kalau Anda dengar salah satu dari lima kalimat ini dari klien Anda, WhatsApp saya aja. Nggak usah jelasin apa-apa, cukup kasih nama.",
+  never:["Jangan kasih materi lebih dari satu halaman.","Jangan minta referral spesifik di sesi pertama."],
+  after:"Catat 3 nama klien besar yang dia sebut. Itu peta prospek kamu."},
+
+ 'ADJ':{ttl:"121 Adjacent Competitor",sub:"60 menit · pembagian wilayah",
+  goal:"Prijono, Anna, Fredy, Suntoro. Kalau ini tidak diklarifikasi di awal, kalian akan saling menahan referral selama setahun tanpa pernah membicarakannya.",
+  open:"Saya mau ngobrol terbuka soal batas wilayah kita, biar nggak ada yang ragu ngasih referral ke satu sama lain.",
+  q:["Klien ideal Anda seperti apa persisnya?",
+     "Yang jelas <b>bukan</b> wilayah Anda apa?",
+     "Nyatakan wilayah Anda sendiri: team development, MBTI resmi, alignment organisasi, program multi-hari untuk tim.",
+     "Cari irisan: klien mana yang butuh kalian berdua berurutan?",
+     "Sepakati aturan: siapa masuk duluan, bagaimana perkenalannya."],
+  close:"Kalau klien Anda butuh yang bukan wilayah Anda, saya bantu, dan sebaliknya. Kita nggak rebutan kue, kita bikin kuenya lebih besar.",
+  never:["Jangan berpura-pura tidak ada overlap. Mereka tahu.","Jangan bahas komisi di sesi pertama. Bahas wilayah dulu."],
+  after:"Tulis kesepakatannya dan kirim via WhatsApp. Kesepakatan lisan tidak bertahan."},
+
+ '23':{ttl:"121 Tier 2 & 3",sub:"45 menit · Givers Gain murni",
+  goal:"Kamu datang untuk memberi. Kalau kamu dapat sesuatu, itu bonus. Jangan pernah membuat mereka merasa jadi target.",
+  open:"Saya lagi keliling ketemu semua member. Cerita dong, klien terbaik Anda itu seperti apa?",
+  q:["GAINS ringkas.","Referral yang bagus buat Anda itu yang seperti apa?",
+     "Siapa satu orang di chapter yang belum Anda kenal tapi pengin kenal? Saya bantu kenalkan.",
+     "Kasih voucher Lakon personal. Untuk Tier 3, tawarkan Lakon untuk anak mereka yang mau kuliah."],
+  close:"Saya coba cariin satu nama buat Anda minggu ini.",
+  never:["Jangan bawa materi Mitologi Inspira.","Jangan panjang-panjang. 45 menit cukup."],
+  after:"Tepati janji satu nama. Ini yang membuat 45 menit tadi berbunga."}
+};
+
+/* ============================ SCHEDULE ============================ */
+var MONTHS=[
+ {m:1,t:"Buka Pintu",d:"12 nama Tier 1A tuntas dalam 3 minggu. Kamu mulai dari yang paling dekat dengan uang, bukan yang paling mudah ditemui.",ms:["Cetak Kartu Pemicu & Bukti Pinjam","Ajukan diri jadi Education Coordinator","Update profil GAINS sendiri","12 Tier 1A selesai 121"]},
+ {m:2,t:"Masuk ke Dalam",d:"Giliran member yang perusahaannya sendiri calon klien. Ini jalur revenue tercepat karena tanpa perantara.",ms:["8 OAM survey terkirim","Co-Hosted Session #1 terkunci tanggalnya","3 sesi baca hasil OAM"]},
+ {m:3,t:"Melebar",d:"Tier 1B masuk. Sekaligus jalankan kartu as: Lakon gratis untuk seluruh chapter.",ms:["Lakon chapter dijalankan","Co-Hosted #1 berjalan","16 Tier 1B selesai"]},
+ {m:4,t:"Mendalam",d:"Tier 1A putaran kedua. Ini sesi yang mencetak Promoter. Latihan verbal wajib.",ms:["12 sesi edukasi Tier 1A","6 Promoter aktif","Co-Hosted #2"]},
+ {m:5,t:"Perluasan",d:"Tier 2 mulai. Paralel: sesi Team Synergy gratis untuk Leadership Team chapter.",ms:["Leadership Team session","Co-Hosted #3","Proposal LDaaS pertama masuk"]},
+ {m:6,t:"Evaluasi Tengah",d:"Enam bulan. Cek posisi VCP setiap Tier 1A. Yang stuck di Credibility berarti kamu belum kasih alat.",ms:["Review VCP 12 Tier 1A","3 Creator teridentifikasi","Co-Hosted #4","Deal pertama closing"]},
+ {m:7,t:"Panen Awal",d:"Tier 1A putaran ketiga khusus yang sudah jadi Promoter. Tier 3 mulai jalan paralel.",ms:["Co-Hosted #5","2 LDaaS dalam negosiasi"]},
+ {m:8,t:"Volume",d:"Menyelesaikan Tier 3. Volume 121 tetap 4 per minggu, tapi durasinya lebih pendek.",ms:["Co-Hosted #6","Setengah roster Tier 3 selesai"]},
+ {m:9,t:"Konsolidasi",d:"Tier 3 tuntas plus member baru yang masuk sepanjang tahun.",ms:["Co-Hosted #7","Seluruh 99 member sudah pernah 121"]},
+ {m:10,t:"Putaran Ulang",d:"Kembali ke partner paling aktif. Yang sudah Creator dipertebal, yang stuck dievaluasi.",ms:["Co-Hosted #8 & #9","6 Creator aktif"]},
+ {m:11,t:"Musim Closing",d:"Budget korporat tahun depan sedang disusun. Ini bulan paling penting untuk LDaaS.",ms:["Co-Hosted #10","3 kontrak LDaaS untuk tahun depan"]},
+ {m:12,t:"Tutup & Rancang Ulang",d:"Review tahunan dengan 12 partner teratas. Rancang tahun kedua dari data nyata, bukan asumsi.",ms:["Co-Hosted #11 & #12","Review tahunan 12 partner","Rencana tahun 2 selesai"]}
+];
+
+var ASKS=[
+ "Saya cari HR Manager pabrik dengan 100+ karyawan di Jabodetabek.",
+ "Saya cari perusahaan yang tahun ini baru ganti sistem ERP atau software baru.",
+ "Saya cari perusahaan keluarga yang generasi keduanya baru masuk manajemen.",
+ "Saya cari perusahaan yang turnover karyawannya di atas 20% setahun.",
+ "Saya cari GM atau Direktur Operasional yang mengeluh antar divisinya saling lempar.",
+ "Saya cari owner yang bilang dia nggak bisa lepas dari operasional harian.",
+ "Saya cari HR yang bilang 'sudah training berkali-kali tapi nggak ada perubahan'.",
+ "Saya cari perusahaan yang bulan ini pindah atau menambah kantor.",
+ "Saya cari manajer teknis yang baru dipromosikan jadi kepala tim.",
+ "Saya cari perusahaan yang sedang merekrut lebih dari 20 orang sekaligus.",
+ "Saya cari hotel atau F&B chain dengan lebih dari 3 outlet.",
+ "Saya cari perusahaan yang baru ganti Direktur atau Head of HR.",
+ "Saya cari tim sales yang targetnya naik tapi orangnya tetap.",
+ "Saya cari perusahaan yang mau ISO atau sedang persiapan audit.",
+ "Saya cari Direktur yang bilang meeting-nya banyak tapi keputusannya nol.",
+ "Saya cari perusahaan yang karyawannya banyak resign dalam 6 bulan terakhir.",
+ "Saya cari kontraktor atau developer dengan tim proyek di atas 50 orang.",
+ "Saya cari perusahaan yang sedang menyiapkan suksesi kepemimpinan.",
+ "Saya cari BUMN atau anak BUMN yang punya budget pengembangan SDM.",
+ "Saya cari perusahaan logistik dengan tim gudang dan driver besar.",
+ "Saya cari HR yang sedang menyusun program development tahun depan.",
+ "Saya cari owner yang bilang timnya bagus-bagus tapi nggak nyambung satu sama lain.",
+ "Saya cari perusahaan yang baru akuisisi atau merger.",
+ "Saya cari klinik atau rumah sakit dengan tim frontliner besar.",
+ "Saya cari perusahaan yang sedang menyiapkan ekspansi cabang.",
+ "Saya cari CEO yang mau timnya bisa mengambil keputusan tanpa dia."
+];
+
+var SPECIAL={
+ 1:["Cetak Kartu Pemicu (5 kalimat gejala) dan Bukti Pinjam 1 halaman","Perbarui profil GAINS pribadi di BNI Connect","Ajukan diri jadi Education Coordinator atau pengisi tetap slot edukasi"],
+ 2:["Weekly presentation pertama dengan ask spesifik, bukan 'perusahaan yang butuh training'"],
+ 3:["Kirim tawaran OAM gratis 10 responden ke 3 nama prospek pertama"],
+ 4:["Kunci tanggal Co-Hosted Session #1"],
+ 6:["Sesi baca hasil OAM pertama. Ini sales meeting yang sebenarnya"],
+ 8:["Klarifikasi wilayah dengan Prijono, Anna, dan Fredy. Tulis kesepakatannya dan kirim via WhatsApp","Kirim draft undangan Co-Hosted #1 ke klien tuan rumah"],
+ 9:["Tawarkan Lakon gratis untuk seluruh 99 member chapter di sesi mingguan"],
+ 11:["Co-Hosted Session #1 berjalan"],
+ 12:["Mulai putaran kedua Tier 1A: bawa Kartu Pemicu, Bukti Pinjam, dan 5 voucher Lakon per orang. Latihan verbal wajib"],
+ 17:["Tawarkan sesi Team Synergy setengah hari gratis untuk Leadership Team chapter"],
+ 20:["Visitor Day: minta tiap Tier 1A membawa satu klien korporat sebagai tamu"],
+ 24:["Review tengah tahun: cek posisi VCP semua Tier 1A, catat siapa yang stuck"],
+ 26:["Susun proposal LDaaS untuk 2 prospek terpanas"],
+ 36:["Pastikan seluruh 99 member sudah pernah 121 minimal sekali"],
+ 42:["Mulai percakapan budget tahun depan dengan semua prospek aktif"],
+ 50:["Review tahunan dengan 12 partner teratas. Rancang tahun kedua dari data nyata"],
+ 52:["Tutup buku: hitung ulang A, B, C dari angka nyata tahun ini, bukan asumsi"]
+};
+
+function buildSchedule(){
+  var q=[];
+  function push(list,mode,rd){list.forEach(function(m){q.push({id:m.id,mode:mode,r:rd})})}
+  var t1a=byT('1A'), p=pros(), t1b=byT('1B');
+  var adj=t1b.filter(function(m){return m.a}), t1bn=t1b.filter(function(m){return !m.a});
+  var t1ball=t1bn.concat(adj);
+  var t2=byT('2').filter(function(m){return !m.p}), t3=byT('3');
+  push(t1a,'1A1',1);      // 12  W1-3
+  push(p,'P',1);          // 17  W4-8
+  push(adj,'ADJ',1);      // 3   W8
+  push(t1bn,'1B',1);      // 13  W9-12
+  push(t1a,'1A2',2);      // 12  W12-15
+  push(p,'P',2);          // 17  W15-19
+  push(t1ball,'1B',2);    // 16  W19-23
+  push(t1a,'1A2',3);      // 12  W23-26
+  push(t2,'23',1);        // 32  W26-34
+  push(p,'P',3);          // 17  W34-38
+  push(t1ball,'1B',3);    // 16  W38-42
+  push(t3,'23',1);        // 39  W42-52
+  var weeks=[];
+  for(var w=1;w<=52;w++){
+    var slots=q.slice((w-1)*4,(w-1)*4+4);
+    while(slots.length<4)slots.push({id:null,mode:'23',r:0});
+    weeks.push({w:w,mo:Math.min(12,Math.ceil(w/4.3334)),slots:slots,ask:ASKS[(w-1)%ASKS.length],named:(w%4===2),sp:SPECIAL[w]||null});
+  }
+  return weeks;
+}
+var WEEKS=buildSchedule();
+function mById(id){for(var i=0;i<R.length;i++)if(R[i].id===id)return R[i];return null}
+
+/* ============================ CONTENT ============================ */
+var GEJALA=[
+ ["\"Sudah training berkali-kali, nggak ada perubahan\"","Ansaka OAM","Kenalkan ke saya. Diagnosa 10 responden gratis"],
+ ["\"Saya nggak tahu masalahnya di mana, pokoknya nggak jalan\"","Ansaka OAM","Sama"],
+ ["\"Antar divisi saling lempar tanggung jawab\"","Team Alignment & Collaborative Productivity","2 hari"],
+ ["\"Meeting-nya banyak, keputusannya nol\"","Team Alignment","2 hari"],
+ ["\"Manajer saya jago teknis tapi nggak bisa mimpin orang\"","Leadership, Vision & Social Influence","2 hari"],
+ ["\"Saya nggak bisa lepas dari operasional\"","Leadership + LDaaS","Retainer"],
+ ["\"Tim saya salah paham terus, komunikasinya berantakan\"","Communication, Empathy & Active Listening","1–2 hari"],
+ ["\"Turnover tinggi, tim gampang stres, banyak yang resign\"","Mental Resilience & Emotional Agility","2 hari"],
+ ["\"Masalah yang sama muncul terus, tim nggak punya ide baru\"","Creative Thinking & Problem Solving","2 hari"],
+ ["\"Orangnya bagus-bagus, tapi nggak nyambung satu sama lain\"","MBTI / Lakon + Team Synergy","Fase 02 + 03"]
+];
+var PEMICU=["Ganti sistem ERP atau software baru","Pindah atau menambah kantor","Akuisisi atau merger","Generasi kedua masuk manajemen","Ekspansi cabang baru","Ganti Direktur atau Head of HR","Rekrutan besar-besaran","Mulai persiapan IPO atau audit besar"];
+
+var HARGA={
+ tier:[["UMKM","sampai 100 karyawan"],["Menengah","101 sampai 1.000 karyawan"],["Besar / MNC","di atas 1.000 karyawan"]],
+ train:[["Seminar","12,5","15","18"],["Half day","15","18","22"],["1 hari","25","30","36"],["2 hari","45","54","65"],["3 hari","60","75","90"]],
+ oam:[["OAM Survey online","150rb per responden, minimum 30 orang. Mulai dari 4,5 jt"],
+      ["Diagnostic Pack Basic","19 jt · kuota 50 responden"],
+      ["Diagnostic Pack Validation","50 jt · kuota 80 responden"],
+      ["Diagnostic Pack Strategic","100 jt · kuota 120 responden"],
+      ["Workshop hasil","15 jt per sesi, maks 30 peserta"],
+      ["FGD","12,5 jt per grup"],
+      ["Interview pimpinan","1,5 jt per wawancara"]],
+ assess:[["MBTI Official","500rb per kepala · pass-through, margin nol"],
+         ["Lakon Profile","200rb per kepala"],
+         ["MBTI + Lakon","700rb per kepala"]],
+ f5:[["Coaching grup 1–4 orang","1 jt per sesi"],["Coaching grup 5–8 orang","1,5 jt per sesi"],
+     ["Coaching pribadi","500rb per sesi"],["Executive Coaching","4 jt per sesi"],
+     ["Paket Exec 3 bulan","22 jt · 6 sesi"],["Paket Exec 6 bulan","42 jt · 12 sesi"],["Paket Exec 12 bulan","80 jt · 24 sesi"],
+     ["LDaaS Essential","10 jt per bulan · min 6 bulan · diskon training 10%"],
+     ["LDaaS Growth","15 jt per bulan · min 12 bulan · diskon training 15%"],
+     ["LDaaS Partner","20 jt per bulan · min 12 bulan · diskon training 20%"]],
+ mitra:[["Workplace Readiness","1,5 jt per kepala, minimum 15 peserta"],
+        ["Outing Experience","markup 20%. Tidak pernah dijual berdiri sendiri, selalu menempel training. Maks 50% dari harga training"],
+        ["Komisi Headhunter","2,5% dari nilai penempatan"],
+        ["Komisi Software","10% dari nilai lisensi tahun pertama"]],
+ aturan:["Harga training adalah <b>per batch</b>, maksimal 30 peserta.",
+         "Kit peserta di luar harga program: 150rb (UMKM & Menengah), 235rb (Besar).",
+         "Peserta ke-31 dan seterusnya: 1,5% dari anchor 1 hari per kepala.",
+         "Di atas 40 peserta, tambah batch, jangan tambah kepala.",
+         "Program online: diskon 10%.",
+         "PPh 23 gross up: <b>Total × 2 ÷ 98</b>, bukan potongan dan bukan dibagi 102.",
+         "Semua angka di atas adalah harga jual sebelum PPh 23."]
+};
+var BIOSC={
+ meat:{apa:"Training 2 hari+, LDaaS Partnership, atau Team Development Journey.",
+  siapa:"HR Director / C-level atau Owner yang siap benahi organisasi.",
+  kw:["Training skill 2 hari penuh","Leadership lemah / friksi dalam team","Komunikasi, soft skills training","Mau benahi budaya atau tim organisasi","Ingin perkembangan yang terukur","Alignment issue dalam perusahaan"],
+  sc:"Wah, saya kenal yang spesialis di sini. Teman saya, namanya Dedy Dahlan.<br><br>Dia certified coach, founder dan CEO Mitologi Inspira dan Ansaka. Penulis Best Seller juga.<br><br>Servicenya ada journey lengkap dari diagnosa, team alignment, sampai jadi budaya. Dari program Training sampai Learning Development Services.<br><br>Kliennya corporate, Samsung, HLI Green Power, Standard Chartered. Saya kenalin langsung ya."},
+ cheese:{apa:"Training 1 hari atau workshop di event: Team Synergy Training with MBTI atau Skill Training.",
+  siapa:"Perusahaan yang mau bangun sinergi tim atau skill tim lewat training atau sesi pendek.",
+  kw:["Tim kurang kompak / tidak sinergi","Tim kurang skill (soft skills)","Ada event perusahaan, cari pembicara seru","Workshop leadership, komunikasi, soft skills","Event yang seru tapi insightful","Ada budget training / workshop singkat"],
+  sc:"Ohh, saya tahu orang yang tepat.<br><br>Teman saya, coach Dedy Dahlan. Dia punya sesi 1 hari, dan sering dipanggil lead workshop oleh perusahaan top.<br><br>Topik khasnya dari Aplikasi MBTI untuk Team Synergy sampai workshop leadership, komunikasi, kolaborasi.<br><br>Saya kenalin ya."},
+ bread:{apa:"Organizational Alignment Assessment dan Personal Assessment plus Coaching dengan MBTI dan Lakon.",
+  siapa:"Business owner, HR, individual, parents, atau couple.",
+  kw:["Perlu insight alignment di tim dan bisnis, murah","Check up tim dalam perusahaan","Assessment MBTI dan kepribadian","Menentukan jalur studi, job / role fit","Sering beda pendapat sama pasangan","Mau kenal diri lebih baik"],
+  sc:"Ohhh, pas banget. Ini areanya teman saya, coach Dedy Dahlan.<br><br>Dia punya assessment untuk ukur alignment organisasi yang dia sebut OAM, dan assessment pribadi MBTI Official resmi plus coaching session.<br><br>Untuk pemetaan studi dan karir, bisa pakai MBTI resmi atau Lakon, dia sering diminta bantuan sama parents bahkan psikolog untuk ini, dia kasih sesi pemetaan langsung.<br><br>Saya kenalin aja ya, orangnya asik kok!"}
+};
+var SPHERE3=[["Konsultan HR","Sama-sama main di HR & L&D. Bisa saling lempar klien.","Bagus Putu Fabio"],
+ ["Event / Outing Organizer Korporat","Pegang acara perusahaan. Bisa jualin saya, saya bisa jualin dia ke klien yang sama.","Diany Pranata · Hastomo Wijoyo · Paul Iskandar"],
+ ["Konsultan Bisnis / Manajemen","Dekat owner & direksi. Bisa kolaborasi di proyek yang sama, saling melengkapi.","Prijono Nugroho"]];
+var SPHERELAIN=[["Trainer / Coach niche berbeda","Anna Meilanny · Fredy Subrata · Jonathan Kho"],
+ ["Hotel / Venue / Outing Venue","Marchella Purwanaika"],
+ ["HRIS / HR Software","Mas Agung Sachli · Maria Al Ghibtiyah · Achmad Faizal"],
+ ["Headhunter / Recruiter / Outsourcing","Ken Ratri Iswari · Mark P. Eliasaputra"],
+ ["Corporate Gifting","Jaksen Tamin"],
+ ["Katering Perusahaan","Febri Lovitasari"],
+ ["Fotografer / Videografer / Produksi AV","Erdy Suryadarma · Bonaventura Adi Winarso · Tubagus M. Arry H."]];
+var SIAPA=["Perusahaan dengan karyawan 50+","Perbankan, Teknologi, Telekomunikasi, FMCG, Otomotif, Media, Hospitality","HR, HR Consultant, L&D, Business Owner, atau Direksi / C-Level","Ada masalah tim tidak kompak atau friksi, miskomunikasi berulang, leader baru, turnover tinggi, budaya dan sinergi organisasi mau dibenahi","Event perusahaan perlu pengisi acara insightful, berbobot, tapi menyenangkan","Individu: profesional yang mau mengembangkan karir, parents, penjurusan anak remaja, pasangan yang mau saling memahami"];
+var KLIENLAMA=["Gudang Garam","Samsung Indonesia","Telkomsigma","Standard Chartered","Microsoft Indonesia","BCA","Metro TV News","HLI Green Power","Centratama","Astra UD Truck"];
+var BCM={
+ bread:{t:"BREAD",d:"Entry point. Risiko reputasi member rendah, jadi ini yang paling gampang mereka sebut. Harga kecil, tapi ini pintunya.",
+  it:[["OAM Survey online","mulai 4,5 jt"],["Lakon Profile","200rb per orang"],["MBTI Official","500rb per orang"],["Coaching pribadi","500rb per sesi"],["Seminar 2 jam","12,5 – 18 jt"]]},
+ cheese:{t:"CHEESE",d:"Program sehari atau setengah hari. Sudah masuk budget training, tapi belum keputusan besar.",
+  it:[["Half day","15 – 22 jt"],["Training 1 hari","25 – 36 jt"],["Diagnostic Pack Basic","19 jt"],["Workshop hasil OAM","15 jt"],["Workplace Readiness","1,5 jt × min 15 orang"]]},
+ meat:{t:"MEAT",d:"Dua hari ke atas, retainer, atau Journey penuh. Ini yang menggerakkan target 1,5 M.",
+  it:[["Training 2 hari","45 – 65 jt"],["Training 3 hari","60 – 90 jt"],["Diagnostic Pack Validation","50 jt"],["Diagnostic Pack Strategic","100 jt"],["Paket Executive Coaching","22 – 80 jt"],["LDaaS","120 – 240 jt per tahun"],["Full Journey 5 Fase","gabungan Fase 1 sampai 5"]]}
+};
+var FASE=[
+ ["01","Diagnose","Ansaka OAM","Menemukan misalignment lewat assessment organisasi","4,5 – 100 jt"],
+ ["02","Discover","Lakon / MBTI Official","Assessment individu dan interaksi tim","200rb – 700rb per kepala"],
+ ["03","Synergy","Applied MBTI in Work & Team Synergy","Pelatihan sinergi dan kolaborasi berdasarkan discovery","25 – 65 jt per batch"],
+ ["04","Solution","Training Series, 6 Core Areas","Pelatihan kompetensi berdasarkan hasil diagnose","25 – 90 jt per batch"],
+ ["05","Growth","LDaaS","Continuous learning development partnership","10 – 20 jt per bulan"]
+];
+var SKEN=[["1 hari · Menengah","30 jt","50","20%","250","4,8"],
+["1 hari · Menengah","30 jt","50","25%","200","3,8"],
+["2 hari · Menengah","54 jt","28","25%","112","2,2"],
+["2 hari · Besar","65 jt","23","25%","92","1,8"],
+["Journey mix","90 jt","17","25%","67","1,3"],
+["LDaaS Partner","240 jt/th","6","25%","25","0,5"]];
+var PORT=[["LDaaS Partner","1","240 jt/th","240 jt","4"],
+["LDaaS Growth","2","180 jt/th","360 jt","8"],
+["Training 2 hari","9","~58 jt","522 jt","36"],
+["Training 1 hari","6","~32 jt","192 jt","24"],
+["Diagnostic Pack OAM","4","~27 jt","107 jt","16"],
+["Bread · Lakon, MBTI, Survey","–","–","90 jt","30"]];
+
+/* ============================ RENDER ============================ */
+var cur='home';
+var NAV=[
+ ['home','Beranda','<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'],
+ ['plan','Jadwal','<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/>'],
+ ['ppl','Anggota','<circle cx="9" cy="9" r="3.4"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 6.2a3.4 3.4 0 0 1 0 5.6M17.5 14.5A6 6 0 0 1 21.5 20"/>'],
+ ['book','Playbook','<path d="M4 5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2z"/><path d="M8 7h7M8 11h7"/>'],
+ ['kpi','Skor','<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>']
+];
+function renderNav(){
+  document.getElementById('nav').innerHTML=NAV.map(function(n){
+    return '<button class="'+(cur===n[0]?'on':'')+'" onclick="go(\''+n[0]+'\')"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">'+n[2]+'</svg><span>'+n[1]+'</span></button>';
+  }).join('');
+}
+function go(t){cur=t;renderNav();render();document.getElementById('scroll').scrollTop=0;}
+
+function tbdg(t){var c={'1A':'b1a','1B':'b1b','2':'b2','3':'b3'}[t]||'b3';return '<span class="bdg '+c+'">'+(t==='1A'?'TIER 1A':t==='1B'?'TIER 1B':'TIER '+t)+'</span>'}
+function done121(){return metCount()}
+function slotKey(w,i){return 'w'+w+'s'+i}
+function slotDone(w,i){return !!S.task[slotKey(w,i)]}
+
+function updateTop(){
+  var TP=totalPlanned()||1, TD=totalDone();
+  var pct=Math.round(TD/TP*100);
+  document.getElementById('ppct').textContent=pct;
+  document.getElementById('fill').style.width=pct+'%';
+  document.getElementById('plabel').textContent=TD+' dari '+TP+' sesi · '+metCount()+' dari '+activeR().length+' member ditemui';
+  document.getElementById('wkchip').textContent='Minggu '+S.week;
+}
+
+function render(){
+  updateTop();
+  var h='';
+  if(cur==='home')h=vHome();
+  if(cur==='plan')h=vPlan();
+  if(cur==='ppl')h=vPpl();
+  if(cur==='book')h=vBook();
+  if(cur==='kpi')h=vKpi();
+  document.getElementById('scroll').innerHTML=h;
+}
+
+/* ---- HOME ---- */
+function vHome(){
+  var W=WEEKS[S.week-1], M=MONTHS[W.mo-1];
+  var slots=W.slots.map(function(s,i){return slotRow(W.w,i,s)}).join('')+extraRows(W.w);
+
+  var sp=W.sp?('<div class="blk"><div class="bt">Aksi khusus minggu ini</div><ul class="bl">'+W.sp.map(function(x,i){
+    var k='sp'+W.w+'_'+i, d=!!S.task[k];
+    return '<li style="padding-left:0;list-style:none"><div class="tr '+(d?'done':'')+'" style="padding:6px 0"><div class="cb '+(d?'on':'')+'" onclick="tgTask(\''+k+'\')"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 6.5"/></svg></div><div class="trm"><div class="n" style="font-weight:600">'+x+'</div></div></div></li>'}).join('')+'</ul></div>'):'';
+
+  var dcount=0;for(var i=0;i<4;i++)if(slotDone(W.w,i))dcount++;
+  var xtot=xslots(W.w).length; for(var i=0;i<xtot;i++)if(S.task['w'+W.w+'x'+i])dcount++;
+
+  return '<div class="sechead">Minggu '+W.w+'</div><div class="secsub">Bulan '+W.mo+' · '+M.t+'. '+M.d+'</div>'
+   +'<div class="card"><div class="kicker">121 minggu ini · '+dcount+'/'+(4+xtot)+' selesai</div>'+slots+sp+'</div>'
+   +askCard(W)
+   +'<div class="card"><div class="kicker g">Milestone bulan '+W.mo+'</div><ul class="bl">'+M.ms.map(function(x,i){
+      var k='ms'+W.mo+'_'+i,d=!!S.task[k];
+      return '<li style="padding-left:0"><div class="tr '+(d?'done':'')+'" style="padding:5px 0;border:none"><div class="cb '+(d?'on':'')+'" onclick="tgTask(\''+k+'\')"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 6.5"/></svg></div><div class="trm"><div class="n" style="font-weight:600">'+x+'</div></div></div></li>'}).join('')+'</ul></div>'
+   +'<div class="card" style="background:#FFF6F7;border-color:#F0D2D6"><div class="kicker">Bottom line</div><div class="ctxt" style="font-size:12px">4 sesi 121 minggu ini · 3 referral yang kamu berikan · 2 referral berkualitas yang kamu terima · 1 Co-Hosted Session bulan ini. <span style="color:var(--muted)">Kalau cuma sempat dua hal: 121 dan Co-Hosted.</span></div></div>'
+   +'<div style="display:flex;gap:8px;margin-top:2px">'
+   +'<button class="btn ghost" style="margin:0" onclick="setWeek('+(W.w-1)+')">← Minggu '+(W.w>1?W.w-1:1)+'</button>'
+   +'<button class="btn" style="margin:0" onclick="setWeek('+(W.w+1)+')">Minggu '+(W.w<48?W.w+1:48)+' →</button></div>';
+}
+function askCard(W){
+  if(!W.named)return '<div class="card"><div class="kicker o">Weekly presentation · ask profesi</div><div class="say">'+W.ask+'</div>'
+   +'<div class="ctxt" style="margin-top:8px;font-size:11.5px;color:var(--muted)">Satu presentasi, satu ask, satu profesi target. Jangan pernah minta "perusahaan yang butuh training". Itu permintaan yang tidak bisa diproses otak siapa pun.</div></div>';
+  var t=(S.targets||[]);
+  var body=t.length?t.slice(0,3).map(function(x){
+     return '<div class="tr"><div class="trm"><div class="n">'+x.n+'</div><div class="p">'+(x.why||'')+(x.who?' · jalur: '+x.who:'')+'</div></div></div>'}).join('')
+   :'<div class="ctxt" style="color:var(--muted)">Daftar target masih kosong. Isi minimal 3 nama di tab Skor sebelum sesi minggu ini.</div>';
+  return '<div class="card" style="border-color:var(--red)"><div class="kicker">Minggu NAMA PERUSAHAAN</div>'
+   +'<div class="ctxt" style="margin-bottom:10px">Minggu ini kamu tidak minta profesi. Kamu <b>menyebut nama perusahaan</b>. Ini bentuk tertinggi dari specific is terrific, dan yang paling sering menghasilkan referral Level 4 dan 5.</div>'
+   +body
+   +'<div class="say" style="margin-top:10px">"Minggu ini saya cuma minta satu hal. Siapa di ruangan ini yang kenal orang di dalam [NAMA PT]? Bukan harus decision maker. Siapa saja yang kerja di sana, atau vendor mereka, atau pernah jadi vendor mereka."</div>'
+   +'<button class="btn ghost" style="margin-top:9px" onclick="go(\'kpi\')">Kelola daftar target</button></div>';
+}
+function slotRow(w,i,s,x){
+  var key=x?('w'+w+'x'+i):slotKey(w,i);
+  var raw=s.id?mById(s.id):null, m=D(raw), d=!!S.task[key];
+  if(!m)return '<div class="tr '+(d?'done':'')+'"><div class="cb '+(d?'on':'')+'" onclick="tgSlot('+w+','+i+')"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 6.5"/></svg></div><div class="trm"><div class="n" style="color:var(--red)" onclick="openAddSlot('+w+')">Slot bebas · tap untuk isi</div><div class="p">Member baru, undangan masuk, atau putaran ulang partner aktif</div></div></div>';
+  if(isSkip(m.id))return '<div class="tr" style="opacity:.45"><div class="cb" style="border-style:dashed"></div><div class="trm" onclick="openMember(\''+m.id+'\')"><div class="n" style="text-decoration:line-through">'+m.n+'</div><div class="p">Dilewati. Tap untuk mengaktifkan lagi atau mengganti orang</div></div></div>';
+  var rb=x?'<span class="bdg ad">Tambahan</span>':(s.r>1?'<span class="bdg rd">Putaran '+s.r+'</span>':tbdg(m.t));
+  return '<div class="tr '+(d?'done':'')+'">'
+    +'<div class="cb '+(d?'on':'')+'" onclick="tgSlot('+w+','+i+',\''+m.id+'\','+(x?1:0)+')"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 6.5"/></svg></div>'
+    +'<div class="trm" onclick="openMember(\''+m.id+'\')"><div class="n">'+m.n+(m.sub?' <span class="bdg sb">Pengganti</span>':'')+(isExt(raw)?' <span class="bdg ex">Luar</span>':'')+'</div><div class="p">'+m.j+'</div></div>'
+    +'<div class="trr">'+rb+(x?'<span class="mini" onclick="delSlot('+w+','+i+')">Hapus</span>':'<span class="mini" onclick="openScript(\''+s.mode+'\')">Script</span>')+'</div></div>';
+}
+function extraRows(w){
+  return xslots(w).map(function(x,i){return slotRow(w,i,x,1)}).join('')
+   +'<div class="addrow" onclick="openAddSlot('+w+')"><div class="p">+</div><div>Tambah 121 di minggu ini</div></div>';
+}
+function setWeek(w){if(w<1)w=1;if(w>52)w=52;S.week=w;saveS();render();}
+function tgSlot(w,i,id,x){
+  var k=x?('w'+w+'x'+i):slotKey(w,i);
+  S.task[k]=!S.task[k];
+  var sl=x?(xslots(w)[i]||{}):((WEEKS[w-1]&&WEEKS[w-1].slots[i])||{});
+  if(id&&S.task[k]){
+    if(!S.met[id])S.met[id]=today();
+    logAdd(id,k,sl.r||(passDone(id)+1),sl.mode||'23');
+    toast('Tercatat. Tap namanya untuk isi catatan sesi.');
+  } else if(id){ logDel(k); }
+  saveS();render();
+}
+function openAddSlot(w){
+  var q2=(window._aq||'');
+  var list=activeR().filter(function(m){var d=D(m);
+    return !q2 || (d.n+' '+d.j+' '+m.k).toLowerCase().indexOf(q2.toLowerCase())>-1}).slice(0,40);
+  var h='<div class="ctxt" style="margin-bottom:12px">Sesi 121 tambahan di luar empat slot terjadwal. Berguna kalau minggu ini Anda sanggup lebih, atau ada undangan dari jaringan Director Consultant.</div>'
+   +'<div class="searchbar"><input id="aq" placeholder="Cari nama atau profesi…" value="'+q2.replace(/"/g,'&quot;')+'" oninput="window._aq=this.value;openAddSlot('+w+')"></div>'
+   +'<button class="btn ghost" style="margin-bottom:12px" onclick="openAddPerson('+w+')">+ Orang baru atau luar chapter</button>'
+   +list.map(function(m){var d=D(m);
+     return '<div class="tr"><div class="trm" onclick="addSlot('+w+',\''+m.id+'\')"><div class="n">'+d.n+(isExt(m)?' <span class="bdg ex">Luar</span>':'')+'</div><div class="p">'+d.j+' · sudah '+passDone(m.id)+'x 121</div></div><div class="trr">'+tbdg(m.t)+'</div></div>'}).join('')
+   +(list.length?'':'<div class="ctxt" style="color:var(--muted)">Tidak ada yang cocok.</div>');
+  sheet('Tambah 121','Minggu '+w,h);
+}
+function addSlot(w,id){
+  var m=mById(id); if(!m)return;
+  var mode=m.t==='1A'?(passDone(id)?'1A2':'1A1'):(m.a?'ADJ':(m.p&&m.t!=='1A'?'P':(m.t==='1B'?'1B':'23')));
+  if(!S.xslots)S.xslots={};
+  var k=String(w); if(!S.xslots[k])S.xslots[k]=[];
+  S.xslots[k].push({id:id,mode:mode,r:passDone(id)+1});
+  saveS();closeSheet();window._aq='';render();toast(D(m).n+' ditambahkan ke minggu '+w);
+}
+function delSlot(w,i){
+  var k=String(w); if(!S.xslots||!S.xslots[k])return;
+  delete S.task['w'+w+'x'+i]; logDel('w'+w+'x'+i);
+  S.xslots[k].splice(i,1); saveS(); render(); toast('Slot tambahan dihapus');
+}
+function tgTask(k){S.task[k]=!S.task[k];saveS();render();}
+
+/* ---- PLAN ---- */
+function vPlan(){
+  var h='<div class="sechead">Jadwal 52 Minggu</div><div class="secsub">208 slot, 189 terjadwal, 19 bebas. Urutan dibangun dari yang paling dekat dengan uang, bukan yang paling mudah ditemui. Kalau ada member yang <b>mengajak</b> kamu 121, terima tanpa peduli tiernya.</div>';
+  var lastMo=0;
+  WEEKS.forEach(function(W){
+    if(W.mo!==lastMo){lastMo=W.mo;var M=MONTHS[W.mo-1];
+      h+='<div style="margin:16px 0 9px"><div class="kicker">Bulan '+M.m+'</div><div style="font-family:Bebas Neue,sans-serif;font-size:22px;line-height:1">'+M.t+'</div><div class="ctxt" style="font-size:11.5px;color:var(--muted);margin-top:4px">'+M.d+'</div></div>';}
+    var dc=0;for(var i=0;i<4;i++)if(slotDone(W.w,i))dc++;
+    var xn=xslots(W.w).length; for(var i=0;i<xn;i++)if(S.task['w'+W.w+'x'+i])dc++;
+    var names=W.slots.map(function(s){var m=D(s.id?mById(s.id):null);return m?m.n.split(' ')[0]:'Bebas'}).join(' · ');
+    h+='<div class="wk '+(W.w===S.week?'now':'')+' '+(dc===4?'done':'')+'" id="wk'+W.w+'">'
+     +'<div class="wkh" onclick="tgWk('+W.w+')"><div class="wkn"><i>MG</i><b>'+W.w+'</b></div>'
+     +'<div class="wkt"><div class="a">'+names+(xn?' +'+xn:'')+'</div><div class="b">'+dc+'/'+(4+xn)+' selesai'+(W.named?' · ask nama PT':'')+(W.sp?' · aksi khusus':'')+'</div></div><div class="wkc">›</div></div>'
+     +'<div class="wkbody"><div class="blk"><div class="bt">121 minggu ini'+(xn?' · '+xn+' tambahan':'')+'</div>'
+     +W.slots.map(function(s,i){return slotRow(W.w,i,s)}).join('')+extraRows(W.w)
+     +'</div><div class="blk"><div class="bt">Weekly presentation'+(W.named?' · MINGGU NAMA PERUSAHAAN':'')+'</div><div class="say" style="margin:0">'+(W.named?'Sebut nama perusahaan target, bukan profesi. Daftar target ada di tab Skor.':W.ask)+'</div></div>'
+     +(W.sp?'<div class="blk"><div class="bt">Aksi khusus</div><ul class="bl">'+W.sp.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div>':'')
+     +'<button class="btn ghost" style="margin-top:12px" onclick="setWeek('+W.w+');go(\'home\')">Jadikan minggu aktif</button>'
+     +'</div></div>';
+  });
+  return h;
+}
+function tgWk(w){document.getElementById('wk'+w).classList.toggle('open')}
+
+/* ---- PEOPLE ---- */
+var flt='all',q='';
+function vPpl(){
+  var list=R.filter(function(m){
+    if(flt==='luar'&&!m.ext)return false;
+    if(flt==='1A'&&m.t!=='1A')return false;
+    if(flt==='1B'&&m.t!=='1B')return false;
+    if(flt==='P'&&!m.p)return false;
+    if(flt==='2'&&m.t!=='2')return false;
+    if(flt==='3'&&m.t!=='3')return false;
+    if(flt==='belum'&&passDone(m.id))return false;
+    if(flt==='kurang'&&(passDone(m.id)>=passPlan(m.id)||isSkip(m.id)))return false;
+    var dd=D(m);if(q&&(dd.n+' '+dd.j+' '+m.n+' '+m.k).toLowerCase().indexOf(q.toLowerCase())<0)return false;
+    return true;
+  });
+  var h='<div class="sechead">Anggota Chapter</div><div class="secsub">99 member. Tap untuk membuka profil, catatan GAINS, posisi VCP, dan level Reactor/Promoter/Creator.</div>'
+   +'<div class="searchbar"><input id="q" placeholder="Cari nama atau profesi…" value="'+q.replace(/"/g,'&quot;')+'" oninput="setQ(this.value)"></div>'
+   +'<button class="btn ghost" style="margin-bottom:10px" onclick="openAdd()">+ Tambah orang (cross chapter / member baru)</button>'
+   +'<div class="chips">'+[['all','Semua '+R.length],['luar','Luar chapter · '+R.filter(function(m){return m.ext}).length],['1A','Tier 1A · 12'],['1B','Tier 1B · '+byT('1B').length],['P','Calon Klien · '+R.filter(function(m){return m.p}).length],['2','Tier 2 · '+byT('2').length],['3','Tier 3 · '+byT('3').length],['belum','Belum ditemui'],['kurang','Putaran belum tuntas']].map(function(c){
+      return '<button class="chip '+(flt===c[0]?'on':'')+'" onclick="setFlt(\''+c[0]+'\')">'+c[1]+'</button>'}).join('')+'</div>';
+  h+=list.map(function(raw){
+    var m=D(raw), lv=S.lvl[m.id]||'', sk=isSkip(m.id), pc=passDone(m.id), pp=passPlan(m.id);
+    return '<div class="mrow '+(pc&&!sk?'met':'')+'" style="'+(sk?'opacity:.45':'')+'" onclick="openMember(\''+m.id+'\')">'
+     +'<div class="mav">'+(pc?pc+'\u00d7':m.n.charAt(0))+'</div>'
+     +'<div class="mi"><div class="n" style="'+(sk?'text-decoration:line-through':'')+'">'+m.n+'</div><div class="p">'+m.j+(m.sub?' · pengganti':'')+' · '+pc+'/'+pp+' putaran</div></div>'
+     +(raw.ext?'<span class="bdg ex">Luar</span>':'')
+     +(lv?'<span class="mlv '+lv.charAt(0)+'">'+lv.charAt(0)+'</span>':'')+tbdg(m.t)+'</div>';
+  }).join('')||'<div class="card"><div class="ctxt">Tidak ada yang cocok.</div></div>';
+  return h;
+}
+function setFlt(f){flt=f;render()}
+function setQ(v){q=v;var el=document.activeElement;render();var i=document.getElementById('q');if(i){i.focus();i.setSelectionRange(v.length,v.length)}}
+
+function openMember(id){
+  var raw=mById(id), m=D(raw);
+  var mode=m.t==='1A'?'1A1':(m.a?'ADJ':(m.p&&m.t!=='1A'?'P':(m.t==='1B'?'1B':'23')));
+  var vcp=S.vcp[id]||'V',lv=S.lvl[id]||'-',sk=isSkip(id);
+  var pd=passDone(id),pp=passPlan(id);
+  var h='';
+  if(m.sub)h+='<div class="card" style="border-color:#F0D2D6;background:#FFF9FA"><div class="kicker">Pengganti aktif</div><div class="ctxt"><b>'+m.n+'</b> menggantikan slot <b>'+raw.n+'</b>.'+(m.snote?'<br>'+m.snote:'')+'</div></div>';
+  if(sk)h+='<div class="card" style="border-color:#DDD;background:#F7F7F7"><div class="kicker d">Dilewati</div><div class="ctxt">Dikeluarkan dari hitungan progres. Slotnya jadi slot bebas.</div></div>';
+  h+='<div class="card"><div class="kicker">Kenapa dia penting</div><div class="ctxt">'+(m.w||'Givers Gain murni. Kamu datang untuk memberi, bukan mengambil. Kalau dapat sesuatu, itu bonus.')+'</div>'
+   +'<div class="hr"></div><div style="display:flex;gap:6px;flex-wrap:wrap">'+tbdg(m.t)+(m.p?'<span class="bdg bp">Calon Klien</span>':'')+(m.a?'<span class="bdg gh">Adjacent</span>':'')+(isExt(raw)?'<span class="bdg ex">Luar chapter GROW</span>':(raw.x?'<span class="bdg ad">Ditambahkan</span>':''))+'<span class="bdg gh">'+m.k+'</span></div>'
+   +'<div class="hr"></div>'
+   +'<div style="display:flex;align-items:center;justify-content:space-between;gap:10px">'
+   +'<div><div style="font-family:Bebas Neue,sans-serif;font-size:27px;line-height:1">'+pd+' <span style="font-size:15px;color:var(--muted)">dari '+pp+' putaran</span></div>'
+   +'<div style="margin-top:7px">'+dots(pd,pp)+'</div></div>'
+   +(pd>=pp&&pp>0?'<span class="bdg bp">Tuntas</span>':(pd?'<span class="bdg rd">Jalan</span>':'<span class="bdg gh">Belum ditemui</span>'))+'</div>'
+   +'<div class="ctxt" style="font-size:11.5px;margin-top:10px">'+(pp>=3?'Masuk kelompok 3 putaran. Referral biasanya baru mengalir setelah pertemuan ketiga.':(pp===2?'Dijadwalkan 2 putaran. Naikkan ke 3 kalau dia menunjukkan tanda jadi Promoter.':'Satu putaran. Alokasi sadar: energi 3 putaran disimpan untuk 45 orang yang bisa menggerakkan uang.'))+'</div>'
+   +(pd?'<div class="ctxt" style="font-size:11.5px;margin-top:7px;color:var(--muted)">Pertama ditemui '+fmtD(S.met[id]||'')+'. Hitungan ini diambil dari Riwayat 121 di bawah, bukan diisi manual.</div>':'')
+   +'</div>';
+  h+='<button class="btn" onclick="openScript(\''+mode+'\')">Buka script 121 untuk '+m.n.split(' ')[0]+'</button>';
+  h+='<button class="btn ghost" style="margin-top:8px" onclick="addLogManual(\''+id+'\')">+ Catat sesi 121 yang sudah terjadi</button>';
+  h+='<div class="card" style="margin-top:11px">'
+   +'<div class="fld"><label>Posisi VCP</label><div class="seg">'
+   +['V','C','P'].map(function(x){return '<button class="'+(vcp===x?'on':'')+'" onclick="setVcp(\''+id+'\',\''+x+'\')">'+{V:'Visibility',C:'Credibility',P:'Profitability'}[x]+'</button>'}).join('')+'</div></div>'
+   +'<div class="fld"><label>Level pemberi referral</label><div class="seg">'
+   +['-','Reactor','Promoter','Creator'].map(function(x){return '<button class="'+(lv===x?'on':'')+'" onclick="setLvl(\''+id+'\',\''+x+'\')">'+(x==='-'?'Belum':x)+'</button>'}).join('')+'</div></div>'
+   +'<div class="fld"><label>Catatan GAINS · Networks · nama klien besar</label><textarea id="nt" placeholder="Goals:&#10;Accomplishments:&#10;Interests:&#10;Networks (klien 50+ karyawan):&#10;Skills:&#10;&#10;Janji saya ke dia:" oninput="setNote(\''+id+'\',this.value)">'+(S.notes[id]||'')+'</textarea></div></div>';
+  var lg=(S.log||[]).map(function(l,i){return {l:l,i:i}}).filter(function(o){return o.l.id===id});
+  h+='<div class="card"><div class="kicker t">Riwayat 121 · '+lg.length+' sesi</div>';
+  if(!lg.length){h+='<div class="ctxt" style="color:var(--muted)">Belum ada sesi tercatat. Sesi otomatis masuk sini begitu Anda centang di Beranda, atau tambahkan manual di bawah.</div>'}
+  else{h+=lg.map(function(o){var l=o.l;
+     return '<div class="logrow"><div class="logd">'+fmtD(l.d)+' · Putaran '+l.r+' · '+MODEN(l.m)+'</div>'
+      +(l.n?'<div class="logn">'+l.n.replace(/</g,'&lt;')+'</div>':'')
+      +(l.o?'<div class="logn" style="color:var(--teal);font-weight:700">Hasil: '+l.o.replace(/</g,'&lt;')+'</div>':'')
+      +'<div style="margin-top:6px;display:flex;gap:6px"><span class="mini" onclick="openLog('+o.i+')">Isi catatan</span><span class="mini" onclick="delLog('+o.i+',\''+id+'\')">Hapus</span></div></div>'}).join('')}
+  h+='</div>';
+  h+='<div class="card"><div class="kicker d">Kalau tidak cocok</div>'
+   +'<div class="ctxt" style="font-size:11.5px">Susah dihubungi atau chemistry tidak nyambung? Ganti slotnya. Jadwal, script, dan tier tetap jalan, karena yang menentukan agenda adalah <b>klasifikasinya</b>, bukan orangnya. Boleh diisi orang cross chapter.</div>'
+   +'<div class="hr"></div>'
+   +'<div class="fld"><label>Ganti dengan (nama)</label><input id="sbn" placeholder="Boy · Cross Chapter" value="'+(m.sub?esc(m.n):'')+'"></div>'
+   +'<div class="fld"><label>Profesi / klasifikasi pengganti</label><input id="sbj" placeholder="'+esc(raw.j)+'" value="'+(m.sub?esc(m.j):'')+'"></div>'
+   +'<div class="fld"><label>Catatan (opsional)</label><input id="sbc" placeholder="Cross chapter BNI Menteng, kenal lewat Erly" value="'+(m.sub?esc(m.snote):'')+'"></div>'
+   +'<button class="btn ghost" onclick="applySub(\''+id+'\')">Simpan pengganti</button>'
+   +(m.sub?'<button class="btn ghost" style="margin-top:7px" onclick="clearSub(\''+id+'\')">Kembalikan ke '+esc(raw.n)+'</button>':'')
+   +'<button class="btn ghost" style="margin-top:7px" onclick="tgSkip(\''+id+'\')">'+(sk?'Aktifkan lagi':'Lewati / arsipkan orang ini')+'</button></div>';
+  sheet(m.n,m.j,h);
+}
+function esc(x){return (x||'').replace(/"/g,'&quot;')}
+function openLog(i){
+  var l=S.log[i]; if(!l)return; var m=D(mById(l.id));
+  var h='<div class="card"><div class="kicker">'+fmtD(l.d)+' · Putaran '+l.r+' · '+MODEN(l.m)+'</div>'
+   +'<div class="fld"><label>Tanggal</label><input type="date" id="ld" value="'+l.d+'" onchange="S.log['+i+'].d=this.value;saveS()"></div>'
+   +'<div class="fld"><label>Apa yang dibicarakan</label><textarea id="ln" placeholder="Poin GAINS baru, klien besar yang dia sebut, keberatan yang muncul, hal personal yang perlu diingat…" oninput="S.log['+i+'].n=this.value;saveS()">'+(l.n||'')+'</textarea></div>'
+   +'<div class="fld"><label>Hasil konkret sesi ini</label><input id="lo" placeholder="Nama yang dia kasih, komitmen, tanggal Co-Hosted" value="'+esc(l.o)+'" oninput="S.log['+i+'].o=this.value;saveS()"></div>'
+   +'<button class="btn ghost" onclick="closeSheet();openMember(\''+l.id+'\')">Kembali ke profil</button></div>';
+  sheet('Catatan Sesi', m?m.n:'', h);
+}
+function delLog(i,id){ if(!confirm('Hapus catatan sesi ini?'))return; S.log.splice(i,1); saveS(); openMember(id); }
+function addLogManual(id){
+  logAdd(id,null,passDone(id)+1,(function(){var m=mById(id);
+    return m.t==='1A'?(passDone(id)?'1A2':'1A1'):(m.a?'ADJ':(m.p&&m.t!=='1A'?'P':(m.t==='1B'?'1B':'23')))})());
+  if(!S.met[id])S.met[id]=today();
+  saveS(); openMember(id); toast('Sesi dicatat');
+}
+function applySub(id){
+  var n=document.getElementById('sbn').value.trim();
+  if(!n){toast('Isi nama pengganti dulu');return}
+  var j=document.getElementById('sbj').value.trim();
+  var c=document.getElementById('sbc').value.trim();
+  S.sub[id]={n:n,j:j||mById(id).j,note:c};saveS();openMember(id);toast('Slot diganti ke '+n);
+}
+function clearSub(id){delete S.sub[id];saveS();openMember(id);toast('Dikembalikan ke nama asli')}
+function tgSkip(id){S.skip[id]=!S.skip[id];saveS();openMember(id);updateTop();toast(S.skip[id]?'Dilewati. Slotnya jadi slot bebas.':'Diaktifkan lagi')}
+function openAdd(){openAddPerson(0)}
+function openAddPerson(w){
+  var h='<div class="ctxt" style="margin-bottom:13px">Untuk member GROW yang baru bergabung, atau kontak di luar chapter. Keduanya masuk ke daftar Anggota, dan riwayat 121-nya tetap tercatat.</div>'
+   +'<div class="fld"><label>Nama</label><input id="an" placeholder="Boy Hermawan"></div>'
+   +'<div class="fld"><label>Profesi / klasifikasi</label><input id="aj" placeholder="Konsultan HR"></div>'
+   +'<div class="fld"><label>Asal</label><div class="seg" id="asrc">'
+   +'<button class="on" onclick="pickSrc(0)">Member GROW</button>'
+   +'<button onclick="pickSrc(1)">Luar chapter</button></div></div>'
+   +'<div class="fld"><label>Keterangan asal</label><input id="ak" placeholder="BNI Menteng · kenal lewat BNI Ventura"></div>'
+   +'<div class="fld"><label>Tier</label><select id="at"><option value="1A">Tier 1A · calon Creator</option><option value="1B" selected>Tier 1B · Promoter kuat</option><option value="2">Tier 2 · supplier korporat</option><option value="3">Tier 3 · low overlap</option></select></div>'
+   +'<button class="btn" onclick="addPerson('+(w||0)+')">Tambahkan</button>';
+  window._asrc='grow';
+  sheet('Orang Baru','Member GROW atau luar chapter',h);
+}
+function pickSrc(i){window._asrc=i?'luar':'grow';
+  document.querySelectorAll('#asrc button').forEach(function(b,j){b.className=(j===i)?'on':''})}
+function addPerson(w){
+  var n=document.getElementById('an').value.trim();
+  if(!n){toast('Isi nama dulu');return}
+  var src=window._asrc||'grow';
+  S.extra.push({n:n,j:document.getElementById('aj').value.trim()||'Belum diisi',
+    k:document.getElementById('ak').value.trim()||(src==='grow'?'BNI GROW Jakarta Barat':'Luar chapter'),
+    t:document.getElementById('at').value, src:src});
+  saveS(); loadExtras();
+  var id='x'+(S.extra.length-1);
+  if(w){ addSlot(w,id); } else { closeSheet(); go('ppl'); toast(n+' ditambahkan'); }
+}
+function setMet(id,v){if(v){S.met[id]=S.met[id]||today()}else{delete S.met[id]}saveS();updateTop();}
+function setVcp(id,v){S.vcp[id]=v;saveS();openMember(id)}
+function setLvl(id,v){S.lvl[id]=v;saveS();openMember(id)}
+function setNote(id,v){S.notes[id]=v;saveS()}
+
+function openScript(mode){
+  var s=SC[mode];if(!s)return;
+  var h='<div class="card"><div class="kicker">Tujuan sesi</div><div class="ctxt">'+s.goal+'</div></div>'
+   +'<div class="card"><div class="kicker o">Kalimat pembuka · ucapkan persis</div><div class="say">'+s.open+'</div></div>'
+   +'<div class="card"><div class="kicker">Isi sesi · urut</div><ul class="bl num">'+s.q.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div>'
+   +'<div class="card"><div class="kicker t">Kalimat penutup</div><div class="say ok">'+s.close+'</div></div>'
+   +'<div class="card"><div class="kicker d">Jangan lakukan</div><ul class="bl">'+s.never.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div>'
+   +'<div class="card"><div class="kicker g">Setelah sesi · 24 jam pertama</div><div class="ctxt">'+s.after+'</div></div>';
+  sheet(s.ttl,s.sub,h);
+}
+
+/* ---- PLAYBOOK ---- */
+function acc(i,t,body){return '<div class="acc" id="ac'+i+'"><div class="acch" onclick="document.getElementById(\'ac'+i+'\').classList.toggle(\'open\')"><div class="ai">'+i+'</div><div class="at">'+t+'</div><div class="ac">›</div></div><div class="accb">'+body+'</div></div>'}
+function vBook(){
+  var h='<div class="sechead">Playbook</div><div class="secsub">Semua yang perlu kamu tahu, tersimpan. Buka bagian yang kamu butuhkan sebelum sesi.</div>';
+  h+='<div class="card" style="background:#191919;color:#fff;border-color:#191919">'
+   +'<div class="kicker" style="color:#FF6B7D">Bottom Line · baca ini kalau cuma punya 30 detik</div>'
+   +'<div style="font-family:Bebas Neue,sans-serif;font-size:23px;line-height:1.1;margin-bottom:12px">Delapan angka yang menentukan semuanya</div>'
+   +'<table class="tbl" style="color:#fff">'
+   +[["4","sesi 121 per minggu. 208 setahun. Ini satu-satunya angka yang benar-benar kamu kendalikan."],
+     ["3","referral yang kamu <b>berikan</b> per minggu. Memberi dulu, selalu."],
+     ["2","referral berkualitas yang kamu <b>terima</b> per minggu. Bukan 5. Lima itu angka florist."],
+     ["3","kali bertemu orang yang sama sebelum referral mengalir. Berlaku untuk 45 orang prioritas."],
+     ["1","Co-Hosted Session per bulan. Kalau cuma bisa melakukan satu hal, lakukan ini."],
+     ["54","juta nilai transaksi rata-rata minimum, yaitu 2 hari untuk klien Menengah. Turun ke 30 juta (1 hari), targetnya jadi mustahil."],
+     ["3","kontrak LDaaS. 1 Partner + 2 Growth = 600 jt, yaitu 40% dari target. Sisanya dari training dan OAM."],
+     ["6","Creator di akhir tahun. Mereka yang akan menghasilkan mayoritas revenue, bukan 99 member."]]
+     .map(function(r){return '<tr><td style="border-color:#333;width:44px"><span style="font-family:Bebas Neue,sans-serif;font-size:27px;color:#FF6B7D;line-height:1">'+r[0]+'</span></td><td style="border-color:#333;color:#E4E4E4;font-weight:500">'+r[1]+'</td></tr>'}).join('')
+   +'</table>'
+   +'<div style="border-top:1px solid #333;margin-top:12px;padding-top:12px;font-size:12px;line-height:1.65;color:#CFCFCF;font-weight:500">Kalau semua ini terasa terlalu banyak, kerjakan dua saja: <b style="color:#fff">empat 121 per minggu</b> dan <b style="color:#fff">satu Co-Hosted Session per bulan</b>. Sisanya mengikuti.</div></div>';
+
+  h+=acc(1,'Angka: kenapa targetnya 2 referral per minggu, bukan 5',
+   '<div class="ctxt">Worksheet BNI memakai rumus <b>D = A ÷ B ÷ C</b>. Yang bisa kamu kendalikan bukan D (jumlah referral), tapi <b>B</b> (nilai transaksi rata-rata).</div>'
+   +'<div class="hr"></div><table class="tbl"><tr><th>Skenario</th><th>ATV</th><th>Close</th><th>Ref/th</th><th>/mg</th></tr>'
+   +SKEN.map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td><td>'+r[3]+'</td><td>'+r[4]+'</td><td><b>'+r[5]+'</b></td></tr>'}).join('')+'</table>'
+   +'<div class="say" style="margin-top:12px">Menerima 4–5 referral korporat berkualitas per minggu bukan angka yang pernah terjadi konsisten untuk produk high-ticket B2B. Itu angka untuk florist, bukan consultant.</div>'
+   +'<div class="kicker" style="margin-top:14px">Portfolio target 1,5 M · harga asli dashboard</div>'
+   +'<table class="tbl"><tr><th>Lini</th><th>Unit</th><th>Revenue</th><th>Ref</th></tr>'
+   +PORT.map(function(r){return '<tr><td><b>'+r[0]+'</b><br><span style="color:var(--muted);font-size:10px">'+r[2]+'</span></td><td>'+r[1]+'</td><td>'+r[3]+'</td><td>'+r[4]+'</td></tr>'}).join('')
+   +'<tr><td colspan="2"><b>Total</b></td><td><b>1,51 M</b></td><td><b>~118/th</b></td></tr></table>'
+   +'<div class="ctxt" style="margin-top:11px"><b>Angka kerjamu: 2 sampai 2,5 referral berkualitas per minggu.</b> Dengan 4 sesi 121 per minggu, rasionya 2:1. Realistis, asal 121-nya bukan ngobrol kosong.</div>'
+   +'<div class="ctxt" style="margin-top:9px;color:var(--muted);font-size:11.5px">Catatan jujur: bulan 1–6 sebagian besar menghasilkan pipeline, bukan closing. Revenue riil terkonsentrasi di bulan 7–18.</div>');
+
+  h+=acc(2,'Tiga keputusan strategis',
+   '<div class="ctxt"><b>1. LDaaS adalah produk utamamu di BNI, bukan training.</b> Satu kontrak 25 jt/bulan setara 6 training sehari. Butuh 3 kontrak untuk 60% target. Semua 121 Tier 1A diarahkan ke sana.</div><div class="hr"></div>'
+   +'<div class="ctxt"><b>2. Sebagian member adalah klien, bukan penyalur.</b> Ada 19 member yang perusahaannya sendiri punya 50+ karyawan. Ini sumber revenue tercepat karena tidak butuh perantara.</div><div class="hr"></div>'
+   +'<div class="ctxt"><b>3. Creator lahir dari panggung bersama, bukan dari 121.</b> 121 hanya bisa menghasilkan Reactor dan Promoter. Creator muncul ketika member punya kepentingan sendiri untuk menciptakan peluang.</div>');
+
+  h+=acc(3,'Patokan harga · sama persis dengan dashboard',
+   '<div class="say">Tier klien ditentukan <b>jumlah karyawan</b>. Karena itu pertanyaan "tim Anda berapa orang?" di script 121 bukan basa-basi. Jawabannya langsung menentukan harga.</div>'
+   +'<table class="tbl" style="margin-top:11px"><tr><th>Tier</th><th>Ukuran</th></tr>'
+   +HARGA.tier.map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td></tr>'}).join('')+'</table>'
+   +'<div class="kicker" style="margin-top:16px">Fase 3 & 4 · Training, per batch maks 30 peserta (juta rupiah)</div>'
+   +'<table class="tbl"><tr><th>Durasi</th><th>UMKM</th><th>Mnengh</th><th>Besar</th></tr>'
+   +HARGA.train.map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td></tr>'}).join('')+'</table>'
+   +'<div class="kicker t" style="margin-top:16px">Fase 1 · Ansaka OAM, flat tanpa tier</div>'
+   +'<table class="tbl">'+HARGA.oam.map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td></tr>'}).join('')+'</table>'
+   +'<div class="kicker o" style="margin-top:16px">Fase 2 · Assessment, per kepala</div>'
+   +'<table class="tbl">'+HARGA.assess.map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td></tr>'}).join('')+'</table>'
+   +'<div class="kicker g" style="margin-top:16px">Fase 5 · Coaching & LDaaS</div>'
+   +'<table class="tbl">'+HARGA.f5.map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td></tr>'}).join('')+'</table>'
+   +'<div class="kicker d" style="margin-top:16px">Fase 4 · Mitra & layanan tambahan</div>'
+   +'<table class="tbl">'+HARGA.mitra.map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td></tr>'}).join('')+'</table>'
+   +'<div class="kicker" style="margin-top:16px">Aturan yang gampang lupa</div>'
+   +'<ul class="bl">'+HARGA.aturan.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>'
+   +'<div class="ctxt" style="margin-top:12px;color:var(--muted);font-size:11px">Sumber: tabel EKONOMI di Code.gs Client OS. Kalau angka di dashboard berubah, ubah juga di sini.</div>');
+
+  h+=acc(4,'BCM · apa yang dititipkan ke siapa',
+   '<div class="ctxt">Isi bagian ini diambil persis dari <b>Bio GAINS</b> kamu, supaya yang member baca di app kamu dan yang kamu ucapkan di 121 sama kata per kata. Kalau Bio GAINS diubah, ubah juga di sini.</div>'
+   +['bread','cheese','meat'].map(function(k){var b=BIOSC[k];var P=BCM[k];
+     var col=k==='bread'?'var(--bread)':(k==='cheese'?'var(--cheese)':'var(--meat)');
+     return '<div class="hr"></div><div class="kicker" style="color:'+col+'">'+P.t+'</div>'
+      +'<div class="ctxt" style="margin-bottom:8px"><b>Apa:</b> '+b.apa+'</div>'
+      +'<div class="ctxt" style="margin-bottom:10px"><b>Siapa:</b> '+b.siapa+'</div>'
+      +'<div style="font-size:9px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Kata kunci yang mereka dengar</div>'
+      +'<ul class="bl">'+b.kw.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>'
+      +'<div style="font-size:9px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin:12px 0 6px">Script yang member ucapkan</div>'
+      +'<div class="say">'+b.sc+'</div>'
+      +'<div style="font-size:9px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin:12px 0 6px">Harga patokan</div>'
+      +'<table class="tbl">'+P.it.map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td style="text-align:right;white-space:nowrap">'+r[1]+'</td></tr>'}).join('')+'</table>';
+    }).join('')
+   +'<div class="hr"></div><div class="kicker">Aturan pemberian</div>'
+   +'<ul class="bl"><li><b>Putaran 1:</b> titipkan Bread saja. Risiko reputasi mereka nyaris nol.</li>'
+   +'<li><b>Putaran 2:</b> tambahkan Cheese. Mereka sudah lihat kamu bekerja, sudah berani menyebut angka puluhan juta.</li>'
+   +'<li><b>Putaran 3 dan seterusnya:</b> baru Meat dan LDaaS. Ini untuk Promoter dan Creator, bukan Reactor.</li>'
+   +'<li>Aturan durasi: <b>1 hari atau kurang = Cheese. 2 hari ke atas = Meat.</b> Seragam untuk Synergy maupun semua topik Solution.</li>'
+   +'<li><b>Kartu Pemicu sengaja korporat saja.</b> Lima kalimat di kartu tidak memuat segmen personal (jurusan anak, pasangan, kenal diri) yang ada di Bio GAINS. Alasannya matematika: Bread personal nilainya 200–500rb per kepala, dan kalau kartu ikut membuka jalur itu, member akan memilih permintaan yang paling gampang. Hasilnya banjir referral 200rb sementara target 1,5 M jalan di tempat.</li>'
+   +'<li><b>Pembagian tugasnya:</b> Kartu Pemicu untuk korporat, dipegang Tier 1A dan 1B, targetnya Cheese dan Meat. Bio GAINS tetap lengkap dengan segmen personal, karena di sana orang membaca dengan tenang. Voucher Lakon jadi kendaraan Bread, dan itu yang diberikan ke Tier 2 dan 3, bukan kartu.</li>'
+   +'<li>Script Meat sudah menyebut Samsung, HLI Green Power, dan Standard Chartered. Jangan ganti nama klien ini tanpa alasan, karena tiga nama itu yang membuat member berani bicara ke level direksi.</li></ul>');
+
+  h+=acc(5,'Lima Fase · peta produk lengkap',
+   '<div class="ctxt">Semua yang kamu tawarkan lewat BNI harus bisa ditempatkan di salah satu fase ini. Kalau tidak bisa, jangan ditawarkan.</div><div class="hr"></div>'
+   +FASE.map(function(f){return '<div style="display:flex;gap:12px;margin-bottom:14px"><div style="font-family:Bebas Neue,sans-serif;font-size:26px;color:var(--red);line-height:1;flex-shrink:0;width:30px">'+f[0]+'</div>'
+     +'<div style="flex:1"><div style="font-size:12.5px;font-weight:800">'+f[1]+' · '+f[2]+'</div>'
+     +'<div class="ctxt" style="font-size:11.5px;margin-top:3px">'+f[3]+'</div>'
+     +'<div style="font-size:11px;font-weight:800;color:var(--teal);margin-top:4px">'+f[4]+'</div></div></div>'}).join('')
+   +'<div class="hr"></div><div class="kicker">6 Core Development Areas</div>'
+   +'<ul class="bl"><li>Personal Effectiveness & Self-Awareness <span style="color:var(--muted)">(diambil di Fase 03 lewat Applied MBTI)</span></li>'
+   +'<li>Communication, Empathy & Active Listening</li><li>Leadership, Vision & Social Influence</li>'
+   +'<li>Mental Resilience, Flexibility & Emotional Agility</li><li>Creative Thinking, Innovation & Problem Solving</li>'
+   +'<li>Team Alignment & Collaborative Productivity</li></ul>'
+   +'<div class="ctxt" style="margin-top:10px;color:var(--muted);font-size:11.5px">Yang tampil sebagai 5 topik di Fase 04 adalah lima yang tersisa, karena Personal Effectiveness sudah masuk Fase 03.</div>');
+
+  h+=acc(6,'Contact Sphere · Bio GAINS vs tiering',
+   '<div class="ctxt">Bio GAINS kamu sudah punya Contact Sphere resmi. Tiering di app ini menambahkan beberapa profesi yang <b>tidak ada</b> di sana. Dua-duanya benar untuk alasan berbeda, dan bedanya perlu kamu putuskan.</div>'
+   +'<div class="hr"></div><div class="kicker">Top 3 versi Bio GAINS</div>'
+   +SPHERE3.map(function(r){return '<div style="margin-bottom:12px"><div style="font-size:12.5px;font-weight:800">'+r[0]+'</div><div class="ctxt" style="font-size:11.5px;margin-top:2px">'+r[1]+'</div><div style="font-size:10.5px;font-weight:800;color:var(--teal);margin-top:4px">Di chapter: '+r[2]+'</div></div>'}).join('')
+   +'<div class="hr"></div><div class="kicker">Sphere lain versi Bio GAINS</div>'
+   +'<table class="tbl">'+SPHERELAIN.map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td></tr>'}).join('')+'</table>'
+   +'<div class="hr"></div><div class="kicker d">Yang saya tambahkan, dan alasannya</div>'
+   +'<div class="ctxt">Empat profesi ini <b>tidak ada</b> di Contact Sphere Bio GAINS, tapi saya masukkan Tier 1A dan 1B: akuntan pajak (Erly Salie), KAP (Wahyu Wibowo), notaris (Natalia Chintya), dan corporate lawyer (Jennyke Setiono).</div>'
+   +'<div class="ctxt" style="margin-top:9px">Alasannya bukan kesamaan target market, tapi <b>kedekatan dengan owner</b>. Mereka tahu kondisi keuangan, tahu siapa yang sedang tumbuh, dan bicara ke level yang bahkan HR tidak bisa akses. Untuk LDaaS yang keputusannya di tangan owner, ini jalur tercepat.</div>'
+   +'<div class="say" style="margin-top:10px">Keputusan yang perlu kamu ambil: tambahkan mereka ke Contact Sphere di Bio GAINS, atau biarkan Bio GAINS murni "target market sama" dan perlakukan mereka sebagai jalur owner terpisah. Saya sarankan yang pertama, karena member membaca Bio GAINS, bukan app ini.</div>'
+   +'<div class="hr"></div><div class="kicker t">Siapa yang cocok dirujuk · dari Bio GAINS</div>'
+   +'<ul class="bl">'+SIAPA.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>');
+
+  h+=acc(7,'Bahasa Gejala · yang wajib dihafal member',
+   '<div class="ctxt">Jangan pernah mengajarkan nama produkmu. Ajarkan kalimat yang mereka dengar dari klien mereka.</div><div class="hr"></div>'
+   +'<table class="tbl"><tr><th>Kalimat yang diucapkan</th><th>Produk</th></tr>'
+   +GEJALA.map(function(g){return '<tr><td>'+g[0]+'</td><td><b>'+g[1]+'</b><br><span style="color:var(--muted);font-size:10px">'+g[2]+'</span></td></tr>'}).join('')+'</table>'
+   +'<div class="kicker" style="margin-top:15px">Pemicu peristiwa · jendela budget</div>'
+   +'<ul class="bl">'+PEMICU.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>'
+   +'<div class="kicker" style="margin-top:15px">Satu kalimat yang harus bisa diucapkan setiap member</div>'
+   +'<div class="say ok">"Saya kenal orang yang bisa memetakan kenapa tim Anda nggak jalan, pakai data, sebelum Anda keluar duit buat training."</div>'
+   +'<div class="say no">"Dia trainer bagus."</div>'
+   +'<div class="ctxt" style="margin-top:8px">Uji secara acak di sesi chapter: minta tiga member menjelaskan apa yang kamu kerjakan. Kalau mereka bilang "trainer", Visibility kamu belum selesai dan semua usaha lain akan bocor.</div>');
+
+  h+=acc(8,'Tangga Reactor → Promoter → Creator',
+   '<div class="kicker">Tingkat 0 → Reactor</div><div class="ctxt"><b>Masalah:</b> tidak ada yang pernah bilang "saya butuh team development consultant", jadi tidak ada yang bisa direspons.<br><b>Alat: Kartu Pemicu.</b> Satu kartu ukuran dompet, isinya 5 kalimat gejala. Instruksinya satu baris: "Kalau dengar salah satu kalimat ini, WhatsApp saya."</div><div class="hr"></div>'
+   +'<div class="kicker">Reactor → Promoter</div><div class="ctxt"><b>Masalah:</b> member menunggu. Promoter harus bertanya duluan.</div>'
+   +'<ul class="bl"><li><b>3 Pertanyaan Pancing</b> untuk dia pakai di akhir meeting dengan kliennya: "Tim Anda sekarang berapa orang?" · "Yang paling bikin repot sekarang, sistemnya atau orangnya?" · "Ada lagi yang bisa saya bantu?"</li>'
+   +'<li><b>Bukti Pinjam</b> satu halaman: logo klien, 105+ klien korporat, 7.500+ profesional, 81% repeat, dua testimoni. Member butuh ini bukan untuk menjual, tapi untuk <b>melindungi reputasinya sendiri</b>. Ini alasan nomor satu orang menahan referral untuk jasa mahal.</li>'
+   +'<li><b>Bread sebagai pengaman.</b> Ajarkan mereka menawarkan Lakon atau OAM, bukan training. Rp 150–200rb per orang membuat rekomendasi mereka nyaris tanpa risiko. Naik ke Meat urusan kamu.</li></ul><div class="hr"></div>'
+   +'<div class="kicker">Promoter → Creator</div><div class="ctxt"><b>Masalah:</b> Creator menciptakan peluang yang tadinya tidak ada. Tidak bisa diminta, harus dibuat menguntungkan buat dia. Lihat bagian 5.</div><div class="hr"></div>'
+   +'<div class="kicker g">Target komposisi akhir 12 bulan</div><div class="ctxt">Dari 99 member: <b>40 Reactor terlatih, 15 Promoter aktif, 6 Creator sejati.</b> Enam Creator itu yang akan menghasilkan mayoritas revenue.</div>');
+
+  h+=acc(9,'Co-Hosted Session · mesin utama',
+   '<div class="ctxt">Ini yang mengubah orang jadi Creator, karena dia punya kepentingan sendiri: dia terlihat hebat di depan kliennya, gratis.</div><div class="hr"></div>'
+   +'<div class="kicker o">Cara menawarkan · ucapkan persis</div>'
+   +'<div class="say">Anda undang 10 klien terbaik Anda, saya yang isi 90 menit, gratis. Anda yang jadi tuan rumah. Nama Anda yang harum, saya cuma numpang panggung.</div>'
+   +'<div class="kicker" style="margin-top:14px">Tiga format siap pakai</div>'
+   +'<ul class="bl"><li><b>"Kok Timnya Gitu Sih?"</b> — 90 menit MBTI ringan. Paling mudah dijual, energi tinggi, We Make Learning FUN.</li>'
+   +'<li><b>"3 Retakan yang Tidak Terlihat di Organisasi Anda"</b> — versi Ansaka, audiens owner, langsung menuju OAM.</li>'
+   +'<li><b>"Kenapa Training Anda Tidak Ngefek"</b> — audiens HR, provokatif, memposisikan kamu konsultan bukan vendor.</li></ul>'
+   +'<div class="kicker" style="margin-top:14px">Rundown 120 menit</div>'
+   +'<ul class="bl num"><li>15 menit — tuan rumah membuka, memperkenalkan tamu, cerita kenapa dia mengundang</li>'
+   +'<li>75 menit — sesi kamu, aktivitas dulu baru teori, minimal 3 momen tertawa</li>'
+   +'<li>15 menit — tawarkan Lakon atau OAM gratis untuk semua yang hadir, isi di tempat via QR</li>'
+   +'<li>15 menit — networking, tuan rumah menutup</li></ul>'
+   +'<div class="kicker g" style="margin-top:14px">Target</div>'
+   +'<div class="ctxt"><b>12 sesi dalam 12 bulan</b>, satu per bulan dari 12 nama Tier 1A. Kalau tiap sesi menghadirkan 10 perusahaan dan 20% menerima OAM, itu 24 pipeline korporat berkualitas tinggi setahun. Ini mesin pencapaian target, bukan referral satuan.</div>');
+
+  h+=acc(10,'Panggung chapter · satu ke seratus',
+   '<div class="ctxt">121 itu satu ke satu. Panggung chapter itu satu ke seratus. Kamu kebetulan berprofesi sebagai orang panggung, dan ini keunggulan terbesarmu yang belum dipakai.</div><div class="hr"></div>'
+   +'<div class="kicker g">Modal yang sudah kamu punya</div><div class="ctxt">Di BNI GROW Jakarta Barat kamu sudah <b>Gold Club Member</b>, <b>Green Member</b>, dan <b>Launch Director Consultant BNI Ventura</b>, anggota sejak Agustus 2024. Visibility dan Credibility di level chapter sudah terbangun. Yang belum dipanen adalah mengubahnya jadi Profitability, dan itu soal ketajaman permintaan, bukan soal dikenal.</div><div class="ctxt" style="margin-top:9px">Peran Launch Director juga memberi akses lintas chapter yang tidak dimiliki member biasa. Itu kolam pengganti kalau ada member di chapter sendiri yang tidak cocok.</div><div class="hr"></div>'
+   +'<div class="kicker">Ambil peran Education Coordinator</div><div class="ctxt">Slot edukasi mingguan adalah mesin Visibility dan Credibility paling efisien yang tersedia. Setiap minggu kamu berdiri di depan 99 orang sebagai <b>orang yang mengajarkan</b>, bukan yang menawarkan. Dalam 3 bulan posisimu di chapter berubah total. Kalau posisi terisi, tawarkan diri jadi pengisi tetap.</div><div class="hr"></div>'
+   +'<div class="kicker">Kartu As 1: Lakon untuk seluruh chapter</div><div class="ctxt">Lakon gratis untuk 99 member. Biaya variabelmu nol. Hasilnya: setiap member memegang laporan bermerek Mitologi Inspira dengan namanya sendiri, mengalami produkmu langsung, dan punya alasan alami menceritakannya. Ini memindahkan seluruh chapter dari Visibility ke Credibility dalam satu gerakan. <b>Jalankan di bulan 3, jangan minggu 1</b>, supaya tidak terlihat gimmick.</div><div class="hr"></div>'
+   +'<div class="kicker">Kartu As 2: Leadership Team chapter</div><div class="ctxt">Tawarkan Team Synergy setengah hari gratis untuk Leadership Team chapter. Mereka tim sungguhan dengan target sungguhan. Hasilnya jadi studi kasus internal, dan 8–10 orang paling berpengaruh di chapter mengalami produkmu penuh.</div><div class="hr"></div>'
+   +'<div class="kicker">Visitor Day</div><div class="ctxt">Minta setiap Tier 1A membawa satu klien korporat sebagai tamu. Untuk mereka itu ajakan biasa, buat kamu itu prospek yang datang sendiri.</div>');
+
+  h+=acc(11,'Aturan 3 kali 121 · dan kenapa tidak semua orang dapat 3',
+   '<div class="ctxt">Ada keyakinan di BNI bahwa referral baru mengalir setelah pertemuan ketiga dengan orang yang sama. Yang terbukti dari riset BNI di Eropa adalah korelasi linear: makin banyak 121, makin banyak referral diberikan <b>dan</b> diterima. Pertemuan ketiga adalah titik di mana kepercayaan cukup untuk seseorang berani menaruh reputasinya pada namamu.</div><div class="hr"></div>'
+   +'<div class="kicker">Aritmetika yang memaksa pilihan</div>'
+   +'<div class="ctxt">99 member × 3 putaran = <b>297 sesi</b> = 74 minggu pada 4 sesi per minggu. Tidak muat dalam setahun. Jadi 3 putaran harus dijatah, bukan dibagi rata.</div>'
+   +'<table class="tbl" style="margin-top:11px"><tr><th>Kelompok</th><th>Orang</th><th>Putaran</th><th>Sesi</th></tr>'
+   +'<tr><td><b>Tier 1A</b></td><td>12</td><td>3</td><td>36</td></tr>'
+   +'<tr><td><b>Calon Klien</b></td><td>17</td><td>3</td><td>51</td></tr>'
+   +'<tr><td><b>Tier 1B</b></td><td>16</td><td>3</td><td>48</td></tr>'
+   +'<tr><td><b>Tier 2</b></td><td>15</td><td>1</td><td>15</td></tr>'
+   +'<tr><td><b>Tier 3</b></td><td>39</td><td>1</td><td>39</td></tr>'
+   +'<tr><td colspan="3"><b>Total</b></td><td><b>189</b></td></tr></table>'
+   +'<div class="ctxt" style="margin-top:11px">17 calon klien semuanya berada di Tier 2, jadi baris Tier 2 hanya menghitung 15 sisanya. 189 sesi terjadwal dari 208 slot, menyisakan <b>19 slot bebas</b> untuk member baru, undangan yang masuk, dan putaran tambahan buat siapa pun yang naik tier di tengah jalan.</div>'
+   +'<div class="say" style="margin-top:12px">45 orang yang bisa menggerakkan uang dapat 3 putaran penuh. 71 orang sisanya dapat 1 putaran. Ini keputusan sadar: aturan 3 kali itu benar, tapi hanya layak untuk orang yang memang layak diinvestasikan 3 kali.</div>'
+   +'<div class="ctxt" style="margin-top:11px;color:var(--muted);font-size:11.5px">Kalau ada orang di Tier 2 atau 3 yang ternyata menunjukkan tanda Promoter, naikkan tiernya di profilnya dan pakai slot bebas di minggu 43 ke atas untuk putaran kedua dan ketiga.</div>');
+
+  h+=acc(12,'Kalau ada member yang tidak cocok',
+   '<div class="ctxt">Chemistry itu variabel nyata, bukan alasan. Ada orang yang tidak akan pernah membalas WhatsApp kamu, dan ada yang secara pribadi tidak nyambung. Memaksakan 121 dengan mereka membuang tiga slot yang bisa dipakai untuk orang lain.</div><div class="hr"></div>'
+   +'<div class="kicker">Yang menentukan agenda adalah klasifikasi, bukan orangnya</div>'
+   +'<div class="ctxt">Slot "Tier 1A · ERP System" itu penting karena implementasi ERP memicu masalah adopsi manusia, bukan karena orangnya bernama Maria. Kalau kamu menemukan orang lain dengan klasifikasi yang sama, termasuk di chapter lain, slot itu tetap bernilai penuh.</div><div class="hr"></div>'
+   +'<div class="kicker">Cara mengganti</div>'
+   +'<ul class="bl num"><li>Buka profil orangnya di tab Anggota</li>'
+   +'<li>Scroll ke <b>Kalau tidak cocok</b>, isi nama pengganti dan klasifikasinya</li>'
+   +'<li>Simpan. Jadwal, script, dan tier tetap jalan, cuma namanya yang berubah</li></ul>'
+   +'<div class="ctxt" style="margin-top:11px">Kalau tidak ada penggantinya, pakai <b>Lewati</b>. Orang yang dilewati dikeluarkan dari penyebut progres supaya angkanya tidak bohong, dan slotnya jadi slot bebas.</div><div class="hr"></div>'
+   +'<div class="kicker d">Satu peringatan</div>'
+   +'<div class="ctxt">Jangan melewati orang hanya karena dia terlihat tidak berguna buatmu. Tier 3 pun bisa punya satu klien yang persis targetmu. Lewati hanya kalau sudah tiga kali diajak dan tidak ada respons, atau ada alasan personal yang nyata.</div>');
+
+  h+=acc(13,'Aturan main yang tidak boleh dilanggar',
+   '<ul class="bl"><li><b>Kalau kamu yang mengajak, sesi itu tentang dia.</b> Kamu bertanya untuk belajar cara memberi referral kepadanya, bukan cara mendapat. Kalau tidak sempat ganti giliran, sesi itu tetap sukses.</li>'
+   +'<li><b>Teknik orang ketiga.</b> Sisakan 5 menit di akhir: kalian berdua pilih satu member lain dan brainstorm siapa yang bisa kalian bantu untuk dia. Murah, cepat, efeknya berlipat.</li>'
+   +'<li><b>VCP bukan rumus.</b> Bukan V + C = P. Ini tahapan. Lompat dari Visibility ke Profitability bukan networking, itu direct selling yang canggung.</li>'
+   +'<li><b>Visibility bukan sekadar hadir</b>, tapi diingat dengan jelas. Kalau member tidak bisa cepat menjelaskan apa yang kamu kerjakan, visibility-mu belum lengkap.</li>'
+   +'<li><b>Memberi referral = menyerahkan sebagian reputasi.</b> Referral baik menaikkannya, buruk merusaknya. Ini sebab utama member enggan mereferensikan jasa mahal. Bread menurunkan risiko reputasi mereka.</li>'
+   +'<li><b>Terima setiap ajakan 121.</b> Ajakan adalah sinyal, dan menolak merusak kredibilitas.</li>'
+   +'<li><b>Yang menang adalah yang paling banyak 121 dan paling banyak memberi.</b> Referral yang kamu terima adalah akibat, bukan target yang bisa dikejar langsung.</li></ul>');
+
+  h+=acc(14,'Minggu Nama Perusahaan · ask paling tajam',
+   '<div class="ctxt">Ada tingkatan dalam ketajaman permintaan. Makin spesifik, makin mudah otak orang memprosesnya, dan makin tinggi level referral yang keluar.</div>'
+   +'<table class="tbl" style="margin-top:11px"><tr><th>Tingkat</th><th>Bentuk</th><th>Hasil</th></tr>'
+   +'<tr><td>0</td><td>"Perusahaan yang butuh training"</td><td>Nol. Tidak bisa diproses</td></tr>'
+   +'<tr><td>1</td><td>"HR Manager pabrik 100+ karyawan"</td><td>Reactor ingat kalau kebetulan ketemu</td></tr>'
+   +'<tr><td>2</td><td>"Perusahaan yang baru ganti ERP tahun ini"</td><td>Promoter aktif mencari</td></tr>'
+   +'<tr><td><b>3</b></td><td><b>"Siapa yang kenal orang di PT Contoh?"</b></td><td><b>Creator membuka jalan. Level 4–5</b></td></tr></table>'
+   +'<div class="hr"></div><div class="kicker o">Kenapa nama perusahaan lebih ampuh</div>'
+   +'<div class="ctxt">Otak manusia tidak bisa mencari di kategori abstrak, tapi sangat cepat mencocokkan nama. Begitu kamu menyebut "PT Contoh", 99 orang langsung memindai memori: pernah dengar, pernah jadi vendor, adiknya kerja di sana, satu grup dengan klien saya. Pencarian itu tidak akan pernah terjadi kalau kamu bilang "perusahaan menengah".</div>'
+   +'<div class="hr"></div><div class="kicker">Ritmenya</div>'
+   +'<div class="ctxt">Satu dari empat minggu adalah Minggu Nama Perusahaan. Ada <b>13 minggu</b> dalam setahun, jatuh di minggu 2, 6, 10, dan seterusnya. Tiga minggu lain tetap ask profesi, supaya tidak monoton dan tetap menangkap peluang yang tidak kamu duga.</div>'
+   +'<div class="hr"></div><div class="kicker">Cara menyusun daftar target</div>'
+   +'<ul class="bl num"><li><b>Klien lama yang bisa dimasuki lagi.</b> Sepuluh nama di Bio GAINS kamu adalah titik awal: '+KLIENLAMA.join(', ')+'. Yang sudah 2 tahun tidak dipegang paling empuk, karena kamu sudah punya bukti internal dan orang dalam.</li>'
+   +'<li><b>Saring dengan industri prioritas Bio GAINS:</b> Perbankan, Teknologi, Telekomunikasi, FMCG, Otomotif, Media, Hospitality. Minimal 50 karyawan.</li>'
+   +'<li><b>Dari catatan GAINS Tier 1A.</b> Setiap kali member menyebut nama klien besar, catat. Setelah 12 sesi Tier 1A kamu punya puluhan nama.</li>'
+   +'<li><b>Perusahaan dengan pemicu peristiwa.</b> Ganti ERP, pindah kantor, ganti Direktur, akuisisi. Ini yang paling mendesak.</li>'
+   +'<li><b>Grup usaha dari klien member.</b> Kalau Erly menangani satu anak perusahaan grup besar, seluruh grup itu target.</li></ul>'
+   +'<div class="hr"></div><div class="kicker t">Cara mengucapkannya</div>'
+   +'<div class="say ok">"Minggu ini saya cuma minta satu hal. Siapa di ruangan ini yang kenal orang di dalam PT Contoh Indonesia? Bukan harus decision maker. Siapa saja yang kerja di sana, atau vendor mereka, atau pernah jadi vendor mereka. Satu nama saja cukup."</div>'
+   +'<div class="ctxt" style="margin-top:9px"><b>Kuncinya di kalimat "bukan harus decision maker".</b> Tanpa itu, orang menyaring diri sendiri dan diam. Dengan itu, ambangnya turun sampai hampir nol dan tangan mulai naik.</div>'
+   +'<div class="hr"></div><div class="kicker d">Jangan</div>'
+   +'<ul class="bl"><li>Jangan sebut lebih dari 3 nama dalam satu sesi. Empat nama sama saja dengan nol nama.</li>'
+   +'<li>Jangan pakai minggu ini untuk menjelaskan produkmu. Ini murni permintaan.</li>'
+   +'<li>Jangan lupa mengabarkan hasilnya minggu berikutnya, walaupun nihil. Orang berhenti mencari kalau tidak pernah tahu hasilnya.</li></ul>');
+
+  h+=acc(15,'Kapasitas lebih dari 4 per minggu',
+   '<div class="ctxt">Sebagai Launch Director Consultant BNI Ventura, jaringan Anda lebih luas dari 99 nama di chapter sendiri. Empat slot per minggu adalah <b>lantai, bukan langit-langit</b>.</div>'
+   +'<div class="hr"></div><div class="kicker">Cara menambah</div>'
+   +'<ul class="bl num"><li>Di Beranda atau Jadwal, tap <b>Tambah 121 di minggu ini</b> di bawah empat slot terjadwal.</li>'
+   +'<li>Pilih dari daftar yang ada, atau tap <b>Orang baru atau luar chapter</b>.</li>'
+   +'<li>Script-nya dipilih otomatis dari tier orangnya, dan putarannya dihitung dari riwayat 121 dia.</li></ul>'
+   +'<div class="hr"></div><div class="kicker">Member GROW vs luar chapter</div>'
+   +'<div class="ctxt">Saat menambah orang, ada pilihan asal. Yang <b>luar chapter</b> diberi label abu "Luar" di semua tampilan, dan bisa disaring lewat filter di tab Anggota.</div>'
+   +'<div class="ctxt" style="margin-top:9px">Bedanya nyata, bukan kosmetik: member GROW hadir tiap minggu, jadi tindak lanjut terjadi sendiri lewat sesi chapter dan ada tekanan sosial untuk membalas. Orang luar chapter tidak. Semua tindak lanjut ada di tangan Anda, dan mereka tidak terikat Givers Gain.</div>'
+   +'<div class="say" style="margin-top:10px">Karena itu jangan pakai kapasitas ekstra untuk memperbanyak orang luar chapter sampai 45 orang prioritas di dalam chapter tuntas 3 putaran. Jaringan yang lebih luas itu aset, tapi chapter yang dikerjakan setengah-setengah itu kebocoran.</div>'
+   +'<div class="hr"></div><div class="kicker g">Pemakaian terbaik untuk slot ekstra</div>'
+   +'<ul class="bl"><li>Menaikkan Tier 2 atau 3 yang ternyata menunjukkan tanda Promoter ke putaran kedua dan ketiga.</li>'
+   +'<li>Menemui kontak lintas chapter yang klasifikasinya persis Contact Sphere Anda, terutama Konsultan HR dan Konsultan Bisnis.</li>'
+   +'<li>Sesi lanjutan mendadak dengan Tier 1A yang sedang panas, misalnya menyiapkan Co-Hosted Session.</li></ul>');
+
+  h+=acc(16,'Riwayat 121 · apa yang tercatat',
+   '<div class="ctxt">Tiap kali Anda mencentang sesi di Beranda, satu baris riwayat otomatis dibuat di profil orang itu.</div>'
+   +'<div class="hr"></div><div class="kicker">Yang tercatat otomatis</div>'
+   +'<ul class="bl"><li><b>Tanggal</b> hari Anda mencentang, bisa diubah kalau Anda mencentangnya terlambat.</li>'
+   +'<li><b>Putaran keberapa</b> untuk orang itu.</li>'
+   +'<li><b>Jenis sesi</b>, misalnya Tier 1A · GAINS atau Tier 1A · Edukasi.</li></ul>'
+   +'<div class="kicker" style="margin-top:14px">Yang Anda isi sendiri</div>'
+   +'<ul class="bl"><li><b>Apa yang dibicarakan.</b> Poin GAINS baru, klien besar yang dia sebut, keberatan yang muncul, hal personal yang perlu diingat.</li>'
+   +'<li><b>Hasil konkret.</b> Nama yang dia kasih, komitmen, tanggal Co-Hosted. Ini yang membuat Anda bisa menagih dengan sopan tiga bulan kemudian.</li></ul>'
+   +'<div class="hr"></div><div class="kicker d">Bedanya dengan kotak catatan GAINS</div>'
+   +'<div class="ctxt">Kotak <b>Catatan GAINS</b> di profil adalah profil hidup orang itu, ditimpa terus dan selalu berisi versi terkini. <b>Riwayat 121</b> adalah jurnal per sesi yang tidak pernah ditimpa. Yang pertama menjawab "siapa dia sekarang", yang kedua menjawab "apa yang terjadi di antara kita".</div>'
+   +'<div class="say" style="margin-top:10px">Kebiasaan yang bikin ini berguna: isi catatan sesi <b>malam itu juga</b>, jangan besok. Yang paling sering hilang bukan poin bisnisnya, tapi detail personal yang justru membuat pertemuan ketiga terasa hangat.</div>'
+   +'<div class="hr"></div><div class="kicker o">Hitungan putaran diambil dari sini</div>'
+   +'<div class="ctxt">Tidak ada tombol "sudah / belum" yang perlu Anda isi manual. Jumlah putaran tiap orang <b>dihitung dari jumlah baris riwayatnya</b>. Jadi kalau di profil tertulis "2 dari 3 putaran", artinya ada dua sesi tercatat dan satu lagi masih terjadwal.</div>'
+   +'<div class="ctxt" style="margin-top:9px">Konsekuensinya: kalau Anda 121 di luar jadwal dan lupa mencatat, hitungannya ikut salah. Untuk itu ada tombol <b>Catat sesi 121 yang sudah terjadi</b> di profil tiap orang.</div>'
+   +'<div class="ctxt" style="margin-top:9px">Bar progres di paling atas app juga memakai jumlah sesi, bukan jumlah orang. Yang diukur adalah pekerjaan yang selesai, bukan berapa banyak nama yang pernah disentuh sekali.</div>'
+   +'<div class="ctxt" style="margin-top:10px;color:var(--muted);font-size:11.5px">Riwayat ikut terbawa saat Anda menekan Ekspor di tab Skor.</div>');
+
+  h+=acc(17,'Semua script 121',
+   ['1A1','1A2','P','1B','ADJ','23'].map(function(k){
+     return '<div class="tr"><div class="trm" onclick="openScript(\''+k+'\')"><div class="n">'+SC[k].ttl+'</div><div class="p">'+SC[k].sub+'</div></div><div class="trr"><span class="mini">Buka</span></div></div>'
+   }).join(''));
+
+  return h;
+}
+
+/* ---- KPI ---- */
+function vKpi(){
+  var rev=S.deals.reduce(function(a,d){return a+(d.s==='Closing'?(+d.v||0):0)},0);
+  var pipe=S.deals.reduce(function(a,d){return a+(d.s!=='Closing'&&d.s!=='Batal'?(+d.v||0):0)},0);
+  var pct=Math.min(100,Math.round(rev/1500*100));
+  var wk=S.week, tgt121=wk*4;
+  function box(l,v,t,k){return '<div class="kbox"><div class="kl">'+l+'</div><div class="kv">'+v+'</div><div class="kt">'+t+'</div>'
+    +(k?'<div class="kctl"><button onclick="kpi(\''+k+'\',-1)">−</button><button onclick="kpi(\''+k+'\',1)">+</button></div>':'')+'</div>'}
+  var h='<div class="sechead">Skor</div><div class="secsub">Isi bagian ini seminggu sekali, sehabis meeting chapter. Lima menit cukup.</div>'
+   +'<div class="acc" id="achelp"><div class="acch" onclick="document.getElementById(\'achelp\').classList.toggle(\'open\')"><div class="ai">?</div><div class="at">Cara mengisi halaman ini</div><div class="ac">›</div></div><div class="accb">'
+   +'<div class="kicker">Kapan diisi</div><div class="ctxt">Sekali seminggu, sehabis meeting chapter. Kalau dilakukan tiap hari malah nggak jalan.</div><div class="hr"></div>'
+   +'<div class="kicker">1. Enam kotak angka</div>'
+   +'<div class="ctxt">Tap <b>+</b> tiap kali sesuatu terjadi, tap <b>−</b> kalau salah pencet. Nggak perlu diisi ulang dari nol, angkanya menumpuk sepanjang tahun.</div>'
+   +'<ul class="bl"><li><b>121 dilakukan</b> terisi sendiri dari centang di Beranda. Anda nggak perlu apa-apa.</li>'
+   +'<li><b>Referral diberikan</b> +1 tiap kali Anda kasih nama ke member lain. Ini yang paling penting, dan yang paling sering lupa dicatat.</li>'
+   +'<li><b>Referral diterima L3+</b> +1 hanya kalau kualitasnya minimal Level 3, yaitu orangnya ikut ngomongin Anda ke prospek. Kalau cuma dikasih nomor telepon, itu Level 1 dan jangan dihitung.</li>'
+   +'<li><b>Co-Hosted Session</b> +1 tiap sesi yang benar-benar berjalan, bukan yang baru dijanjikan.</li>'
+   +'<li><b>OAM terkirim</b> +1 tiap kali link survey dikirim ke satu perusahaan.</li>'
+   +'<li><b>Lakon ditebus</b> +1 tiap satu orang selesai mengisi Lakon, bukan tiap voucher dibagikan.</li></ul>'
+   +'<div class="ctxt" style="margin-top:9px;color:var(--muted);font-size:11.5px">Tulisan kecil di bawah tiap angka adalah target yang seharusnya sudah tercapai di minggu ini. Kalau angka Anda di bawahnya, itu sinyal, bukan vonis.</div><div class="hr"></div>'
+   +'<div class="kicker">2. Daftar Target Perusahaan</div>'
+   +'<div class="ctxt">Ini daftar nama PT yang mau Anda tembus. Dipakai otomatis di 13 "Minggu Nama Perusahaan". Isi tiga kolomnya:</div>'
+   +'<ul class="bl"><li><b>Nama perusahaan</b> — tulis lengkap seperti orang menyebutnya sehari-hari. "Gudang Garam", bukan "PT Gudang Garam Tbk".</li>'
+   +'<li><b>Kenapa dia target</b> — satu baris. Jumlah karyawan, atau pemicunya. Contoh: "2.400 karyawan, baru ganti Direktur HR". Ini yang Anda bacakan di depan chapter.</li>'
+   +'<li><b>Dugaan jalur masuk</b> — tebakan siapa yang mungkin punya akses. Contoh: "Vendor seragam Herwin?" Boleh salah, gunanya cuma memancing ingatan orang.</li></ul>'
+   +'<div class="ctxt" style="margin-top:9px">Isi minimal 10 nama sekali duduk, lalu tambah tiap kali ada member yang menyebut klien besar di sesi 121. Yang tampil di Beranda otomatis 3 teratas, jadi urutannya penting: taruh yang paling panas di atas dengan menghapus dan menambah ulang.</div><div class="hr"></div>'
+   +'<div class="kicker">3. Deal log</div>'
+   +'<div class="ctxt">Catat tiap peluang yang muncul dari BNI, sejak masih obrolan. Tiga kolomnya:</div>'
+   +'<ul class="bl"><li><b>Nama</b> — perusahaan plus programnya. Contoh: "Sinarmas · Applied MBTI 2 hari".</li>'
+   +'<li><b>Nilai</b> — dalam <b>juta</b>, angka saja. Untuk 54 juta tulis <b>54</b>, jangan 54000000. Untuk LDaaS tulis nilai setahun, jadi Growth 15 jt/bulan ditulis <b>180</b>.</li>'
+   +'<li><b>Status</b> — Prospek, Proposal, Negosiasi, Closing, atau Batal. Ubah dengan menghapus lalu menambah ulang.</li></ul>'
+   +'<div class="ctxt" style="margin-top:9px">Bar revenue di atas hanya menjumlahkan yang statusnya <b>Closing</b>. Prospek, Proposal, dan Negosiasi masuk ke angka pipeline. Batal tidak dihitung di mana pun.</div><div class="hr"></div>'
+   +'<div class="kicker">4. Komposisi partner</div>'
+   +'<div class="ctxt">Tabel ini terisi sendiri dari level Reactor / Promoter / Creator yang Anda set di profil tiap member. Jadi cara mengisinya bukan di sini, tapi di tab Anggota sehabis 121.</div>'
+   +'</div></div>'
+   +'<div class="card"><div class="kicker">Revenue vs target 1,5 M</div>'
+   +'<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px"><div style="font-family:Bebas Neue,sans-serif;font-size:34px;line-height:1">'+rev+' <span style="font-size:15px">jt</span></div><div style="font-size:12px;font-weight:900;color:var(--red)">'+pct+'%</div></div>'
+   +'<div class="track"><div class="fill" style="width:'+pct+'%"></div></div>'
+   +'<div class="ctxt" style="margin-top:9px;font-size:11.5px;color:var(--muted)">Pipeline berjalan: <b>'+pipe+' jt</b> · Minggu '+wk+' dari 52</div></div>'
+   +'<div class="kgrid">'
+   +box('Sesi 121 selesai',totalDone(),'target '+tgt121+' pada minggu '+wk)
+   +box('Referral diberikan',S.kpi.given,'target 3/minggu · '+(wk*3),'given')
+   +box('Referral diterima L3+',S.kpi.recv,'target 2/minggu · '+(wk*2),'recv')
+   +box('Co-Hosted Session',S.kpi.cohost,'target 12/tahun','cohost')
+   +box('OAM terkirim',S.kpi.oam,'target 30/tahun','oam')
+   +box('Lakon ditebus',S.kpi.lakon,'target 100/tahun','lakon')
+   +'</div>';
+
+  h+='<div class="card"><div class="kicker g">Komposisi partner</div>';
+  var cR=0,cP=0,cC=0;for(var k in S.lvl){if(S.lvl[k]==='Reactor')cR++;if(S.lvl[k]==='Promoter')cP++;if(S.lvl[k]==='Creator')cC++}
+  h+='<table class="tbl"><tr><th>Level</th><th>Sekarang</th><th>Target 12 bln</th></tr>'
+   +'<tr><td><b>Reactor</b></td><td>'+cR+'</td><td>40</td></tr>'
+   +'<tr><td><b>Promoter</b></td><td>'+cP+'</td><td>15</td></tr>'
+   +'<tr><td><b>Creator</b></td><td>'+cC+'</td><td>6</td></tr></table></div>';
+
+  h+='<div class="card"><div class="kicker">Daftar Target Perusahaan</div>'
+   +'<div class="ctxt" style="font-size:11.5px;margin-bottom:10px">Dipakai di 13 "Minggu Nama Perusahaan" sepanjang tahun. Isi minimal 10 nama, tampilkan 3 teratas tiap sesi.</div>'
+   +(S.targets.length?S.targets.map(function(t,i){return '<div class="tr"><div class="trm"><div class="n">'+t.n+'</div><div class="p">'+(t.why||'')+(t.who?' · '+t.who:'')+'</div></div><div class="trr"><span class="mini" onclick="delTarget('+i+')">Hapus</span></div></div>'}).join('')
+     :'<div class="ctxt" style="color:var(--muted)">Belum ada target.</div>')
+   +'<div class="hr"></div>'
+   +'<div class="fld"><label>Nama perusahaan</label><input id="tn" placeholder="PT Contoh Indonesia"></div>'
+   +'<div class="fld"><label>Kenapa dia target</label><input id="tw" placeholder="2.400 karyawan, baru ganti Direktur HR"></div>'
+   +'<div class="fld"><label>Dugaan jalur masuk</label><input id="to" placeholder="Vendor seragam Herwin? Satu grup dengan klien Erly?"></div>'
+   +'<button class="btn ghost" onclick="addTarget()">Tambah target</button></div>';
+  h+='<div class="card"><div class="kicker">Deal log</div>'
+   +(S.deals.length?S.deals.map(function(d,i){return '<div class="tr"><div class="trm"><div class="n">'+d.n+'</div><div class="p">'+d.v+' jt · '+d.s+'</div></div><div class="trr"><span class="mini" onclick="delDeal('+i+')">Hapus</span></div></div>'}).join(''):'<div class="ctxt" style="color:var(--muted)">Belum ada deal tercatat.</div>')
+   +'<div class="hr"></div>'
+   +'<div class="fld"><label>Nama perusahaan / program</label><input id="dn" placeholder="PT Contoh · Applied MBTI 2 hari"></div>'
+   +'<div class="fld"><label>Nilai (juta)</label><input id="dv" type="number" inputmode="numeric" placeholder="55"></div>'
+   +'<div class="fld"><label>Status</label><select id="ds"><option>Prospek</option><option>Proposal</option><option>Negosiasi</option><option>Closing</option><option>Batal</option></select></div>'
+   +'<button class="btn" onclick="addDeal()">Tambah deal</button></div>';
+
+  h+='<div class="card"><div class="kicker d">Data & penyimpanan</div>'
+   +'<div class="ctxt" style="font-size:12px">Setiap centang, catatan, dan angka <b>tersimpan otomatis saat itu juga</b>. Nggak ada tombol simpan, dan nggak akan hilang kalau app ditutup atau HP dimatikan.</div>'
+   +'<div class="ctxt" style="font-size:12px;margin-top:9px">Yang perlu Anda tahu: datanya tersimpan di <b>browser perangkat ini saja</b>. Jadi tiga hal ini bikin hilang: menghapus data browsing, membuka app dari perangkat lain, atau membuka lewat browser yang berbeda di HP yang sama.</div>'
+   +'<div class="say" style="margin-top:10px">Kebiasaan aman: tekan Ekspor sebulan sekali, simpan filenya di Google Drive. Kalau sesuatu terjadi, isinya bisa dipulihkan.</div>'
+   +'<div class="ctxt" style="font-size:11.5px;color:var(--muted);margin-top:9px">Kalau Anda mau ini sinkron antara HP dan laptop, perlu ditambah backend Apps Script seperti Client OS.</div>'
+   +'<div class="hr"></div><div class="kicker">Pasang di layar utama HP</div>'
+   +'<div class="ctxt" style="font-size:12px">Buka file ini di browser, lalu:</div>'
+   +'<ul class="bl"><li><b>iPhone (Safari):</b> tombol Share di bawah, pilih <b>Add to Home Screen</b>.</li>'
+   +'<li><b>Android (Chrome):</b> menu tiga titik, pilih <b>Install app</b> atau <b>Add to Home screen</b>.</li></ul>'
+   +'<div class="ctxt" style="font-size:12px;margin-top:8px">Ikon BNI muncul sendiri, dan app terbuka penuh tanpa address bar. Progres yang sudah tersimpan tetap terbaca.</div>'
+   +'<div class="say" style="margin-top:10px">Penting: kalau file ini di-host (misalnya GitHub Pages), pasang dari alamat itu, jangan dari file lokal. Kalau dipasang dari file lokal lalu nanti pindah ke alamat online, datanya tidak ikut, karena browser menganggapnya dua tempat berbeda.</div>'
+   +'<button class="btn ghost" style="margin-top:10px" onclick="exportJSON()">Ekspor data</button>'
+   +'<button class="btn ghost" style="margin-top:7px" onclick="resetAll()">Reset semua</button></div>';
+  return h;
+}
+function addTarget(){var n=document.getElementById('tn').value.trim();if(!n){toast('Isi nama perusahaan');return}
+ S.targets.push({n:n,why:document.getElementById('tw').value.trim(),who:document.getElementById('to').value.trim()});saveS();render();toast('Target ditambahkan')}
+function delTarget(i){S.targets.splice(i,1);saveS();render()}
+function kpi(k,d){S.kpi[k]=Math.max(0,(S.kpi[k]||0)+d);saveS();render()}
+function addDeal(){var n=document.getElementById('dn').value.trim(),v=document.getElementById('dv').value,s=document.getElementById('ds').value;
+ if(!n){toast('Isi nama dulu');return}S.deals.unshift({n:n,v:v||0,s:s});saveS();render();toast('Deal ditambahkan')}
+function delDeal(i){S.deals.splice(i,1);saveS();render()}
+function exportJSON(){
+ var b=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
+ var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='bni-engine-'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('Data diekspor')}
+function resetAll(){if(!confirm('Hapus semua progres?'))return;S={met:{},notes:{},vcp:{},lvl:{},task:{},sub:{},skip:{},extra:[],kpi:{given:0,recv:0,cohost:0,oam:0,lakon:0},deals:[],week:1};saveS();render();toast('Direset')}
+
+/* ---- SHEET ---- */
+function sheet(t,s,h){document.getElementById('sht').innerHTML=t;document.getElementById('shs').innerHTML=s;document.getElementById('shb').innerHTML=h;document.getElementById('sheet').classList.add('on')}
+function closeSheet(){document.getElementById('sheet').classList.remove('on');render()}
+function openWeekPick(){
+  var h='<div class="ctxt" style="margin-bottom:12px">Pilih minggu aktif. Semua tampilan Beranda mengikuti pilihan ini.</div>';
+  h+='<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:7px">';
+  for(var w=1;w<=52;w++){var dc=0;for(var i=0;i<4;i++)if(slotDone(w,i))dc++;
+   h+='<button class="chip" style="text-align:center;padding:11px 0;'+(w===S.week?'background:#191919;color:#fff;border-color:#191919':(dc===4?'background:#E9F7F1;color:#137A57;border-color:#CBEBDE':''))+'" onclick="setWeek('+w+');closeSheet()">'+w+'</button>'}
+  h+='</div>';
+  sheet('Pilih Minggu','52 minggu · Bulan 1–12',h);
+}
+function enterApp(){document.getElementById('cover').classList.add('hidden')}
+
+/* ---- PWA: manifest dibuat runtime supaya file tetap satu ---- */
+(function(){
+  try{
+    var I192='data:image/png;base64,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';
+    var I512='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AABQHklEQVR42u3deZxcVZk38N9zzq2q3qr3bISAQUkgCYskgKKYgERc3hmXmXZ3EEV0BhkVFUTRTruCC6MjLi84ouOeOOrovKMxahJQWcOaBBIQhARC0ntXb1V1z3neP+6tThNDyNLdtfTv+/k0S7bu3Lpdz+88Z7kCmlQKCADZgOUGADZgo+8A/P5+7d0NpzRqtSQ0nz05qcbmRU9LiW3MwzcKsNRBIdGfmbaQhZ6Xl4iKzABw0G0CZBSAhUCBTQmYvqy6voTKXTnxThKp+2RE88/vv7dvf39OO2BWxO+TK7DRA1ABlFd48ggvweQV/BWYqYI1bt9fc2fT0oakyc5JWZyY9X5JXnFsSsxxedUTRJC0kBYjQACBgUChCMe9YB6KnPL7gohKQ1IK71WRAIBA4KEIofAKOGi3KnIJkQez6h9JCB5LGbM56/BAzqd2Levd1P+376dtdgP2CAMBA0CJF/02swF75BxsDPe9gR9qfmihBuHCrOIl3utSFSwC0JwWK1ZQ+OZAThUKII+oukc/pZDoG2v8ayXC146ISuc9UDGuOAug4967DAAkICJxWLAQGAGcAhl1CqBHFFuNkU0pwU0SBtuO7zl+274DqPVYHqzATAXWeIYBBoCiKbSr9h3lr8fyYG5z/wJnwzO9ytkeeqaHLqwRYw0EYVzoHRQe6vbexCKFbxQWdyKq0JAAATziQY4CYiDWQpAUQRB3DYbVOwPZZiC3GdGbrQtue6KnYfv4AVahO3CgaVViAJjwkT6wRmXcDfdAy1npHDLnBtAVecH5BrqgRqwFgBw8sqrQsWIfFXrh9SciAuI0UAgGCohAbEoEyWhMhGF1zkO2JxRrQ8iGJNJ/OLH7z5lx780GaBN2BhgAJtxqwLahDeNH+tubTzo6Z3WlqJzt4VcmxRydgGB0n4KvEBOP6HmtiYgOPhSoQP34QFAFgzwUOfU7Dcw6Fb056WTdgp77d47vDKzBGrwecLyMDABHOtofS5QPtCxMO9hzvMg7FTinTmxaAYyqRw7qo5uVBZ+IaPICgZgkxFSJgQAYVJcRYL1R/Q8Lt/7E7m2ZZ3oPJwaAZyv8ZgOWm/FzTffPWHwWvLxdRF+REHO0ATCsCgdfaOsbxPP3REQ06Tzi7oCFsTUi8ADy6neqyq9h9DsndW75c+EXR4sHN3rhWgEGgP3Zt81/y8wlsxq8/L2Hvl0EZ1XBYCQe6UdhdGykT0RExRu0KaAeEElCTLUYjMJDFX82kO/0G/3lC/ds3h39Wk4PMAD8TeHHWIvonqaTlyStvyAPfVud2Fn5aEVq4QZj0SciKv0wYGrESAKCQXW7E5Dv5Zz57qm9922Of52sAcx0DwLTtpitBuwWQAvbR7bOXLLSe7zNA29IG5PMeI8Q3iHau8r2PhFReYUBD6gGMDZtDDLe5wzwE2PwvUV7Nq8Dou3ciwGZrkFg2gWA/Rd+/XAgZmUQpUV4aAiI5WifiKgiugLOQII6sQihCNWvM0a+MN2DgEyjm8AAbVKY4x9f+A2AQfUeUJVoQR8LPxFRhZUBjdcK1IkxHvibIKBos/ue88IAUN6FX4A2Uyj897ac+NJAzBVGzEr79MJv+f1BRDQdBoTqCkHAAfDq14Xqrzml+4HfjwsCFb99UCr7RW6zhcJ/T9MJSxLWXiYiF0atfhZ+IiIGgSgIhFCo6o155649tffBzfvWkEpUkYvb2gGjaDeCNe7OpuMats5Y8ilrg01VYi8cVdVBdU4Aw+JPRDR9SbTWywyqc6OqWiX2QmuDTVtnLPnUnU3HNQjWOEW7aa/QWllxHYDxie3+1sVvNCIdNWIW9HkXH8/Lok9ERPvvCAjENhqLYfXbvWr7SV1bflyp3QCpnBcOxkRP1sU9rScvCMR9OQnzihCKUfVhXPi5uI+IiA5YThTqqsQEAQQ5+F+Hat9/atd92wWAjx7mVhGLBCuirbEeywMB/DexNLF5xpJLk+JvT8G+Im7reIEELP5ERHQwA2OBBKOqflCdS8G+Iin+9s0zllz6TSxNCODXY3nADkDxR/0CtIugw9/ZesJptQi+njTmzEHv4NjuJyKiI64z6izE1hmLnPe3DSH8l2VdD96laDdAh5bzTgEp3xdl73zMfTOWXGqBzyQg6UF1PMSHiIgmcrCpgLo6sUEemnHAx07u3PzVfWsRA8AUWI/lwTnYGP6xZeFR9ZL4dp2Y8zPKUT8REU1+NyAtFoPq1w5o/h0v7t72ZKEmMQBMbgoTACKAv3PG4vNTkBurYeZkNAyVo34iIpqCboBAXVqCYAR+VxZ64bLOLWuj02ZRVlMCZbMIcDVgJbq4/t6WxatqYX4jwJwBDR0gAYs/ERFNwahZAAkGNHQCzKmF+c29LYtXSfxU2dWALaO/S+krtFfWpU9omZMKflBjzPn93nmN/gJ8Uh8RERWjG+AFQIOxZtj7tbuy4VtWZh7sLpcpgZIPAHdiaWIZNuXvaF50Rq0130/CHD+gYRhv7SMiIipyENCwXoIgB//QkPNvPb1n6+2F2lXKX7cp3QsKWY02uwyb8ptal7wjbe3vBMLiT0REJTaSliCuTcenrf3dptYl71iGTfnVaLNawgPtkvzC2gGzKvri/D2tS9pTIqvyqgjhucqfiIhKtRPgAhibEEFWddWpXZs7NK5nHSV4emDJBYB2wBQu1D0ti69vscG7unzofHTULxf6ERFRyfKAGsC3msB2u/CGU7u3XLxvbWMA2G96ajeCDn9zw0lNTQn9UZWY8+MtfgErPxERlUcnABBomJYgGFW/tjcvbzq7//7eQo1jAPibCxadphQX/7W1xpze6znfT0RE5RoENGwyQTDk/R29eTk/CgGlc3KglMZFenrxrxJz+oCGeYEkeAsREVEZh4B8vQSJUS29EFD0XQDRAT9r3C2tJx7fvLf4hyz+RERU7gSSGNAwrBJzenNC197SeuLxgjWuFA4MKmoHoJCCbm9ZfHqdyG+sSPOgOme40p+IiCqIjx4mZJ1qz6Dqy8/o3nJHsTsBRQsAhb/4rQ0nz08n3CYRaRpRz+JPREQVGwKqxVhV7c3k7dIX9N/3aDFDQFGmAKKVkNGcf13CrQ7EsPgTEVFFMxA7ot4FYprqEm71zQ0nNQnWOEW7Kc7XM8XagfFb/dZWiV3Gtj8REU2XEDCozlWJXdaU0LVRCOjw7UWox1NadAsn/L0yfUJzfdL8prDgz3CrHxERTRMCMVn4sFbsvITRcy+wzT97S65rFIBsnMLHCU/ZGoD4PGSJjvddvK7B2PN6Pbf6ERHR9KTQfJMJEv3e/e7Uri0rNeoCqExRCJjClsNyK4C/p2Xx9XViz4sP+WHxJyKi6doJSPT6MKwTe949LYuvF8ADy6esMz8lAeBOLE0INoabWhavarHBu/hEPyIior1PEmyxwbs2tSxeJdgY3omlian53JNsPZYH52BjeFvzorc3WHtjVl3eR8Wfx/sTEREBaqBhSmyi37kLz+zZ+p1C7SzbAFB48MFtLUuWpQUbQ6A6hEJY/ImIiMbVS2gAQQCMZBTLz+zefOdkPzxIJvEvIwBwe/qE5pqUvSMQM39YnTcQw5eaiIjo6TzU14g1ofpHh7Pu9DMyD/bEhXpSFgVOYjFuMwJoMmV/XC12/oi6kMWfiIjomQqymBF1YbXY+cmU/XFU+NvM5H2+SRn9Lw8Ea9ymlsWrGo09j4v+iIiInl1hUWCjsedFiwLXOMXySamfEx4AVqPNCjaGdzQvWVlrTHu/d47Fn4iI6OBDQL93rtaY9jual6wUbAxXo81O/OeZQPFJf3rrzCUz67zeK5CZOahKCTx2mIiIqFwo4JMQUeieQSOnvGDP5j2rAOkAJmxR4IQW5hVYbgTQaq/fqxY7KwfvWfyJiIgOeXRucvC+Wuysaq/fE0BXYPmE1tMJ+8MUbfYcbAxvb1l0SYOxK+N5fz7gh4iI6LBCgNgBDcMGY1fe3rLoknOwMdQJnAqYkCmAwl7FTY1LTq5O4I9OtSYPGO73JyIiOpL6Ck0A3ooMj+Tx4qV9m++bqPMBzAR8cQJslfVYHojV7waQdJ6H/RAREU3EKF3yUASQtFj97nosD4CtohNQYydgCqDNCNa4dEvnuxutPXVQHVv/REREExYCxA6qCxutPTXd0vluwRo3EecDHFGCULQboEPvmrHouSmYu5StfyIioglXmAoQkeEs/GmndW79C9AuRzIVcIQJokMEUCi+XgXD1j8REdGkdAGiqYAqmDQUX49OCew4onp72AFA0WYFcHc1L/rHerErM1z1T0RENIkhQGxGw7Be7Mq7mhf9owDuSHYFHFZ6iBcfyEPNz6sbNam7A5H5o+pVeNY/ERHRpFGorxIjoeqjVT77/ON7Hh4EoIfzwKDDLNhtRgCfkeQVaWOPG1HvWfyJiIgmvQtgRtT7tLHHZSR5hQD+cBcEHnIHoLDw746WkxbUit6XhwaFjgBfGiIioslvBAigCUg4pHLy6d33bz+cBYGHkRq2igBqxX20SkzSQ5XFn4iIaOoaAR6qVWKSVtxHo/b/1kOuw4cUAKIn/a1xd7UuWV4r5i0ZdY4L/4iIiKY4AUBsRp2rFfOWu1qXLBescYf6xMBDSgwa7fH3d7UuWp8Wu4IBgIiIqDgU6tJibUbdhtO6tp5TqNET3gGIRv/wd7csXlEjdsWgehZ/IiKiInYBBtW7GrEr7m5ZvEIAfyhdgIPuABSSxaZ49D/I0T8REVHRuwB1cRdg6SF2AQ6qAzB+9F8bjf49iz8REVFJdAF87WF0AQ6qA8DRPxERUWV1AZ61AxCP/pWjfyIiorLoAujBdAGeNQC0xQHDAxcnIBCo5+UmIiIqpRCgPgGBBy4GoG0H8XvMgdsK7QZY4zc1Lz4xJfLajDoFR/9ERESlFgFsRp2mRF67qXnxicAaH9Xww+4AbDACqAguqjWmykMdeOofERFRySUAD3W1xlSJ4KLodMAN5sBdg2cc/Uc/t6luQUuiKrHFQGbkoRAGACIiopKj0fMB4KGd+dH84qWD27vjQq+H1AHYgOVWALVVwWvTxs7MwXsWfyIiohJtAQCSg/dpY2faquC1AugGLH/GaftnDAArsNErYDzwrryq8lm/REREpc0AyKuqB96lgFmBjf6QAsC4g3+WVotZOqyei/+IiIhKvw9gh9VrtZild7csXnqgg4H2GwDaxtoJenFKjAG3/hEREZUJ9SkxRqAXj6/pfxMV/ua3ASKA/rFlYboW9qGEmFk5qHL+n4iIqAzKP6BJiOTV7x6CO/7F3dsyhdr+LB2ANgMAdRIsrzV2VhbKxX9ERERlQgDJQn2tsbPqJFg+vrY/SwBYowDgVd8jAASqvJxERETlFAJUJa7l42v7MwaAuEXgN7aeMMeIvGREFYBwAwAREVF5RQAzogoj8pKNrSfMEcDrPt38pxX3wn7BtDcvSxubDuEd2/9ERETl1gGAhPAubWw67c3Lxtf4/QaAFdioAKAG58Z/ANv/RERE5RkCnlbTCzX+bwJA3P53f2xZmLYqK0e8h3LvPxERUVlSiB3xHlZl5R9bFqYFcOOnAcZ1APau/q8xZg5X/xMREZV1B0CyUF9jzJz97QYYFwD2CACoynmBCISH/xAREZV5CFAfiEBVzhtf6/cJABvdaixKqvjzs95DuPqfiIiozAOAmKz3UPHnr8aiJLDRPS0AtANGAH1Oi52fgDkuGy0cYAAgIiIqbyYLaALmuOe02PkCaHtc3w0ArMByAwAJdS+sMSbp4dn+JyIiqgAe3tcYk0yoe+H4mh8HgHhrgJEVUcuA2/+IiIgqwVhNj2t8oeYX2vx+NRYlFfqCrPfg6X9EREQVEwGidQDQF0TrAOABwGg8/39cizkuATM/F539zwBARERUGUwOqgmY+ce1mOMEUAWM2RDPBYjqoioxSR8nAyIiIqoMHvBVYpKiuggANmC5MWkMCgAYwXIrfPofERFRpRGoWolqPQCkMSjmEWzy0TSALs1HtZ+n/xEREVVYBsirQqBLFTCPYJMXANg8Y1FdVvFoCqY1Fz1DmCGAiIioQiigSYhk4btSgvlLOrcOGgDIaXJOEiYdAiz+RERElTb8ByQENAmTzmlyDhCv9reSO6VaTMrz/H8iIqKK5KG+WkzKSu6UsQDgVRYG8aOAeImIiIgqkWogUc0fCwCqONaDvX8iIqJKJYj2+aviWCA6CEhg9IRQx36eiIiIKjADhArA6AkKiKxvOKWxIQi3JkXmcAcAERFRZSrsBMip7uoPg0UmGWoSQIqT/0RERBUfAgAglQw1GdRV6UnWSGNOOfonIiKqVAJIHqpJI422Sk8yTiHCh/8QERFNlyBgnEKMsW5ZAAG3ABIREVU61QACY90yA5VGG/8oLwwREVFlJwALACqNBkAjj/8jIiKaHuKa32i86hkOACBcAEhERFTRRBwAr3qGEYHjBSEiIppOMQDOAMIAQERENL0igDOANvpo/R+nAIiIiCq88kc1XxuNgSzMqYKHABEREVV49QckpwoDWWi4A4CIiGh68eAJgERERNMSAwAREREDABERETEAEBEREQMAERERMQAQERERAwARERExABAREREDABERETEAEBEREQMAERERMQAQERERAwARERExABAREREDABERETEAEBEREQMAERERMQAQERERAwAREREDABERETEAEBEREQMAERERMQAQERERAwARERExABAREREDABERETEAEBEREQMAERERMQAQERERAwARERExABAREREDABERETEAEBEREQMAERERMQAQERERAwAREREDABERETEAEBEREQMAERERMQAQERERAwARERExABAREREDABERETEAEBEREQMAERERMQAQERHRFAh4CYhKjEjpfC2q0+Saj/2jFC46oLzPiAGgchkpoTecUnjvlX3emApvggrV+L+nyZuE5kNMTQV49ldGEsH0uO7OQ70vje8HYwBjptd9Fli+ETIATB9+eBRwLip20z39aqHIK+AVqh4iAhgDsRYSBEAQQAIbvTlK/Hu8Vt61E0HQ3FgaozNVhD29kESisu9RVZiaakgqFRfEYl376HNrNgs/Mjq590CJ3WcuM8j3QQaA6TDcFejIKOZ9/ipUn3Qi1DuImZ7pV70HnIOGDn5kFH54BC4z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';
+    var IMSK='data:image/png;base64,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AEAAAAACAAAQAACAAAAABAAAIAAAAAEAAAgAAEAAAAACAAAQAACAAAAABAAAIAAAAAEAAAgAABAAAIAAAAAEAAAgAAAAAQAACAAAQAAAAAIAABAAAIAAAAAEAAAgAAAAAQAACAAAQAAAAAIAABAAAIAAAAABAAAIAABAAAAAAgAAEAAAgAAAAAQAACAAAAABAAAIAABAAAAAAgAAEAAAgAAAAAQAACAAAAABAAACAAAQAACAAAAABAAAIAAAAAEAAAgAAEAAAAACAAAQAACAAAAABAAAIAAAAAEAAAgAAEAAAAACAAAEAAAgAAAAAQAACAAAQAAAAAIAABAAAIAAAAAEAAAgAAAAAQAACAAAQAAAAAIAABAAAIAAAAAEAAAIAABAAAAAAgAAEAAAgAAAAAQAACAAAAABAAAIAABAAAAAAgAAEAAAgAAAAAQAACAAAAABAAAIAAAQAACAAAAABAAAIAAAAAEAAAgAAEAAAAACAAAQAACAAAAABAAAIAAAAAEAAAgAAEAAAAACAAAQAACAAAAAAQAACAAAQAAAAAIAABAAAIAAAAAEAAAgAAAAAQAACAAAQAAAAAIAABAAAIAAAAAEAAAgAAAAAQAAAgAAEAAAgAAAAAQAADC+/i+gCT/oRc0RYQAAAABJRU5ErkJggg==';
+    var man={name:"BNI Referral Engine",short_name:"Referral",
+      description:"Playbook & tracker 121 BNI GROW Jakarta Barat",
+      start_url:location.href.split('#')[0],scope:'./',
+      display:"standalone",orientation:"portrait",
+      background_color:"#A50E22",theme_color:"#CF142B",
+      icons:[{src:I192,sizes:"192x192",type:"image/png",purpose:"any"},
+             {src:I512,sizes:"512x512",type:"image/png",purpose:"any"},
+             {src:IMSK,sizes:"512x512",type:"image/png",purpose:"maskable"}]};
+    var url=URL.createObjectURL(new Blob([JSON.stringify(man)],{type:'application/manifest+json'}));
+    var l=document.createElement('link'); l.rel='manifest'; l.href=url;
+    document.head.appendChild(l);
+  }catch(e){}
+})();
+
+loadS(function(){loadExtras();renderNav();render()});
+</script>
+</body>
+</html>
