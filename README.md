@@ -9,7 +9,7 @@ Versi lama (BNI Referral Engine) diarsipkan di branch `archive/v1-bni-referral-e
 - `apps-script/Code.gs`: backend Google Sheet + Google Calendar (opsional, tapi disarankan).
 
 ## 4 halaman
-1. **Dashboard**: target 4 121 per minggu, tren 8 minggu, strip konsistensi 26 minggu (rata-rata, persen minggu kena target, streak terpanjang), grafik referral dapat vs beri vs income per bulan, corong referral diterima → diproses → jadi, klasifikasi terbanyak, daftar "perlu tindak lanjut", pencarian (nama, bisnis, trigger words, isi catatan).
+1. **Dashboard**: target 4 121 per minggu, tren 8 minggu, strip konsistensi 26 minggu (rata-rata, persen minggu kena target, streak terpanjang), grafik referral dapat vs beri vs income per bulan, corong referral diterima → diproses → jadi, category terbanyak, daftar "perlu tindak lanjut", pencarian (nama, bisnis, trigger words, isi catatan).
 2. **Catat**: form 121. Nama yang sudah ada otomatis mengisi data lama dan menampilkan next step sebelumnya.
 3. **Jadwal**: rencana 121, agenda terisi dari next step terakhir, masuk Google Calendar.
 4. **Orang**: semua orang, filter per klasifikasi.

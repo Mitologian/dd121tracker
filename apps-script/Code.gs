@@ -9,7 +9,7 @@ const TOKEN = 'GANTI-DENGAN-KATA-SANDI-ANDA';
 
 const TABLES = {
   Sessions: ['id', 'pid', 'name', 'date', 'chapter', 'klas', 'depth', 'bisnis', 'bread', 'cheese', 'meat',
-             'trigger', 'sphere', 'klien', 'good', 'bad', 'notes', 'next', 'updated', 'deleted', 'wa', 'rin', 'rout', 'bname'],
+             'trigger', 'sphere', 'klien', 'good', 'bad', 'notes', 'next', 'updated', 'deleted', 'wa', 'rin', 'rout', 'bname', 'cat'],
   Referrals: ['id', 'pid', 'name', 'date', 'dir', 'desc', 'status', 'value', 'updated', 'deleted'],
   Schedule: ['id', 'pid', 'name', 'start', 'dur', 'place', 'agenda', 'status', 'cal', 'eventId', 'updated', 'deleted']
 };
