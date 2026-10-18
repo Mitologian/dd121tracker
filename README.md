@@ -14,7 +14,7 @@ Versi lama (BNI Referral Engine) diarsipkan di branch `archive/v1-bni-referral-e
 3. **Jadwal**: rencana 121, agenda terisi dari next step terakhir, masuk Google Calendar.
 4. **Orang**: semua orang, filter per klasifikasi.
 
-Satu orang = satu profil yang terus diperbarui dari semua catatan 121-nya. Kedalaman hubungan: 1 Kenalan, 2 Paham bisnisnya, 3 Saling kirim referral, 4 Mitra strategis.
+Satu orang = satu profil yang terus diperbarui dari semua catatan 121-nya. Kedalaman hubungan: Kenal, Paham, Referral. Tandai juga siapa yang pernah kasih referral bagus ke Anda (⬇) dan siapa yang pernah Anda kasih referral (⬆). Nomor WhatsApp tersimpan di profil; tombol WhatsApp membuka chat dengan pesan siap kirim (pengingat jadwal, follow-up next step, atau sapaan). Pesan dikirim manual oleh Anda, bukan otomatis.
 
 ## Pasang Google Sheet + Calendar (sekali, sekitar 5 menit)
 1. Buat Google Sheet kosong. Menu **Extensions > Apps Script**.

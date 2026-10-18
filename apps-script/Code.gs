@@ -9,7 +9,7 @@ const TOKEN = 'GANTI-DENGAN-KATA-SANDI-ANDA';
 
 const TABLES = {
   Sessions: ['id', 'pid', 'name', 'date', 'chapter', 'klas', 'depth', 'bisnis', 'bread', 'cheese', 'meat',
-             'trigger', 'sphere', 'klien', 'good', 'bad', 'notes', 'next', 'updated', 'deleted'],
+             'trigger', 'sphere', 'klien', 'good', 'bad', 'notes', 'next', 'updated', 'deleted', 'wa', 'rin', 'rout'],
   Schedule: ['id', 'pid', 'name', 'start', 'dur', 'place', 'agenda', 'status', 'cal', 'eventId', 'updated', 'deleted']
 };
 
@@ -24,6 +24,10 @@ function sheetFor(name) {
   let sh = ss.getSheetByName(name);
   if (!sh) sh = ss.insertSheet(name);
   const cols = TABLES[name];
+  if (sh.getLastRow() > 0 && sh.getLastColumn() < cols.length) {
+    sh.getRange(1, 1, 1, cols.length).setValues([cols]).setFontWeight('bold'); // tambah kolom baru
+    sh.getRange(1, 1, sh.getMaxRows(), cols.length).setNumberFormat('@');
+  }
   if (sh.getLastRow() === 0) {
     sh.getRange(1, 1, 1, cols.length).setValues([cols]).setFontWeight('bold');
     sh.setFrozenRows(1);
