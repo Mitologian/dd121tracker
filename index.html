@@ -181,7 +181,9 @@ function lvl(n){ return Math.min(3,Math.max(1,+n||1)) }
 function waNum(s){ var d=String(s||'').replace(/\D/g,''); if(d.indexOf('0')===0) d='62'+d.slice(1); else if(d.indexOf('8')===0) d='62'+d; return d }
 function waLink(phone,text){ return 'https://wa.me/'+waNum(phone)+(text?'?text='+encodeURIComponent(text):'') }
 function first(n){ return String(n||'').trim().split(/\s+/)[0] }
-var KLAS_DEFAULT = ['Keuangan & Asuransi','Properti','Hukum & Akuntansi','Marketing & Digital','Teknologi','Kesehatan','F&B','Manufaktur & Trading','Pendidikan & Training','Konstruksi','Event & Hospitality','Logistik'];
+var KLAS = [["Property & Construction", ["Real estate agent", "General contractor", "Architect", "Interior designer", "MEP engineering", "Building materials", "Custom furniture", "Artwork for interiors & buildings"]], ["Finance & Legal", ["Tax consultant", "Accountant", "Notary & land deed official", "Corporate lawyer", "Life & health insurance", "General insurance", "Financial planner", "Business licensing"]], ["Marketing & Creative", ["Digital marketing", "Graphic design & branding", "Photo & video", "Printing", "Merchandise & souvenirs", "Website & app development", "Public relations", "Signage & advertising"]], ["Events & Hospitality", ["Event organizer", "Wedding organizer", "Catering", "Venue & hotel", "Decor & florist", "Sound system & lighting", "Travel agent", "MC & entertainment"]], ["HR & Development", ["Training & coaching", "Recruitment", "Manpower outsourcing", "HR consultant", "Psychological assessment", "Language course", "Corporate uniforms", "HR & payroll software"]], ["Health & Beauty", ["General clinic", "Dentist", "Aesthetic clinic", "Physiotherapy", "Medical equipment", "Fitness & personal trainer", "Spa", "Optician"]], ["Technology & Office Ops", ["IT support & networking", "CCTV & security", "Business software & ERP", "Office supplies", "Copier & printer", "Internet provider", "Telecommunications", "Cleaning services"]], ["Automotive, Logistics & Trade", ["Car dealer", "Auto repair & detailing", "Vehicle rental", "Courier & delivery", "Freight forwarding", "Importer & distributor", "F&B supplier", "Packaging"]], ["Retail & Home Services", ["Bakery", "Bedding", "Sportswear", "Fashion"]]]; // sama dengan app Optima: [contact sphere, [klasifikasi]]
+var KLAS_LAMA = {'Properti':'Real estate agent','Pendidikan & Training':'Training & coaching','Marketing & Digital':'Digital marketing','Konstruksi':'General contractor','Event & Hospitality':'Event organizer','Logistik':'Courier & delivery'};
+var SPHERE_OF = {}; KLAS.forEach(function(g){ g[1].forEach(function(k){ SPHERE_OF[k.toLowerCase()]=g[0] }) });
 
 /* ============ state & penyimpanan ============ */
 var S = {sessions:[],sched:[],refs:[],queue:[],cfg:{url:'',token:''},tab:'dash',q:'',filt:'',lastSync:0,syncing:false,offline:false};
@@ -236,7 +238,16 @@ function people(){
 function byRecent(a,b){ var x=a.lastDate||'0', y=b.lastDate||'0'; return x===y ? a.name.localeCompare(b.name) : (x<y?1:-1) }
 function findPerson(name){ var n=trim(name).toLowerCase(); if(!n)return null; return people().filter(function(p){return p.name.toLowerCase()===n})[0]||null }
 function weekCounts(){ var c={}; live(S.sessions).forEach(function(s){ var k=ymd(monday(pd(s.date))); c[k]=(c[k]||0)+1 }); return c }
-function allKlas(){ var set={}; KLAS_DEFAULT.forEach(function(k){set[k]=1}); live(S.sessions).forEach(function(s){ if(trim(s.klas)) set[trim(s.klas)]=1 }); return Object.keys(set).sort() }
+function klasOptions(){
+  var out=[], seen={};
+  KLAS.forEach(function(g){ g[1].forEach(function(k){ seen[k.toLowerCase()]=1; out.push([k,g[0]]) }) });
+  live(S.sessions).forEach(function(x){ var k=trim(x.klas); if(k&&!seen[k.toLowerCase()]){ seen[k.toLowerCase()]=1; out.push([k,'']) } });
+  return out;
+}
+function migrateKlas(){
+  var n=0; S.sessions.forEach(function(x){ var k=trim(x.klas); if(KLAS_LAMA[k]){ x.klas=KLAS_LAMA[k]; n++; enqueue('Sessions',x) } });
+  return n;
+}
 
 /* ============ sinkronisasi (Apps Script) ============ */
 function connected(){ return !!(S.cfg.url && S.cfg.token) }
@@ -282,7 +293,7 @@ function pull(){
   S.syncing=true; setSync();
   return fetch(S.cfg.url+(S.cfg.url.indexOf('?')>=0?'&':'?')+'token='+encodeURIComponent(S.cfg.token)).then(function(r){return r.json()}).then(function(r){
     if(!r.ok) throw new Error(r.error||'gagal');
-    merge(S.sessions,r.sessions); merge(S.sched,r.schedule); merge(S.refs,r.referrals);
+    merge(S.sessions,r.sessions); merge(S.sched,r.schedule); merge(S.refs,r.referrals); migrateKlas();
     S.lastSync=Date.now(); S.offline=false; S.syncing=false; save(); setSync(); softRender();
   }).catch(function(e){ S.syncing=false; S.offline=true; setSync(); if(String(e.message)==='token') toast('Token salah. Cek Pengaturan.') });
 }
@@ -320,7 +331,7 @@ function initials(n){ var w=String(n||'?').trim().split(/\s+/); return ((w[0]||'
 function refTags(p){ return (p.rin?'<span class="tag ok" title="Dia pernah kasih saya referral bagus">⬇ Dari dia</span>':'')+(p.rout?'<span class="tag acc" title="Saya pernah kasih dia referral">⬆ Ke dia</span>':'') }
 function card(p){
   var h='<button class="pc" onclick="openPerson(\''+p.pid+'\')"><div class="mav">'+esc(initials(p.name))+'</div><div class="grow"><div class="top"><b>'+esc(p.name)+'</b><span class="small muted">'+esc(ago(p.lastDate))+'</span></div>'
-   +'<div class="meta">'+(p.f.bname?'<b style="font-weight:700;color:var(--tinta)">'+esc(p.f.bname)+'</b> · ':'')+esc([p.f.klas,p.f.chapter].filter(Boolean).join(' · ')||'Klasifikasi belum diisi')+(p.f.bisnis?' · '+esc(p.f.bisnis.split('\n')[0].slice(0,50)):'')+'</div>';
+   +'<div class="meta">'+(p.f.bname?'<b style="font-weight:700;color:var(--tinta)">'+esc(p.f.bname)+'</b> · ':'')+(p.f.klas?esc(p.f.klas):'<i>Klasifikasi belum diisi</i>')+(p.f.chapter?' · <b style="font-weight:700;color:var(--merah)">'+esc(p.f.chapter)+'</b>':'')+(p.f.bisnis?' · '+esc(p.f.bisnis.split('\n')[0].slice(0,50)):'')+'</div>';
   if(p.next) h+='<div class="nx">➜ '+esc(p.next)+'</div>';
   h+='<div class="ft">'+depthDots(p.depth)+'<span>121 ke-'+p.n+'</span>'+refTags(p)+(p.up?'<span class="tag acc">'+esc(fdate(p.up.start))+'</span>':'')+'<span style="margin-left:auto">profil '+p.filled+'/'+Object.keys(PROFLABEL).length+'</span></div></div></button>';
   return h;
@@ -350,7 +361,9 @@ function vDash(){
     var kc={}, cc={}, kp={};
     ss.forEach(function(s){ var pr=P.filter(function(p){return p.pid===s.pid})[0]; var k=trim((pr&&pr.f.klas)||s.klas), c=trim((pr&&pr.f.chapter)||s.chapter);
       if(k){ kc[k]=(kc[k]||0)+1 } if(c){ cc[c]=(cc[c]||0)+1 } });
+    var sc2={}; Object.keys(kc).forEach(function(k){ var g=SPHERE_OF[k.toLowerCase()]; if(g) sc2[g]=(sc2[g]||0)+kc[k] });
     h+='<div class="card"><h2>Klasifikasi paling sering 121</h2>'+barList(kc,5)+'</div>';
+    if(Object.keys(sc2).length) h+='<div class="card"><h2>Contact sphere</h2>'+barList(sc2,5)+'</div>';
     if(Object.keys(cc).length>1) h+='<div class="card"><h2>Chapter</h2>'+barList(cc,4)+'</div>';
   }
 
@@ -384,7 +397,7 @@ function fillList(){
 /* ============ DETAIL ORANG ============ */
 function openPerson(pid){
   var p=people().filter(function(x){return x.pid===pid})[0]; if(!p) return;
-  var h='<h3>'+esc(p.name)+'</h3>'+(p.f.bname?'<div style="font-weight:700;margin-top:3px">'+esc(p.f.bname)+'</div>':'')+'<div class="muted" style="margin-top:3px">'+esc([p.f.klas,p.f.chapter].filter(Boolean).join(' · ')||'Klasifikasi belum diisi')+'</div>'
+  var h='<h3>'+esc(p.name)+'</h3>'+(p.f.bname?'<div style="font-weight:700;margin-top:3px">'+esc(p.f.bname)+'</div>':'')+'<div class="muted" style="margin-top:3px">'+(p.f.klas?esc(p.f.klas):'Klasifikasi belum diisi')+(p.f.chapter?' · <b style="color:var(--merah)">'+esc(p.f.chapter)+'</b>':'')+' · <a class="lnk" href="#" onclick="openEditPerson(\''+pid+'\');return false">Edit data dasar</a></div>'
    +'<div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:10px;align-items:center">'+depthDots(p.depth)+'<span class="tag">'+esc(DEPTH[p.depth-1])+'</span>'+refTags(p)+'<span class="tag">121 ke-'+p.n+'</span>'+(p.lastDate?'<span class="tag">terakhir '+esc(ago(p.lastDate))+'</span>':'')+'</div>';
   if(p.next) h+='<div class="note"><b>Next step:</b> '+esc(p.next)+'</div>';
   if(p.up) h+='<div class="note ok">Terjadwal: '+esc(fmtStart(p.up))+(p.up.place?' · '+esc(p.up.place):'')+'</div>';
@@ -434,7 +447,7 @@ function vNote(){
   var e = S.edit ? S.sessions.filter(function(s){return s.id===S.edit})[0] : null;
   var pre = S.pre||{}, v = e || {date:today(),name:pre.name||'',depth:'1'};
   var P=people(), h='<datalist id="dl-names">'+P.map(function(p){return '<option value="'+esc(p.name)+'">'}).join('')+'</datalist>'
-   +'<datalist id="dl-klas">'+allKlas().map(function(k){return '<option value="'+esc(k)+'">'}).join('')+'</datalist>'
+   +'<datalist id="dl-klas">'+klasOptions().map(function(k){return '<option value="'+esc(k[0])+'"'+(k[1]?' label="'+esc(k[1])+'"':'')+'>'}).join('')+'</datalist>'
    +'<datalist id="dl-chap">'+Object.keys(P.reduce(function(a,p){ if(p.f.chapter)a[p.f.chapter]=1; return a },{})).map(function(k){return '<option value="'+esc(k)+'">'}).join('')+'</datalist>';
   h+='<div class="card"><h2>'+(e?'Edit catatan 121':'Catat 121')+'</h2>'
    +'<div class="two">'+fld('f-date','Tanggal',v.date,{type:'date'})+fld('f-name','Nama',v.name,{list:'dl-names',ph:'Ketik nama'})+'</div>'
@@ -660,11 +673,11 @@ function saveRef(){
   var row={id:old?old.id:uid('r_'),pid:old&&!ex?old.pid:(ex?ex.pid:uid('p_')),name:name,date:val('r-date')||today(),dir:S.rdir,desc:val('r-desc'),status:st,value:st==='jadi'?parseRp(val('r-val')):'',deleted:''};
   enqueue('Referrals',row);
   toast('Referral tersimpan');
-  if(S.refBack) openPerson(row.pid); else { closeModal(); render() }
+  render(); if(S.refBack) openPerson(row.pid); else closeModal()
 }
 function delRef(){
   var r=S.refs.filter(function(x){return x.id===S.refEdit})[0]; if(!r||!confirm('Hapus referral ini?')) return;
-  r.deleted='1'; enqueue('Referrals',r); toast('Referral dihapus'); if(S.refBack) openPerson(r.pid); else { closeModal(); render() }
+  r.deleted='1'; enqueue('Referrals',r); toast('Referral dihapus'); render(); if(S.refBack) openPerson(r.pid); else closeModal()
 }
 function consistencyHtml(wc){
   var N=26, cur=monday(new Date()), cells='', hit=0, tot=0, best=0, ss=live(S.sessions);
@@ -718,8 +731,35 @@ function refCardHtml(P){
   return h+'<div class="btns"><button class="btn" onclick="openRef({})">Catat referral</button></div></div>';
 }
 
+
+/* ============ EDIT DATA DASAR ============ */
+function openEditPerson(pid){
+  var p=people().filter(function(x){return x.pid===pid})[0]; if(!p) return;
+  S.editPid=pid;
+  var h='<h3>Edit data dasar</h3><div class="small" style="margin-top:4px">Perubahan berlaku untuk semua catatan 121, jadwal, dan referral orang ini.</div>'
+   +'<datalist id="dl-klas2">'+klasOptions().map(function(k){return '<option value="'+esc(k[0])+'"'+(k[1]?' label="'+esc(k[1])+'"':'')+'>'}).join('')+'</datalist>'
+   +fld('e-name','Nama',p.name)+fld('e-bname','Nama business',p.f.bname||'')+fld('e-chapter','Chapter',p.f.chapter||'')
+   +'<div><label for="e-klas">Klasifikasi</label><input id="e-klas" list="dl-klas2" value="'+esc(p.f.klas||'')+'" autocomplete="off"></div>'
+   +fld('e-wa','Nomor WhatsApp',p.f.wa||'',{type:'tel'})
+   +'<div class="btns"><button class="btn" onclick="saveEditPerson()">Simpan</button><button class="btn ghost" onclick="openPerson(\''+pid+'\')">Batal</button></div>';
+  openModal(h);
+}
+function saveEditPerson(){
+  var pid=S.editPid, name=val('e-name'); if(!name){ toast('Nama wajib diisi'); return }
+  var dup=people().filter(function(x){return x.pid!==pid&&x.name.toLowerCase()===name.toLowerCase()})[0];
+  if(dup){ toast('Sudah ada orang lain bernama '+dup.name); return }
+  var f={bname:val('e-bname'),chapter:val('e-chapter'),klas:val('e-klas'),wa:val('e-wa')}, n=0;
+  S.sessions.filter(function(x){return x.pid===pid&&x.deleted!=='1'}).forEach(function(x){
+    var ch=x.name!==name; if(ch) x.name=name;
+    Object.keys(f).forEach(function(k){ if((x[k]||'')!==f[k]){ x[k]=f[k]; ch=true } });
+    if(ch){ enqueue('Sessions',x); n++ } });
+  S.sched.filter(function(x){return x.pid===pid&&x.name!==name}).forEach(function(x){ x.name=name; enqueue('Schedule',x) });
+  S.refs.filter(function(x){return x.pid===pid&&x.name!==name}).forEach(function(x){ x.name=name; enqueue('Referrals',x) });
+  toast('Data dasar diperbarui'); render(); openPerson(pid);
+}
+
 /* ============ start ============ */
-load(); setSync(); render();
+load(); setSync(); migrateKlas(); render();
 if(connected()) syncAll();
 window.addEventListener('online',function(){ S.offline=false; syncAll() });
 document.addEventListener('visibilitychange',function(){ if(!document.hidden&&connected()&&Date.now()-S.lastSync>60000) syncAll() });
