@@ -10,6 +10,7 @@ const TOKEN = 'GANTI-DENGAN-KATA-SANDI-ANDA';
 const TABLES = {
   Sessions: ['id', 'pid', 'name', 'date', 'chapter', 'klas', 'depth', 'bisnis', 'bread', 'cheese', 'meat',
              'trigger', 'sphere', 'klien', 'good', 'bad', 'notes', 'next', 'updated', 'deleted', 'wa', 'rin', 'rout'],
+  Referrals: ['id', 'pid', 'name', 'date', 'dir', 'desc', 'status', 'value', 'updated', 'deleted'],
   Schedule: ['id', 'pid', 'name', 'start', 'dur', 'place', 'agenda', 'status', 'cal', 'eventId', 'updated', 'deleted']
 };
 
@@ -94,7 +95,7 @@ function out(o) {
 
 function doGet(e) {
   if ((e.parameter.token || '') !== TOKEN) return out({ ok: false, error: 'token' });
-  return out({ ok: true, sessions: readAll('Sessions'), schedule: readAll('Schedule') });
+  return out({ ok: true, sessions: readAll('Sessions'), schedule: readAll('Schedule'), referrals: readAll('Referrals') });
 }
 
 function doPost(e) {
