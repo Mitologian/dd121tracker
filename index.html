@@ -161,9 +161,9 @@ a.lnk{color:var(--merah);font-weight:700;font-size:13px;text-decoration:none}
   <main id="view"></main>
   <nav><div class="in">
     <button data-t="dash"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Dashboard</span></button>
-    <button data-t="note"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg><span>Catat</span></button>
-    <button data-t="sched"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg><span>Jadwal</span></button>
-    <button data-t="ppl"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 010 6.8M18 14.8c2 .6 3.2 2.3 3.5 5.2"/></svg><span>Orang</span></button>
+    <button data-t="note"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg><span>Notes</span></button>
+    <button data-t="sched"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg><span>Schedule</span></button>
+    <button data-t="ppl"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 010 6.8M18 14.8c2 .6 3.2 2.3 3.5 5.2"/></svg><span>People</span></button>
   </div></nav>
 </div>
 <div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="panel" id="panel"></div></div>
@@ -354,7 +354,7 @@ function vDash(){
   h+='<div class="bars"><div class="tline" style="bottom:'+Math.round(TARGET/max*52+12)+'px"></div>'+bars+'</div><div class="small muted" style="margin-top:4px">8 minggu terakhir · garis putus = target '+TARGET+'</div></div>';
 
   var m0=today().slice(0,7), month=ss.filter(function(s){return s.date.slice(0,7)===m0}).length;
-  h+='<div class="stats"><div class="card"><div class="big">'+ss.length+'</div><div class="l">Total 121</div></div><div class="card"><div class="big">'+P.filter(function(p){return p.n}).length+'</div><div class="l">Orang</div></div><div class="card"><div class="big">'+month+'</div><div class="l">Bulan ini</div></div></div>';
+  h+='<div class="stats"><div class="card"><div class="big">'+ss.length+'</div><div class="l">Total 121</div></div><div class="card"><div class="big">'+P.filter(function(p){return p.n}).length+'</div><div class="l">People</div></div><div class="card"><div class="big">'+month+'</div><div class="l">Bulan ini</div></div></div>';
 
   if(ss.length){
     h+=consistencyHtml(wc)+refCardHtml(P);
@@ -372,7 +372,7 @@ function vDash(){
     h+='<div class="sec">Perlu tindak lanjut</div>';
     fu.forEach(function(p){
       var why=p.next?('Next step: '+p.next):('Sudah '+days(p.lastDate)+' hari tidak 121');
-      h+='<div class="card" style="padding:11px 14px"><div class="row"><div class="grow" onclick="openPerson(\''+p.pid+'\')" style="cursor:pointer"><b>'+esc(p.name)+'</b> <span class="small muted">· '+esc(ago(p.lastDate))+'</span><div class="small" style="margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">'+esc(why)+'</div></div><div style="display:flex;flex-direction:column;gap:6px"><button class="btn sm" onclick="schedFor(\''+p.pid+'\')">Jadwalkan</button>'+(p.f.wa?'<a class="btn sm ghost" target="_blank" rel="noopener" href="'+esc(waLink(p.f.wa,msgFollow(p)))+'">WhatsApp</a>':'')+'</div></div></div>';
+      h+='<div class="card" style="padding:11px 14px"><div class="row"><div class="grow" onclick="openPerson(\''+p.pid+'\')" style="cursor:pointer"><b>'+esc(p.name)+'</b> <span class="small muted">· '+esc(ago(p.lastDate))+'</span><div class="small" style="margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">'+esc(why)+'</div></div><div style="display:flex;flex-direction:column;gap:6px"><button class="btn sm" onclick="schedFor(\''+p.pid+'\')">Schedule</button>'+(p.f.wa?'<a class="btn sm ghost" target="_blank" rel="noopener" href="'+esc(waLink(p.f.wa,msgFollow(p)))+'">WhatsApp</a>':'')+'</div></div></div>';
     });
   }
 
@@ -390,18 +390,18 @@ function fillList(){
   else P=P.slice(0,6);
   if(!P.length) h='<div class="empty">'+(q?'Tidak ada yang cocok.':'Belum ada catatan 121. Mulai dari tab Catat.')+'</div>';
   P.forEach(function(p){ h+=card(p) });
-  if(!q && people().filter(function(p){return p.n}).length>6) h+='<button class="btn ghost block" onclick="go(\'ppl\')">Lihat semua orang</button>';
+  if(!q && people().filter(function(p){return p.n}).length>6) h+='<button class="btn ghost block" onclick="go(\'ppl\')">View all people</button>';
   $('plist').innerHTML=h;
 }
 
 /* ============ DETAIL ORANG ============ */
 function openPerson(pid){
   var p=people().filter(function(x){return x.pid===pid})[0]; if(!p) return;
-  var h='<h3>'+esc(p.name)+'</h3>'+(p.f.bname?'<div style="font-weight:700;margin-top:3px">'+esc(p.f.bname)+'</div>':'')+'<div class="muted" style="margin-top:3px">'+(p.f.klas?esc(p.f.klas):'Klasifikasi belum diisi')+(p.f.chapter?' · <b style="color:var(--merah)">'+esc(p.f.chapter)+'</b>':'')+' · <a class="lnk" href="#" onclick="openEditPerson(\''+pid+'\');return false">Edit data dasar</a></div>'
+  var h='<h3>'+esc(p.name)+'</h3>'+(p.f.bname?'<div style="font-weight:700;margin-top:3px">'+esc(p.f.bname)+'</div>':'')+'<div class="muted" style="margin-top:3px">'+(p.f.klas?esc(p.f.klas):'Klasifikasi belum diisi')+(p.f.chapter?' · <b style="color:var(--merah)">'+esc(p.f.chapter)+'</b>':'')+' · <a class="lnk" href="#" onclick="openEditPerson(\''+pid+'\');return false">Edit details</a></div>'
    +'<div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:10px;align-items:center">'+depthDots(p.depth)+'<span class="tag">'+esc(DEPTH[p.depth-1])+'</span>'+refTags(p)+'<span class="tag">121 ke-'+p.n+'</span>'+(p.lastDate?'<span class="tag">terakhir '+esc(ago(p.lastDate))+'</span>':'')+'</div>';
   if(p.next) h+='<div class="note"><b>Next step:</b> '+esc(p.next)+'</div>';
   if(p.up) h+='<div class="note ok">Terjadwal: '+esc(fmtStart(p.up))+(p.up.place?' · '+esc(p.up.place):'')+'</div>';
-  h+='<div class="btns"><button class="btn" onclick="noteFor(\''+pid+'\')">Catat 121</button><button class="btn ghost" onclick="schedFor(\''+pid+'\')">Jadwalkan</button>'+'<button class="btn ghost" onclick="openRef({pid:\''+pid+'\',back:1})">Referral</button>'+(p.f.wa?'<a class="btn ghost" target="_blank" rel="noopener" href="'+esc(waLink(p.f.wa,msgFollow(p)))+'">WhatsApp</a>':'')+'</div>';
+  h+='<div class="btns"><button class="btn" onclick="noteFor(\''+pid+'\')">Log 121</button><button class="btn ghost" onclick="schedFor(\''+pid+'\')">Schedule</button>'+'<button class="btn ghost" onclick="openRef({pid:\''+pid+'\',back:1})">Referral</button>'+(p.f.wa?'<a class="btn ghost" target="_blank" rel="noopener" href="'+esc(waLink(p.f.wa,msgFollow(p)))+'">WhatsApp</a>':'')+'</div>';
   if(p.f.wa) h+='<div class="kv"><div class="k">WhatsApp</div><div class="v"><a class="lnk" target="_blank" rel="noopener" href="'+esc(waLink(p.f.wa))+'">'+esc(p.f.wa)+'</a></div></div>';
   if(p.f.bisnis) h+=kv('Bisnis / layanan',p.f.bisnis);
   if(p.f.bread||p.f.cheese||p.f.meat){
@@ -476,8 +476,8 @@ function vNote(){
    +fld('f-notes','Apa yang dibahas',v.notes||'',{area:1,rows:4,ph:'Cerita, insight, komitmen, hal personal yang perlu diingat'})
    +fld('f-next','Next step',v.next||'',{area:1,ph:'Siapa melakukan apa, kapan'})
    +'</div>'
-   +'<div class="btns"><button class="btn" onclick="saveNote(false)">Simpan</button><button class="btn ghost" onclick="saveNote(true)">Simpan &amp; jadwalkan berikutnya</button></div>'
-   +(e?'<div class="btns"><button class="btn danger" onclick="delSession()">Hapus catatan ini</button></div>':'');
+   +'<div class="btns"><button class="btn" onclick="saveNote(false)">Save</button><button class="btn ghost" onclick="saveNote(true)">Save &amp; schedule next</button></div>'
+   +(e?'<div class="btns"><button class="btn danger" onclick="delSession()">Delete this note</button></div>':'');
   return h;
 }
 function aNote(){
@@ -527,7 +527,7 @@ function vSched(){
    +'<div class="two"><div><label for="s-dur">Durasi</label><select id="s-dur">'+[30,45,60,90,120].map(function(m){return '<option value="'+m+'"'+(m===60?' selected':'')+'>'+m+' menit</option>'}).join('')+'</select></div>'+fld('s-place','Tempat',"",{ph:'Cafe / Zoom / kantor dia'})+'</div>'
    +fld('s-agenda','Agenda / next step',pre.agenda||'',{area:1,ph:'Terisi dari next step terakhir'})
    +(connected()?'<label style="display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox" id="s-cal" checked style="width:auto"> Masukkan ke Google Calendar saya</label>':'<div class="note">Belum terhubung ke Sheet &amp; Calendar. Setelah simpan, ada tombol “Tambah ke Google Calendar”. Hubungkan di Pengaturan (ikon status kanan atas).</div>')
-   +'<div class="btns"><button class="btn" onclick="saveSched()">Simpan jadwal</button></div></div>';
+   +'<div class="btns"><button class="btn" onclick="saveSched()">Save schedule</button></div></div>';
   var all=live(S.sched).filter(function(x){return x.status==='planned'});
   var up=all.filter(function(x){return x.start>=now}).sort(function(a,b){return a.start<b.start?-1:1});
   var past=all.filter(function(x){return x.start<now}).sort(function(a,b){return a.start<b.start?1:-1});
@@ -537,11 +537,11 @@ function vSched(){
 }
 function schedItem(x,past){
   var d=pd(x.start), p=findPerson(x.name);
-  var link = !connected()||!x.eventId ? '<a class="lnk" target="_blank" rel="noopener" href="'+esc(calLink(x))+'">Tambah ke Google Calendar</a>' : '<span class="tag ok">Di Google Calendar</span>';
+  var link = !connected()||!x.eventId ? '<a class="lnk" target="_blank" rel="noopener" href="'+esc(calLink(x))+'">Add to Google Calendar</a>' : '<span class="tag ok">Di Google Calendar</span>';
   return '<div class="card sc'+(past?' past':'')+'"><div class="dt"><span>'+BLN[d.getMonth()]+'</span><b>'+d.getDate()+'</b></div><div class="grow"><div><b>'+esc(x.name)+'</b> <span class="small muted">'+HARI[d.getDay()]+' · '+x.start.slice(11,16)+' · '+esc(x.dur)+' mnt</span></div>'
    +(x.place?'<div class="small muted">'+esc(x.place)+'</div>':'')+(trim(x.agenda)?'<div class="ag">➜ '+esc(x.agenda)+'</div>':'')
-   +'<div class="btns" style="margin-top:9px;align-items:center">'+(past?'<button class="btn sm" onclick="doneSched(\''+x.id+'\')">Catat hasilnya</button>':link)
-   +(p&&p.f.wa?'<a class="btn sm ghost" target="_blank" rel="noopener" href="'+esc(waLink(p.f.wa,msgRemind(x)))+'">Ingatkan via WA</a>':'')+'<button class="btn sm ghost" onclick="openPerson(\''+x.pid+'\')">Profil</button><button class="btn danger sm" onclick="cancelSched(\''+x.id+'\')">Batalkan</button></div></div></div>';
+   +'<div class="btns" style="margin-top:9px;align-items:center">'+(past?'<button class="btn sm" onclick="doneSched(\''+x.id+'\')">Log result</button>':link)
+   +(p&&p.f.wa?'<a class="btn sm ghost" target="_blank" rel="noopener" href="'+esc(waLink(p.f.wa,msgRemind(x)))+'">Remind via WA</a>':'')+'<button class="btn sm ghost" onclick="openPerson(\''+x.pid+'\')">Profile</button><button class="btn danger sm" onclick="cancelSched(\''+x.id+'\')">Cancel meeting</button></div></div></div>';
 }
 function calLink(x){
   var s=x.start.replace(/[-:]/g,'')+'00', d=pd(x.start); var e=new Date(d.getFullYear(),d.getMonth(),d.getDate(),+x.start.slice(11,13),+x.start.slice(14,16)+(+x.dur||60));
@@ -578,7 +578,7 @@ function vPpl(){
   P.forEach(function(p){ var k=trim(p.f.klas); if(k) kl[k]=(kl[k]||0)+1 });
   var keys=Object.keys(kl).sort(function(a,b){return kl[b]-kl[a]});
   var h='<div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input type="search" placeholder="Cari…" value="'+esc(S.q)+'" oninput="S.q=this.value;fillAll()"></div>'
-   +'<div class="chips"><button class="chip'+(S.filt?'':' on')+'" onclick="S.filt=\'\';render()">Semua '+P.length+'</button>'
+   +'<div class="chips"><button class="chip'+(S.filt?'':' on')+'" onclick="S.filt=\'\';render()">All '+P.length+'</button>'
    +keys.map(function(k){ return '<button class="chip'+(S.filt===k?' on':'')+'" onclick="S.filt=this.dataset.k;render()" data-k="'+esc(k)+'">'+esc(k)+' '+kl[k]+'</button>' }).join('')+'</div><div id="pall"></div>';
   setTimeout(fillAll,0);
   return h;
@@ -596,9 +596,9 @@ function openSettings(){
    +'<div class="muted small" style="margin-top:4px">'+(connected()?'Data tersimpan di Google Sheet Anda. Perangkat ini menyimpan salinan agar tetap bisa dibuka tanpa sinyal.':'Saat ini data hanya tersimpan di browser perangkat ini. Hubungkan ke Google Sheet agar aman dan sinkron antar perangkat.')+'</div>'
    +fld('c-url','URL Web App (Apps Script)',S.cfg.url,{ph:'https://script.google.com/macros/s/…/exec'})
    +fld('c-tok','Kata sandi (TOKEN di Code.gs)',S.cfg.token,{ph:'sama persis dengan Code.gs'})
-   +'<div class="btns"><button class="btn" onclick="saveCfg()">Simpan &amp; tes koneksi</button>'+(connected()?'<button class="btn ghost" onclick="closeModal();syncAll().then(function(){toast(\'Sinkron selesai\')})">Sinkron sekarang</button>':'')+'</div>'
+   +'<div class="btns"><button class="btn" onclick="saveCfg()">Save &amp; test connection</button>'+(connected()?'<button class="btn ghost" onclick="closeModal();syncAll().then(function(){toast(\'Sinkron selesai\')})">Sync now</button>':'')+'</div>'
    +(S.lastSync?'<div class="small muted" style="margin-top:8px">Terakhir sinkron: '+new Date(S.lastSync).toLocaleString('id-ID')+'</div>':'')
-   +'<div class="kv"><div class="k">Backup</div><div class="btns" style="margin-top:6px"><button class="btn ghost sm" onclick="exportJson()">Unduh JSON</button><button class="btn ghost sm" onclick="$(\'imp\').click()">Impor JSON</button><input type="file" id="imp" accept="application/json" style="display:none" onchange="importJson(this)"></div></div>'
+   +'<div class="kv"><div class="k">Backup</div><div class="btns" style="margin-top:6px"><button class="btn ghost sm" onclick="exportJson()">Download JSON</button><button class="btn ghost sm" onclick="$(\'imp\').click()">Import JSON</button><input type="file" id="imp" accept="application/json" style="display:none" onchange="importJson(this)"></div></div>'
    +'<div class="small muted" style="margin-top:14px">Langkah pasang Sheet &amp; Calendar ada di README repo (folder apps-script).</div>';
   openModal(h);
 }
@@ -657,11 +657,11 @@ function openRef(o){
   var h='<h3>'+(r?'Edit referral':'Catat referral')+'</h3>'
    +'<datalist id="dl-names3">'+people().map(function(x){return '<option value="'+esc(x.name)+'">'}).join('')+'</datalist>'
    +'<label for="r-name">Dengan siapa</label><input id="r-name" list="dl-names3" value="'+esc(v.name)+'" autocomplete="off" placeholder="Ketik nama">'
-   +'<label>Arah</label><div class="seg"><button id="r-in" class="'+(v.dir==='in'?'on':'')+'" onclick="setRdir(\'in\')">⬇ Dapat dari dia</button><button id="r-out" class="'+(v.dir==='out'?'on':'')+'" onclick="setRdir(\'out\')">⬆ Beri ke dia</button></div>'
+   +'<label>Arah</label><div class="seg"><button id="r-in" class="'+(v.dir==='in'?'on':'')+'" onclick="setRdir(\'in\')">⬇ Received from them</button><button id="r-out" class="'+(v.dir==='out'?'on':'')+'" onclick="setRdir(\'out\')">⬆ Given to them</button></div>'
    +'<div class="two"><div><label for="r-date">Tanggal</label><input id="r-date" type="date" value="'+esc(v.date)+'"></div><div><label for="r-status">Status</label><select id="r-status" onchange="$(\'r-valw\').style.display=this.value===\'jadi\'?\'\':\'none\'">'+Object.keys(RST).map(function(k){return '<option value="'+k+'"'+(v.status===k?' selected':'')+'>'+RST[k]+'</option>'}).join('')+'</select></div></div>'
    +'<label for="r-desc">Referral apa</label><textarea id="r-desc" placeholder="Siapa yang direferensikan, kebutuhannya apa">'+esc(v.desc)+'</textarea>'
    +'<div id="r-valw" style="'+(v.status==='jadi'?'':'display:none')+'"><label for="r-val">Nilai jadi income <span class="hint">(sekali, mis. 15jt atau 15000000)</span></label><input id="r-val" inputmode="text" value="'+esc(v.value?fmtRpFull(v.value).slice(3):'')+'" placeholder="15jt"></div>'
-   +'<div class="btns"><button class="btn" onclick="saveRef()">Simpan</button>'+(r?'<button class="btn danger" onclick="delRef()">Hapus</button>':'')+'</div>';
+   +'<div class="btns"><button class="btn" onclick="saveRef()">Save</button>'+(r?'<button class="btn danger" onclick="delRef()">Delete</button>':'')+'</div>';
   openModal(h);
 }
 function setRdir(d){ S.rdir=d; $('r-in').className=d==='in'?'on':''; $('r-out').className=d==='out'?'on':'' }
@@ -719,7 +719,7 @@ function refChart(R){
 function refCardHtml(P){
   var R=live(S.refs), rin=P.filter(function(p){return p.rin}).length, rout=P.filter(function(p){return p.rout}).length, both=P.filter(function(p){return p.rin&&p.rout}).length;
   var h='<div class="card"><h2>Referral</h2><div class="row" style="justify-content:space-around;text-align:center"><div><div class="big">'+rin+'</div><div class="small">orang kasih saya<br>referral bagus</div></div><div><div class="big">'+rout+'</div><div class="small">orang yang saya<br>kasih referral</div></div><div><div class="big">'+both+'</div><div class="small">dua arah</div></div></div>';
-  if(!R.length) return h+'<div class="note" style="margin-top:14px">Belum ada log referral. Catat satu per satu (dapat atau beri, status, dan nilai kalau jadi) supaya grafik dan income terbentuk.</div><div class="btns"><button class="btn" onclick="openRef({})">Catat referral</button></div></div>';
+  if(!R.length) return h+'<div class="note" style="margin-top:14px">Belum ada log referral. Catat satu per satu (dapat atau beri, status, dan nilai kalau jadi) supaya grafik dan income terbentuk.</div><div class="btns"><button class="btn" onclick="openRef({})">Log referral</button></div></div>';
   var inR=R.filter(function(r){return r.dir==='in'}), T=inR.length, Pr=inR.filter(function(r){return r.status==='diproses'||r.status==='jadi'}).length, J=inR.filter(function(r){return r.status==='jadi'}), inc=J.reduce(function(a,r){return a+(+r.value||0)},0), B=inR.filter(function(r){return r.status==='batal'}).length;
   h+='<div style="margin-top:16px;font-size:13px;font-weight:700;color:var(--tinta-2)">6 bulan terakhir</div>'+refChart(R);
   h+='<div style="margin-top:16px;font-size:13px;font-weight:700;color:var(--tinta-2)">Dari referral yang saya terima</div>'
@@ -728,7 +728,7 @@ function refCardHtml(P){
    +(B?'<div class="small muted" style="margin-top:8px">'+B+' referral diterima berstatus batal, tidak dihitung di grafik.</div>':'');
   var open=R.filter(function(r){return r.status==='dibahas'||r.status==='diproses'}).sort(function(a,b){return a.date<b.date?1:-1}).slice(0,4);
   if(open.length) h+='<div style="margin-top:16px;font-size:13px;font-weight:700;color:var(--tinta-2)">Sedang berjalan</div>'+open.map(function(r){return refLine(r,true)}).join('');
-  return h+'<div class="btns"><button class="btn" onclick="openRef({})">Catat referral</button></div></div>';
+  return h+'<div class="btns"><button class="btn" onclick="openRef({})">Log referral</button></div></div>';
 }
 
 
@@ -736,12 +736,12 @@ function refCardHtml(P){
 function openEditPerson(pid){
   var p=people().filter(function(x){return x.pid===pid})[0]; if(!p) return;
   S.editPid=pid;
-  var h='<h3>Edit data dasar</h3><div class="small" style="margin-top:4px">Perubahan berlaku untuk semua catatan 121, jadwal, dan referral orang ini.</div>'
+  var h='<h3>Edit details</h3><div class="small" style="margin-top:4px">Perubahan berlaku untuk semua catatan 121, jadwal, dan referral orang ini.</div>'
    +'<datalist id="dl-klas2">'+klasOptions().map(function(k){return '<option value="'+esc(k[0])+'"'+(k[1]?' label="'+esc(k[1])+'"':'')+'>'}).join('')+'</datalist>'
    +fld('e-name','Nama',p.name)+fld('e-bname','Nama business',p.f.bname||'')+fld('e-chapter','Chapter',p.f.chapter||'')
    +'<div><label for="e-klas">Klasifikasi</label><input id="e-klas" list="dl-klas2" value="'+esc(p.f.klas||'')+'" autocomplete="off"></div>'
    +fld('e-wa','Nomor WhatsApp',p.f.wa||'',{type:'tel'})
-   +'<div class="btns"><button class="btn" onclick="saveEditPerson()">Simpan</button><button class="btn ghost" onclick="openPerson(\''+pid+'\')">Batal</button></div>';
+   +'<div class="btns"><button class="btn" onclick="saveEditPerson()">Save</button><button class="btn ghost" onclick="openPerson(\''+pid+'\')">Cancel</button></div>';
   openModal(h);
 }
 function saveEditPerson(){
