@@ -174,8 +174,8 @@ a.lnk{color:var(--merah);font-weight:700;font-size:13px;text-decoration:none}
 /* ============ konstanta ============ */
 var TARGET = 4;
 var KEY = 'dd121notebook.v2';
-var PROF = ['chapter','klas','wa','bisnis','bread','cheese','meat','trigger','sphere','klien','good','bad'];
-var PROFLABEL = {bisnis:'Bisnis / layanan',bread:'Bread',cheese:'Cheese',meat:'Meat',trigger:'Trigger words',sphere:'Contact sphere',klien:'Contoh klien',good:'Good referrals',bad:'Bad referrals'};
+var PROF = ['bname','chapter','klas','wa','bisnis','bread','cheese','meat','trigger','sphere','klien','good','bad'];
+var PROFLABEL = {bname:'Nama business',bisnis:'Bisnis / layanan',bread:'Bread',cheese:'Cheese',meat:'Meat',trigger:'Trigger words',sphere:'Contact sphere',klien:'Contoh klien',good:'Good referrals',bad:'Bad referrals'};
 var DEPTH = ['Kenal','Paham','Referral'];
 function lvl(n){ return Math.min(3,Math.max(1,+n||1)) }
 function waNum(s){ var d=String(s||'').replace(/\D/g,''); if(d.indexOf('0')===0) d='62'+d.slice(1); else if(d.indexOf('8')===0) d='62'+d; return d }
@@ -320,9 +320,9 @@ function initials(n){ var w=String(n||'?').trim().split(/\s+/); return ((w[0]||'
 function refTags(p){ return (p.rin?'<span class="tag ok" title="Dia pernah kasih saya referral bagus">⬇ Dari dia</span>':'')+(p.rout?'<span class="tag acc" title="Saya pernah kasih dia referral">⬆ Ke dia</span>':'') }
 function card(p){
   var h='<button class="pc" onclick="openPerson(\''+p.pid+'\')"><div class="mav">'+esc(initials(p.name))+'</div><div class="grow"><div class="top"><b>'+esc(p.name)+'</b><span class="small muted">'+esc(ago(p.lastDate))+'</span></div>'
-   +'<div class="meta">'+esc([p.f.klas,p.f.chapter].filter(Boolean).join(' · ')||'Klasifikasi belum diisi')+(p.f.bisnis?' · '+esc(p.f.bisnis.split('\n')[0].slice(0,50)):'')+'</div>';
+   +'<div class="meta">'+(p.f.bname?'<b style="font-weight:700;color:var(--tinta)">'+esc(p.f.bname)+'</b> · ':'')+esc([p.f.klas,p.f.chapter].filter(Boolean).join(' · ')||'Klasifikasi belum diisi')+(p.f.bisnis?' · '+esc(p.f.bisnis.split('\n')[0].slice(0,50)):'')+'</div>';
   if(p.next) h+='<div class="nx">➜ '+esc(p.next)+'</div>';
-  h+='<div class="ft">'+depthDots(p.depth)+'<span>121 ke-'+p.n+'</span>'+refTags(p)+(p.up?'<span class="tag acc">'+esc(fdate(p.up.start))+'</span>':'')+'<span style="margin-left:auto">profil '+p.filled+'/9</span></div></div></button>';
+  h+='<div class="ft">'+depthDots(p.depth)+'<span>121 ke-'+p.n+'</span>'+refTags(p)+(p.up?'<span class="tag acc">'+esc(fdate(p.up.start))+'</span>':'')+'<span style="margin-left:auto">profil '+p.filled+'/'+Object.keys(PROFLABEL).length+'</span></div></div></button>';
   return h;
 }
 function vDash(){
@@ -384,7 +384,7 @@ function fillList(){
 /* ============ DETAIL ORANG ============ */
 function openPerson(pid){
   var p=people().filter(function(x){return x.pid===pid})[0]; if(!p) return;
-  var h='<h3>'+esc(p.name)+'</h3><div class="muted" style="margin-top:3px">'+esc([p.f.klas,p.f.chapter].filter(Boolean).join(' · ')||'Klasifikasi belum diisi')+'</div>'
+  var h='<h3>'+esc(p.name)+'</h3>'+(p.f.bname?'<div style="font-weight:700;margin-top:3px">'+esc(p.f.bname)+'</div>':'')+'<div class="muted" style="margin-top:3px">'+esc([p.f.klas,p.f.chapter].filter(Boolean).join(' · ')||'Klasifikasi belum diisi')+'</div>'
    +'<div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:10px;align-items:center">'+depthDots(p.depth)+'<span class="tag">'+esc(DEPTH[p.depth-1])+'</span>'+refTags(p)+'<span class="tag">121 ke-'+p.n+'</span>'+(p.lastDate?'<span class="tag">terakhir '+esc(ago(p.lastDate))+'</span>':'')+'</div>';
   if(p.next) h+='<div class="note"><b>Next step:</b> '+esc(p.next)+'</div>';
   if(p.up) h+='<div class="note ok">Terjadwal: '+esc(fmtStart(p.up))+(p.up.place?' · '+esc(p.up.place):'')+'</div>';
@@ -439,6 +439,7 @@ function vNote(){
   h+='<div class="card"><h2>'+(e?'Edit catatan 121':'Catat 121')+'</h2>'
    +'<div class="two">'+fld('f-date','Tanggal',v.date,{type:'date'})+fld('f-name','Nama',v.name,{list:'dl-names',ph:'Ketik nama'})+'</div>'
    +'<div id="f-hint"></div>'
+   +fld('f-bname','Nama business',v.bname||'',{ph:'Nama perusahaan / brand'})
    +'<div class="two">'+fld('f-chapter','Chapter',v.chapter||'',{list:'dl-chap'})+fld('f-klas','Klasifikasi',v.klas||'',{list:'dl-klas'})+'</div>'
    +'<label for="f-depth">Kedalaman hubungan sekarang</label><select id="f-depth">'+DEPTH.map(function(d,i){return '<option value="'+(i+1)+'"'+(lvl(v.depth)===i+1?' selected':'')+'>'+(i+1)+' · '+d+'</option>'}).join('')+'</select>'
    +fld('f-wa','Nomor WhatsApp',v.wa||'',{type:'tel',ph:'0812… atau +62…',hint:'(untuk chat cepat)'})
