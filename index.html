@@ -144,6 +144,14 @@ label .hint{font-weight:500;color:var(--abu)}
 .sc.past .dt{background:var(--kertas-2);color:var(--tinta-2)}
 .sc .ag{font-size:14px;margin-top:4px;white-space:pre-wrap}
 .sc b{font-family:var(--judul);font-weight:700}
+/* referral & grafik */
+.seg{display:flex;gap:6px}.seg button{flex:1;min-height:44px;border:1.5px solid var(--garis);border-radius:12px;font-weight:700;background:#fff;color:var(--tinta-2);font-size:14px}.seg button.on{background:var(--merah);color:#fff;border-color:var(--merah)}
+.wkgrid{display:grid;grid-template-columns:repeat(26,1fr);gap:3px}.wkgrid i{display:block;aspect-ratio:1;border-radius:3px;background:var(--kertas-2)}.wkgrid i.a{background:#F3B3BB}.wkgrid i.b{background:var(--merah)}.wkgrid i.now{outline:2px solid var(--tinta);outline-offset:1px}
+.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.mini div{background:var(--kertas-2);border-radius:10px;padding:8px 10px}.mini b{display:block;font-family:var(--judul);font-size:17px;font-weight:800;letter-spacing:-.02em}.mini span{font-size:12px;color:var(--tinta-2)}
+.leg{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--tinta-2);margin-top:6px}.leg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+svg.ch text{font-family:var(--huruf);font-size:10px;fill:var(--abu)}svg.ch .v{fill:var(--tinta-2);font-weight:700}
+.fn{display:grid;grid-template-columns:78px 1fr 30px;gap:10px;align-items:center;padding:5px 0;font-size:14px}.fn .tr{height:10px;background:var(--kertas-2);border-radius:99px;overflow:hidden}.fn .tr i{display:block;height:100%;border-radius:99px;background:var(--merah)}.fn b{text-align:right;font-family:var(--judul)}
+.rf{display:flex;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--garis);cursor:pointer}.rf:first-child{border-top:0}.rf .ar{font-weight:800;font-size:16px;width:20px;text-align:center}.rf .ar.in{color:var(--hijau)}.rf .ar.out{color:var(--merah)}
 a.lnk{color:var(--merah);font-weight:700;font-size:13px;text-decoration:none}
 </style>
 </head>
@@ -176,10 +184,10 @@ function first(n){ return String(n||'').trim().split(/\s+/)[0] }
 var KLAS_DEFAULT = ['Keuangan & Asuransi','Properti','Hukum & Akuntansi','Marketing & Digital','Teknologi','Kesehatan','F&B','Manufaktur & Trading','Pendidikan & Training','Konstruksi','Event & Hospitality','Logistik'];
 
 /* ============ state & penyimpanan ============ */
-var S = {sessions:[],sched:[],queue:[],cfg:{url:'',token:''},tab:'dash',q:'',filt:'',lastSync:0,syncing:false,offline:false};
-function save(){ try{ localStorage.setItem(KEY, JSON.stringify({sessions:S.sessions,sched:S.sched,queue:S.queue,cfg:S.cfg,lastSync:S.lastSync})) }catch(e){} }
+var S = {sessions:[],sched:[],refs:[],queue:[],cfg:{url:'',token:''},tab:'dash',q:'',filt:'',lastSync:0,syncing:false,offline:false};
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify({sessions:S.sessions,sched:S.sched,refs:S.refs,queue:S.queue,cfg:S.cfg,lastSync:S.lastSync})) }catch(e){} }
 function load(){
-  try{ var d = JSON.parse(localStorage.getItem(KEY)||'null'); if(d){ S.sessions=d.sessions||[]; S.sched=d.sched||[]; S.queue=d.queue||[]; S.cfg=d.cfg||S.cfg; S.lastSync=d.lastSync||0 } }catch(e){}
+  try{ var d = JSON.parse(localStorage.getItem(KEY)||'null'); if(d){ S.sessions=d.sessions||[]; S.sched=d.sched||[]; S.refs=d.refs||[]; S.queue=d.queue||[]; S.cfg=d.cfg||S.cfg; S.lastSync=d.lastSync||0 } }catch(e){}
 }
 
 /* ============ util ============ */
@@ -212,11 +220,12 @@ function people(){
     PROF.forEach(function(k){ if(trim(s[k])) p.f[k]=s[k] });
     if(+s.depth) p.depth=lvl(s.depth);
   });
-  var sc=live(S.sched);
+  var sc=live(S.sched), RF=live(S.refs);
   sc.forEach(function(x){ if(!m[x.pid]) m[x.pid]={pid:x.pid,name:x.name,sess:[],f:{}} });
+  RF.forEach(function(x){ if(!m[x.pid]) m[x.pid]={pid:x.pid,name:x.name,sess:[],f:{}} });
   var now=nowLocal();
   return Object.keys(m).map(function(k){
-    var p=m[k]; p.n=p.sess.length; p.last=p.sess[p.n-1]||{}; p.lastDate=p.last.date||''; p.rin=p.last.rin==='1'; p.rout=p.last.rout==='1'; p.next=''; for(var i=p.n-1;i>=0;i--){ if(trim(p.sess[i].next)){ p.next=trim(p.sess[i].next); break } } p.depth=p.depth||1;
+    var p=m[k]; p.n=p.sess.length; p.last=p.sess[p.n-1]||{}; p.lastDate=p.last.date||''; p.refs=RF.filter(function(x){return x.pid===p.pid}).sort(function(a,b){return a.date<b.date?1:-1}); p.rin=p.last.rin==='1'||p.refs.some(function(x){return x.dir==='in'&&x.status!=='batal'}); p.rout=p.last.rout==='1'||p.refs.some(function(x){return x.dir==='out'&&x.status!=='batal'}); p.next=''; for(var i=p.n-1;i>=0;i--){ if(trim(p.sess[i].next)){ p.next=trim(p.sess[i].next); break } } p.depth=p.depth||1;
     p.up=sc.filter(function(x){return x.pid===p.pid&&x.status==='planned'&&x.start>=now}).sort(function(a,b){return a.start<b.start?-1:1})[0];
     p.missing=Object.keys(PROFLABEL).filter(function(f){return !trim(p.f[f])});
     p.filled=Object.keys(PROFLABEL).length-p.missing.length;
@@ -242,9 +251,10 @@ function post(payload){
   payload.token=S.cfg.token;
   return fetch(S.cfg.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).then(function(r){return r.json()});
 }
+function tbl(t){ return t==='Sessions'?S.sessions:(t==='Schedule'?S.sched:S.refs) }
 function enqueue(table,row){
   row.updated=new Date().toISOString();
-  var arr = table==='Sessions'?S.sessions:S.sched;
+  var arr = tbl(table);
   var i=arr.findIndex(function(x){return x.id===row.id});
   if(i>=0) arr[i]=row; else arr.push(row);
   S.queue=S.queue.filter(function(q){return !(q.table===table&&q.id===row.id)});
@@ -254,7 +264,7 @@ function enqueue(table,row){
 function flush(){
   if(!connected()||S.syncing||!S.queue.length) return Promise.resolve();
   S.syncing=true; setSync();
-  var job=S.queue[0], arr=job.table==='Sessions'?S.sessions:S.sched, row=arr.find(function(x){return x.id===job.id});
+  var job=S.queue[0], arr=tbl(job.table), row=arr.find(function(x){return x.id===job.id});
   if(!row){ S.queue.shift(); S.syncing=false; return flush() }
   return post({action:'upsert',table:job.table,row:row}).then(function(r){
     if(!r.ok) throw new Error(r.error||'gagal');
@@ -272,7 +282,7 @@ function pull(){
   S.syncing=true; setSync();
   return fetch(S.cfg.url+(S.cfg.url.indexOf('?')>=0?'&':'?')+'token='+encodeURIComponent(S.cfg.token)).then(function(r){return r.json()}).then(function(r){
     if(!r.ok) throw new Error(r.error||'gagal');
-    merge(S.sessions,r.sessions); merge(S.sched,r.schedule);
+    merge(S.sessions,r.sessions); merge(S.sched,r.schedule); merge(S.refs,r.referrals);
     S.lastSync=Date.now(); S.offline=false; S.syncing=false; save(); setSync(); render();
   }).catch(function(e){ S.syncing=false; S.offline=true; setSync(); if(String(e.message)==='token') toast('Token salah. Cek Pengaturan.') });
 }
@@ -330,8 +340,7 @@ function vDash(){
   h+='<div class="stats"><div class="card"><div class="big">'+ss.length+'</div><div class="l">Total 121</div></div><div class="card"><div class="big">'+P.filter(function(p){return p.n}).length+'</div><div class="l">Orang</div></div><div class="card"><div class="big">'+month+'</div><div class="l">Bulan ini</div></div></div>';
 
   if(ss.length){
-    var rin=P.filter(function(p){return p.rin}).length, rout=P.filter(function(p){return p.rout}).length, both=P.filter(function(p){return p.rin&&p.rout}).length;
-    h+='<div class="card"><h2>Referral</h2><div class="row" style="justify-content:space-around;text-align:center"><div><div class="big">'+rin+'</div><div class="small muted">orang kasih saya<br>referral bagus</div></div><div><div class="big">'+rout+'</div><div class="small muted">orang yang saya<br>kasih referral</div></div><div><div class="big">'+both+'</div><div class="small muted">dua arah</div></div></div></div>';
+    h+=consistencyHtml(wc)+refCardHtml(P);
     var kc={}, cc={}, kp={};
     ss.forEach(function(s){ var pr=P.filter(function(p){return p.pid===s.pid})[0]; var k=trim((pr&&pr.f.klas)||s.klas), c=trim((pr&&pr.f.chapter)||s.chapter);
       if(k){ kc[k]=(kc[k]||0)+1 } if(c){ cc[c]=(cc[c]||0)+1 } });
@@ -373,7 +382,7 @@ function openPerson(pid){
    +'<div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:10px;align-items:center">'+depthDots(p.depth)+'<span class="tag">'+esc(DEPTH[p.depth-1])+'</span>'+refTags(p)+'<span class="tag">121 ke-'+p.n+'</span>'+(p.lastDate?'<span class="tag">terakhir '+esc(ago(p.lastDate))+'</span>':'')+'</div>';
   if(p.next) h+='<div class="note"><b>Next step:</b> '+esc(p.next)+'</div>';
   if(p.up) h+='<div class="note ok">Terjadwal: '+esc(fmtStart(p.up))+(p.up.place?' · '+esc(p.up.place):'')+'</div>';
-  h+='<div class="btns"><button class="btn" onclick="noteFor(\''+pid+'\')">Catat 121</button><button class="btn ghost" onclick="schedFor(\''+pid+'\')">Jadwalkan</button>'+(p.f.wa?'<a class="btn ghost" target="_blank" rel="noopener" href="'+esc(waLink(p.f.wa,msgFollow(p)))+'">WhatsApp</a>':'')+'</div>';
+  h+='<div class="btns"><button class="btn" onclick="noteFor(\''+pid+'\')">Catat 121</button><button class="btn ghost" onclick="schedFor(\''+pid+'\')">Jadwalkan</button>'+'<button class="btn ghost" onclick="openRef({pid:\''+pid+'\',back:1})">Referral</button>'+(p.f.wa?'<a class="btn ghost" target="_blank" rel="noopener" href="'+esc(waLink(p.f.wa,msgFollow(p)))+'">WhatsApp</a>':'')+'</div>';
   if(p.f.wa) h+='<div class="kv"><div class="k">WhatsApp</div><div class="v"><a class="lnk" target="_blank" rel="noopener" href="'+esc(waLink(p.f.wa))+'">'+esc(p.f.wa)+'</a></div></div>';
   if(p.f.bisnis) h+=kv('Bisnis / layanan',p.f.bisnis);
   if(p.f.bread||p.f.cheese||p.f.meat){
@@ -382,6 +391,7 @@ function openPerson(pid){
   }
   ['trigger','sphere','klien','good','bad'].forEach(function(f){ if(p.f[f]) h+=kv(PROFLABEL[f],p.f[f]) });
   if(p.missing.length) h+='<div class="kv"><div class="k">Belum diketahui (tanyakan di 121 berikutnya)</div><div>'+p.missing.map(function(f){return '<span class="tag warn" style="margin:0 5px 5px 0">'+PROFLABEL[f]+'</span>'}).join('')+'</div></div>';
+  h+=refSection(p);
   h+='<div class="kv"><div class="k">Riwayat 121</div>';
   if(!p.n) h+='<div class="small muted">Belum ada catatan.</div>';
   h+='<div class="tl">';
@@ -581,17 +591,124 @@ function saveCfg(){
     // dorong semua data lokal pertama kali, lalu tarik dari Sheet
     live(S.sessions).forEach(function(s){ if(!S.queue.some(function(q){return q.id===s.id})) S.queue.push({table:'Sessions',id:s.id}) });
     S.sched.forEach(function(s){ if(!S.queue.some(function(q){return q.id===s.id})) S.queue.push({table:'Schedule',id:s.id}) });
+    S.refs.forEach(function(s){ if(!S.queue.some(function(q){return q.id===s.id})) S.queue.push({table:'Referrals',id:s.id}) });
     save(); syncAll();
   }).catch(function(e){ toast(String(e.message)==='token'?'Token salah':'Gagal terhubung. Cek URL dan deploy "Anyone".') });
 }
 function exportJson(){
-  var b=new Blob([JSON.stringify({sessions:S.sessions,sched:S.sched},null,1)],{type:'application/json'}), a=document.createElement('a');
+  var b=new Blob([JSON.stringify({sessions:S.sessions,sched:S.sched,refs:S.refs},null,1)],{type:'application/json'}), a=document.createElement('a');
   a.href=URL.createObjectURL(b); a.download='121-notebook-'+today()+'.json'; a.click();
 }
 function importJson(inp){
   var f=inp.files[0]; if(!f) return; var r=new FileReader();
-  r.onload=function(){ try{ var d=JSON.parse(r.result); merge(S.sessions,d.sessions); merge(S.sched,d.sched); d.sessions.forEach(function(s){S.queue.push({table:'Sessions',id:s.id})}); (d.sched||[]).forEach(function(s){S.queue.push({table:'Schedule',id:s.id})}); save(); closeModal(); render(); flush(); toast('Impor selesai') }catch(e){ toast('File tidak valid') } };
+  r.onload=function(){ try{ var d=JSON.parse(r.result); merge(S.sessions,d.sessions); merge(S.sched,d.sched); merge(S.refs,d.refs); (d.refs||[]).forEach(function(s){S.queue.push({table:'Referrals',id:s.id})}); d.sessions.forEach(function(s){S.queue.push({table:'Sessions',id:s.id})}); (d.sched||[]).forEach(function(s){S.queue.push({table:'Schedule',id:s.id})}); save(); closeModal(); render(); flush(); toast('Impor selesai') }catch(e){ toast('File tidak valid') } };
   r.readAsText(f);
+}
+
+
+/* ============ REFERRAL & GRAFIK ============ */
+function parseRp(v){
+  var t=String(v||'').toLowerCase().replace(/rp\.?/g,'').trim(); if(!t) return '';
+  var num=parseFloat(t.replace(/\./g,'').replace(',','.').replace(/[^\d.]/g,''));
+  if(isNaN(num)) return '';
+  if(/(miliar|\bm\b)/.test(t)) num*=1e9; else if(/(juta|jt)/.test(t)) num*=1e6; else if(/(ribu|rb|\bk\b)/.test(t)) num*=1e3;
+  return String(Math.round(num));
+}
+function fmtRp(n){ n=+n||0; if(n>=1e9) return 'Rp '+(n/1e9).toFixed(1).replace('.',',').replace(',0','')+' M'; if(n>=1e6) return 'Rp '+(n/1e6).toFixed(1).replace('.',',').replace(',0','')+' jt'; if(n>=1e3) return 'Rp '+Math.round(n/1e3)+' rb'; return 'Rp '+n }
+function fmtRpFull(n){ return 'Rp '+(+n||0).toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.') }
+var RST={dibahas:'Dibahas',diproses:'Diproses',jadi:'Jadi',batal:'Batal'};
+function rtag(st){ return '<span class="tag '+(st==='jadi'?'ok':(st==='batal'?'':'warn'))+'">'+RST[st]+'</span>' }
+function refLine(r,showName){
+  return '<div class="rf" onclick="openRef({id:\''+r.id+'\',back:'+(showName?0:1)+'})"><span class="ar '+r.dir+'">'+(r.dir==='in'?'⬇':'⬆')+'</span><div class="grow"><div style="font-size:14px">'+(showName?'<b>'+esc(r.name)+'</b> · ':'')+esc(trim(r.desc)||(r.dir==='in'?'Dapat referral':'Beri referral'))+'</div><div class="small muted">'+esc(fdate(r.date))+'</div></div><div style="text-align:right">'+rtag(r.status)+(r.status==='jadi'&&r.value?'<div class="small" style="margin-top:3px;font-weight:700">'+esc(fmtRp(r.value))+'</div>':'')+'</div></div>';
+}
+function refSection(p){
+  var h='<div class="kv"><div class="k">Referral dengan dia</div>';
+  if(!p.refs.length) return h+'<div class="small muted">Belum ada. Catat saat dia kasih atau Anda kasih referral.</div></div>';
+  var inN=p.refs.filter(function(x){return x.dir==='in'&&x.status!=='batal'}).length, outN=p.refs.filter(function(x){return x.dir==='out'&&x.status!=='batal'}).length;
+  var inc=p.refs.filter(function(x){return x.dir==='in'&&x.status==='jadi'}).reduce(function(a,x){return a+(+x.value||0)},0);
+  h+='<div class="small" style="margin-bottom:4px">Dapat '+inN+' · Beri '+outN+(inc?' · Income '+esc(fmtRp(inc)):'')+'</div>'+p.refs.map(function(r){return refLine(r,false)}).join('')+'</div>';
+  return h;
+}
+function openRef(o){
+  var r=o.id?S.refs.filter(function(x){return x.id===o.id})[0]:null;
+  var p=r?null:(o.pid?people().filter(function(x){return x.pid===o.pid})[0]:null);
+  var v=r||{date:today(),dir:o.dir||'in',status:'dibahas',name:p?p.name:'',desc:'',value:''};
+  S.rdir=v.dir; S.refEdit=r?r.id:null; S.refBack=o.back?(r?r.pid:o.pid):null;
+  var h='<h3>'+(r?'Edit referral':'Catat referral')+'</h3>'
+   +'<datalist id="dl-names3">'+people().map(function(x){return '<option value="'+esc(x.name)+'">'}).join('')+'</datalist>'
+   +'<label for="r-name">Dengan siapa</label><input id="r-name" list="dl-names3" value="'+esc(v.name)+'" autocomplete="off" placeholder="Ketik nama">'
+   +'<label>Arah</label><div class="seg"><button id="r-in" class="'+(v.dir==='in'?'on':'')+'" onclick="setRdir(\'in\')">⬇ Dapat dari dia</button><button id="r-out" class="'+(v.dir==='out'?'on':'')+'" onclick="setRdir(\'out\')">⬆ Beri ke dia</button></div>'
+   +'<div class="two"><div><label for="r-date">Tanggal</label><input id="r-date" type="date" value="'+esc(v.date)+'"></div><div><label for="r-status">Status</label><select id="r-status" onchange="$(\'r-valw\').style.display=this.value===\'jadi\'?\'\':\'none\'">'+Object.keys(RST).map(function(k){return '<option value="'+k+'"'+(v.status===k?' selected':'')+'>'+RST[k]+'</option>'}).join('')+'</select></div></div>'
+   +'<label for="r-desc">Referral apa</label><textarea id="r-desc" placeholder="Siapa yang direferensikan, kebutuhannya apa">'+esc(v.desc)+'</textarea>'
+   +'<div id="r-valw" style="'+(v.status==='jadi'?'':'display:none')+'"><label for="r-val">Nilai jadi income <span class="hint">(sekali, mis. 15jt atau 15000000)</span></label><input id="r-val" inputmode="text" value="'+esc(v.value?fmtRpFull(v.value).slice(3):'')+'" placeholder="15jt"></div>'
+   +'<div class="btns"><button class="btn" onclick="saveRef()">Simpan</button>'+(r?'<button class="btn danger" onclick="delRef()">Hapus</button>':'')+'</div>';
+  openModal(h);
+}
+function setRdir(d){ S.rdir=d; $('r-in').className=d==='in'?'on':''; $('r-out').className=d==='out'?'on':'' }
+function saveRef(){
+  var name=val('r-name'); if(!name){ toast('Nama wajib diisi'); return }
+  var old=S.refEdit?S.refs.filter(function(x){return x.id===S.refEdit})[0]:null, ex=findPerson(name);
+  if(ex) name=ex.name;
+  var st=val('r-status');
+  var row={id:old?old.id:uid('r_'),pid:old&&!ex?old.pid:(ex?ex.pid:uid('p_')),name:name,date:val('r-date')||today(),dir:S.rdir,desc:val('r-desc'),status:st,value:st==='jadi'?parseRp(val('r-val')):'',deleted:''};
+  enqueue('Referrals',row);
+  toast('Referral tersimpan');
+  if(S.refBack) openPerson(row.pid); else { closeModal(); render() }
+}
+function delRef(){
+  var r=S.refs.filter(function(x){return x.id===S.refEdit})[0]; if(!r||!confirm('Hapus referral ini?')) return;
+  r.deleted='1'; enqueue('Referrals',r); toast('Referral dihapus'); if(S.refBack) openPerson(r.pid); else { closeModal(); render() }
+}
+function consistencyHtml(wc){
+  var N=26, cur=monday(new Date()), cells='', hit=0, tot=0, best=0, ss=live(S.sessions);
+  var firstW = ss.length ? monday(pd(ss.map(function(x){return x.date}).sort()[0])) : cur;
+  var weeksSince=Math.max(1,Math.round((cur-firstW)/6048e5)+1), span=Math.min(N,weeksSince);
+  for(var i=N-1;i>=0;i--){
+    var d=addDays(cur,-7*i), c=wc[ymd(d)]||0;
+    cells+='<i class="'+(c>=TARGET?'b':(c>0?'a':''))+(i===0?' now':'')+'" title="'+esc(fdate(ymd(d))+': '+c+' kali 121')+'"></i>';
+    if(i<span){ tot+=c; if(c>=TARGET) hit++ }
+  }
+  var run=0,longest=0; for(var w=new Date(firstW); w<=cur; w=addDays(w,7)){ var c2=wc[ymd(w)]||0; best=Math.max(best,c2); if(c2>=TARGET){ run++; longest=Math.max(longest,run) } else run=0 }
+  return '<div class="card"><h2>Konsistensi 121 · '+N+' minggu</h2><div class="wkgrid">'+cells+'</div>'
+   +'<div class="leg"><span><i style="background:var(--kertas-2)"></i>0</span><span><i style="background:#F3B3BB"></i>1 sampai '+(TARGET-1)+'</span><span><i style="background:var(--merah)"></i>target '+TARGET+'+</span></div>'
+   +'<div class="mini"><div><b>'+(tot/span).toFixed(1).replace('.',',')+'</b><span>rata-rata per minggu</span></div><div><b>'+Math.round(hit/span*100)+'%</b><span>minggu kena target</span></div><div><b>'+longest+'</b><span>streak terpanjang (minggu)</span></div></div></div>';
+}
+function refChart(R){
+  var W=320,H=160,pl=6,pt=22,pb=22,ph=H-pt-pb, M=[], now=new Date();
+  for(var i=5;i>=0;i--){ var d=new Date(now.getFullYear(),now.getMonth()-i,1); M.push({k:d.getFullYear()+'-'+pad(d.getMonth()+1),l:BLN[d.getMonth()],in:0,out:0,inc:0}) }
+  R.forEach(function(r){ var m=M.filter(function(x){return x.k===String(r.date).slice(0,7)})[0]; if(!m) return;
+    if(r.status!=='batal'){ if(r.dir==='in') m.in++; else m.out++ }
+    if(r.dir==='in'&&r.status==='jadi') m.inc+=(+r.value||0) });
+  var mx=Math.max(1,Math.max.apply(null,M.map(function(m){return Math.max(m.in,m.out)}))), mi=Math.max.apply(null,M.map(function(m){return m.inc}));
+  var gw=(W-pl*2)/6, bw=Math.min(18,gw/2-4), g='', pts=[], lab='';
+  M.forEach(function(m,i){
+    var x0=pl+gw*i+gw/2, hi=m.in/mx*ph, ho=m.out/mx*ph;
+    g+='<rect x="'+(x0-bw-1)+'" y="'+(pt+ph-hi)+'" width="'+bw+'" height="'+Math.max(hi,m.in?2:0)+'" rx="3" fill="var(--merah)"/>'
+     +'<rect x="'+(x0+1)+'" y="'+(pt+ph-ho)+'" width="'+bw+'" height="'+Math.max(ho,m.out?2:0)+'" rx="3" fill="var(--tinta-2)"/>';
+    if(m.in) g+='<text class="v" x="'+(x0-bw/2-1)+'" y="'+(pt+ph-hi-3)+'" text-anchor="middle">'+m.in+'</text>';
+    if(m.out) g+='<text class="v" x="'+(x0+bw/2+1)+'" y="'+(pt+ph-ho-3)+'" text-anchor="middle">'+m.out+'</text>';
+    lab+='<text x="'+x0+'" y="'+(H-6)+'" text-anchor="middle">'+m.l+'</text>';
+    if(mi>0){ pts.push([x0,pt+ph-m.inc/mi*ph,m.inc]) }
+  });
+  var line='';
+  if(mi>0){ line='<polyline points="'+pts.map(function(p){return p[0]+','+p[1]}).join(' ')+'" fill="none" stroke="var(--emas)" stroke-width="2.2" stroke-linejoin="round"/>'
+    +pts.map(function(p){ return '<circle cx="'+p[0]+'" cy="'+p[1]+'" r="3.2" fill="#fff" stroke="var(--emas)" stroke-width="2"/>'+(p[2]?'<text class="v" x="'+p[0]+'" y="'+(p[1]-7)+'" text-anchor="middle" style="fill:var(--emas)">'+esc(fmtRp(p[2]).replace('Rp ',''))+'</text>':'') }).join('') }
+  return '<svg class="ch" viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-label="Referral dapat, beri, dan income per bulan">'+'<line x1="'+pl+'" x2="'+(W-pl)+'" y1="'+(pt+ph)+'" y2="'+(pt+ph)+'" stroke="var(--garis)"/>'+g+line+lab+'</svg>'
+   +'<div class="leg"><span><i style="background:var(--merah)"></i>Dapat bagus</span><span><i style="background:var(--tinta-2)"></i>Beri bagus</span><span><i style="background:var(--emas);height:3px;vertical-align:3px"></i>Income jadi (Rp)</span></div>';
+}
+function refCardHtml(P){
+  var R=live(S.refs), rin=P.filter(function(p){return p.rin}).length, rout=P.filter(function(p){return p.rout}).length, both=P.filter(function(p){return p.rin&&p.rout}).length;
+  var h='<div class="card"><h2>Referral</h2><div class="row" style="justify-content:space-around;text-align:center"><div><div class="big">'+rin+'</div><div class="small">orang kasih saya<br>referral bagus</div></div><div><div class="big">'+rout+'</div><div class="small">orang yang saya<br>kasih referral</div></div><div><div class="big">'+both+'</div><div class="small">dua arah</div></div></div>';
+  if(!R.length) return h+'<div class="note" style="margin-top:14px">Belum ada log referral. Catat satu per satu (dapat atau beri, status, dan nilai kalau jadi) supaya grafik dan income terbentuk.</div><div class="btns"><button class="btn" onclick="openRef({})">Catat referral</button></div></div>';
+  var inR=R.filter(function(r){return r.dir==='in'}), T=inR.length, Pr=inR.filter(function(r){return r.status==='diproses'||r.status==='jadi'}).length, J=inR.filter(function(r){return r.status==='jadi'}), inc=J.reduce(function(a,r){return a+(+r.value||0)},0), B=inR.filter(function(r){return r.status==='batal'}).length;
+  h+='<div style="margin-top:16px;font-size:13px;font-weight:700;color:var(--tinta-2)">6 bulan terakhir</div>'+refChart(R);
+  h+='<div style="margin-top:16px;font-size:13px;font-weight:700;color:var(--tinta-2)">Dari referral yang saya terima</div>'
+   +[['Diterima',T],['Diproses',Pr],['Jadi',J.length]].map(function(x){ return '<div class="fn"><span>'+x[0]+'</span><span class="tr"><i style="width:'+(T?Math.round(x[1]/T*100):0)+'%"></i></span><b>'+x[1]+'</b></div>' }).join('')
+   +'<div class="mini"><div><b>'+(T?Math.round(J.length/T*100):0)+'%</b><span>jadi dari diterima</span></div><div><b>'+esc(fmtRp(inc))+'</b><span>total income</span></div><div><b>'+esc(fmtRp(J.length?inc/J.length:0))+'</b><span>rata-rata per jadi</span></div></div>'
+   +(B?'<div class="small muted" style="margin-top:8px">'+B+' referral diterima berstatus batal, tidak dihitung di grafik.</div>':'');
+  var open=R.filter(function(r){return r.status==='dibahas'||r.status==='diproses'}).sort(function(a,b){return a.date<b.date?1:-1}).slice(0,4);
+  if(open.length) h+='<div style="margin-top:16px;font-size:13px;font-weight:700;color:var(--tinta-2)">Sedang berjalan</div>'+open.map(function(r){return refLine(r,true)}).join('');
+  return h+'<div class="btns"><button class="btn" onclick="openRef({})">Catat referral</button></div></div>';
 }
 
 /* ============ start ============ */
