@@ -283,7 +283,7 @@ function pull(){
   return fetch(S.cfg.url+(S.cfg.url.indexOf('?')>=0?'&':'?')+'token='+encodeURIComponent(S.cfg.token)).then(function(r){return r.json()}).then(function(r){
     if(!r.ok) throw new Error(r.error||'gagal');
     merge(S.sessions,r.sessions); merge(S.sched,r.schedule); merge(S.refs,r.referrals);
-    S.lastSync=Date.now(); S.offline=false; S.syncing=false; save(); setSync(); render();
+    S.lastSync=Date.now(); S.offline=false; S.syncing=false; save(); setSync(); softRender();
   }).catch(function(e){ S.syncing=false; S.offline=true; setSync(); if(String(e.message)==='token') toast('Token salah. Cek Pengaturan.') });
 }
 function merge(local,remote){
@@ -296,7 +296,7 @@ function merge(local,remote){
 function syncAll(){ return flush().then(pull) }
 
 /* ============ navigasi ============ */
-function go(t){ S.tab=t; window.scrollTo(0,0); render(); }
+function go(t){ S.stale=false; S.tab=t; window.scrollTo(0,0); render(); }
 function render(){
   document.querySelectorAll('nav button').forEach(function(b){ b.classList.toggle('on',b.dataset.t===S.tab) });
   var v={dash:vDash,note:vNote,sched:vSched,ppl:vPpl}[S.tab];
@@ -306,7 +306,13 @@ function render(){
 }
 document.querySelectorAll('nav button').forEach(function(b){ b.onclick=function(){ closeModal(); if(b.dataset.t==='note') S.edit=null; go(b.dataset.t) } });
 function openModal(h){ $('panel').innerHTML='<div class="grab"></div><button class="shx" onclick="closeModal()">×</button>'+h; $('modal').classList.add('on'); $('panel').scrollTop=0 }
-function closeModal(){ $('modal').classList.remove('on') }
+function closeModal(){ $('modal').classList.remove('on'); if(S.stale&&S.tab!=='note'&&S.tab!=='sched'){ S.stale=false; render() } }
+// render ulang dari sinkron latar belakang: jangan ganggu form yang sedang diisi
+function softRender(){
+  var a=document.activeElement, typing=a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName);
+  if($('modal').classList.contains('on')||S.tab==='note'||S.tab==='sched'||typing){ S.stale=true; return }
+  render();
+}
 
 /* ============ DASHBOARD ============ */
 function depthDots(n){ var h='<span class="depth" title="'+esc(DEPTH[lvl(n)-1])+'">'; for(var i=1;i<=3;i++) h+='<i'+(i<=n?' class="f"':'')+'></i>'; return h+'</span>' }
